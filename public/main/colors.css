@@ -1,0 +1,157 @@
+.white {
+    background: #faf9f7 none repeat scroll 0 0 !important;
+    color: #525252;
+}
+.black {
+    background: #333333 none repeat scroll 0 0 !important;
+    color: #faf9f7;
+}
+.grey {
+    background: #cccccc none repeat scroll 0 0 !important;
+    color: #323232;
+}
+.lightgrey {
+    background: #ccb98f none repeat scroll 0 0 !important;
+    color: #e7e7e7;
+}
+.cream {
+    background: #f1ede1 none repeat scroll 0 0 !important;
+    color: #202e3b;
+}
+.chocolate {
+    background: #8c8a7d none repeat scroll 0 0 !important;
+    color: #f1ede1;
+}
+.turquoise {
+    background: #18ab9b;
+    color: #faf9f7;
+}
+
+.text-turquoise {
+    color: #18ab9b;
+}
+
+.blue {
+    background-color: #3380b6;
+    color: #faf9f7;
+}
+
+.text-blue {
+    color: #3380b6;
+}
+
+.pink {
+    background: #6a5077 none repeat scroll 0 0 !important;
+    color: #faf9f7;
+}
+.lightpink {
+    background: #825099 none repeat scroll 0 0 !important;
+    color: #faf9f7;
+}
+.faintwhite {
+    background: #f4f0e5 none repeat scroll 0 0 !important;
+    color: #eb5b5a;
+}
+.greylight {
+    background: #3c3c3c none repeat scroll 0 0 !important;
+    color: #f4f0e5;
+}
+.greydark {
+    background: #323232 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.yellow {
+    background: #fcd300 none repeat scroll 0 0 !important;
+    color: #323232;
+}
+.mango {
+    background: #ffd73f none repeat scroll 0 0 !important;
+    color: #323232;
+}
+
+.text-mango{
+    color: #ffd73f;
+}
+
+.green {
+    background: #2ecc71 none repeat scroll 0 0 !important;
+    color: #faf9f7;
+}
+
+.text-green{
+    color: #2ecc71;
+}
+
+.orange {
+    background: #fda400 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+
+.text-orange{
+    color: #fda400;
+}
+
+.peach {
+    background: #cfba8f none repeat scroll 0 0 !important;
+    color: #323232;
+}
+
+.text-peach{
+    color: #cfba8f;
+}
+
+.red {
+    background: #ee5b54 none repeat scroll 0 0 !important;
+    color: #f1ede1;
+}
+.maroon {
+    background: #df4351 none repeat scroll 0 0 !important;
+    color: #f1ede1;
+}
+
+
+.text-maroon{
+    color: #df4351;
+}
+
+.facebook {
+    background: #3b5998 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.twitter {
+    background: #55acee none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.google-plus {
+    background: #dd4b39 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.linkedin {
+    background: #0077b5 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.youtube {
+    background: #cd201f none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.vimeo {
+    background: #1ab7ea none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.pintrest {
+    background: #cc2127 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+.google-maps {
+    background: #e7e6dd none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+
+.site-green{
+    background: #7ab444 none repeat scroll 0 0 !important;
+    color: #ffffff;
+}
+
+.no-back{
+    border: 1px solid #2ecc71;
+}

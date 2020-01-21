@@ -22,10 +22,6 @@ class CategoryController extends Controller {
      */
     public function index() {
         $categories = Category::latest()
-                ->with(['services'])
-                ->leftJoin('barber_services', 'barber_services.category_id', '=', 'categories.id')
-                ->select('categories.*', DB::raw("COUNT(DISTINCT(barber_id)) as count"))
-                ->groupBy('categories.id')
                 ->get();
         //prd($categories);
         return view('admin.categories.index', compact('categories'));
@@ -48,7 +44,6 @@ class CategoryController extends Controller {
 
         $category = new Category();
         $category->name = $request->get('name');
-        $category->unique_id = $this->unique_key("CAT", "categories");
         $category->save();
 
         return response()->json(['success' => __('messages.category_add_success')]);

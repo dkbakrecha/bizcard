@@ -1,140 +1,112 @@
-@extends('layouts.app')
+@extends('layouts.site.app')
 
 @section('content')
-<section class="content-header search-header">
-    <h1>
-        {{ __($searchTerm) }}
-    </h1>
-    <hr>
-</section>
+<section class="home-filter-section">
+        <div class="container">
+            <div class="row">
+                <form name="salonch-ajax-salonlist-form" id="salonchSLsearch" method="post">
+                    <input type="hidden" name="action" value="swp_salonsearch">
+                    
+                    
 
+                    
 
+                    <input type="hidden" id="swp_salonsearch_nonce_filed" name="swp_salonsearch_nonce_filed" value="0dc121d504"><input type="hidden" name="_wp_http_referer" value="/ad/salonch/">                  <div class="col-md-6 col-sm-12 left-form">
+                        <div class="location-wrap">
+                            <input type="text" name="salon_city" class="searchbox" placeholder="Search for city or zip" id="address" autocomplete="off" data-frm="salonchSLsearch" value="" data-value="" onkeydown="if (event.keyCode == 13) { return false; }">
 
-<div class="row search-row">
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ __('messages.transactions') }}</div>
-            <div class="panel-body flow">
-                @if(!empty($bookingData))
+                            <span class="clearInput clearLocation">×</span>
 
-                @foreach ($bookingData as $booking)
-                <div class="row info-row clearfix">
-                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 search-date">
-                        <div>{{ date('d',strtotime($booking['booking_date'])) }}</div>
-                        <div>{{ date('M',strtotime($booking['booking_date'])) }}</div>
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 mobile-view">
-                        <div class="search-info">
-                            <label>
-                                {{ __('messages.booking_number') }}:
-                            </label>
-                            <a href="#" data-id="{{ $booking['id'] }}" data-toggle="modal" data-target="#viewBookingModal">{{ $booking['unique_id'] }}</a>
-
+                            <input type="hidden" name="city" id="city" value="">
+                            <input type="hidden" name="state" id="state" value="">
+                            <input type="hidden" name="zipcode" id="zipcode" value="">
+                            <input type="hidden" name="country" id="country" value="">
                         </div>
-                        <br>
-                        <div class="search-info">
-                            <label>
-                                {{ __('messages.customer_name') }}:
-                            </label>
-                            <span> &nbsp;
-                                {{ $booking['customer']['name'] }}
-                            </span>
+                        
+                        <div class="name-wrap">
+                            <input type="text" name="salon_name" class="searchbox" placeholder="Search by company" value="" data-value="" id="inputSalonName">
+                            
+                            <span class="clearInput clearName">×</span>
+
+                            <input type="hidden" name="last_id" class="salonLastID" value="386">
+                            <input type="hidden" name="load_more" class="salonLoadMore" value="0">
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="col-md-6 col-sm-12 right-form">
+                        <div class="salonch-multiselect-cover">
+                            <select id="multiple-checkboxes" name="salon_type[]" class="salonch_multiselect" multiple="multiple" style="display: none;">
+                                                                        <option value="1">Barber Shop</option>
+                                                                                <option value="2">Hair Salon</option>
+                                                                                <option value="3">Full Service Salon</option>
+                                                                                <option value="4">Rental Salon</option>
+                                                                                <option value="6">Kids Salon</option>
+                                                                                <option value="7">Blow Dry Bar</option>
+                                                                                <option value="22">Color Bar</option>
+                                                                                <option value="8">Spa</option>
+                                                                                <option value="9">Medical Spa</option>
+                                                                                <option value="19">Massage Therapy Spa</option>
+                                                                                <option value="10">Foot Spa</option>
+                                                                                <option value="11">Nail Salon</option>
+                                                                    </select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Hair Salon, Full Service Salon" aria-expanded="false"><span class="multiselect-selected-text">2  - Filters Selected</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu"><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="1"> Barber Shop</label></a></li><li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="2"> Hair Salon</label></a></li><li class="active"><a tabindex="0"><label class="checkbox"><input type="checkbox" value="3"> Full Service Salon</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="4"> Rental Salon</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="6"> Kids Salon</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="7"> Blow Dry Bar</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="22"> Color Bar</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="8"> Spa</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="9"> Medical Spa</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="19"> Massage Therapy Spa</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="10"> Foot Spa</label></a></li><li><a tabindex="0"><label class="checkbox"><input type="checkbox" value="11"> Nail Salon</label></a></li></ul></div>
+                            <span class="clearInput clearFilter">×</span>
+                        </div>
+                        <div class="switch-option checked">
+                            <div>Show Job Openings</div>
+                            <input type="checkbox" id="ChkJobOpening" name="set-name" class="switch-input" checked="">
+
+                            <label for="ChkJobOpening" class="switch-label"></label>
                         </div>
                     </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 pull-right currency">
-                        {{ $booking['final_amount'] . " SAR" }}
-                    </div>
-                </div>
-                @endforeach 
 
-                @else
-                <div class="no-search-message">
-                    <h3> {{ __('messages.search_transaction_empty') }} </h3>
-                </div>
-                @endif
-
+                    <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1">
+                </form>
             </div>
         </div>
-    </div>
+    </section>
+    
+<div class="container">
+    <h1>{{ __($searchTerm) }}</h1>
 
-    <div class="col-md-4 right-bar">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ __('messages.site_users') }}</div>
+    <div class="row search-row">
+        
+           @if(!empty($cardData))
 
+           @foreach ($cardData as $card)
+
+           <div class="col-md-4">
+           <div class="panel panel-default card">
             <div class="panel-body flow">
-                @if(!empty($userData))
-                @foreach ($userData as $user)
-                <div class="row info-row">
-                    <div>
-                        @if ($user['user_type'] == 0)
                         <div class="search-info">
-                            <label>
-                                {{ __('messages.shop_name') }}:
-                            </label>
-                            <a href="#" data-id="{{ $user['id'] }}" data-toggle="modal" data-target="#editProviderModal">{{ $user['name'] }}</a>
-                        </div>
-                        <br>
-                        @elseif($user['user_type'] == 2)
-                        <div class="search-info">
-                            <label>
-                                {{ __('messages.customer') }}:
-                            </label>
-                            <a href="#" data-id="{{ $user['id'] }}" data-toggle="modal" data-target="#editCustomerModal">{{ $user['name'] }}</a>
-                        </div>
-                        <br>
-                        @else
-                        <div class="search-info">
-                            <label>
-                                {{ __('messages.supervisor') }}:
-                            </label>
-                            <a href="#" data-id="{{ $user['id'] }}" data-toggle="modal" data-target="#editCustomerModal">{{ $user['name'] }}</a>
-                        </div>
-                        <br>
-                        @endif
-                    </div>
-                    <div class="search-info search-number">
-                        <label>
-                            {{ __('messages.phone_number') }}:
-                        </label>
-                        <span>
-                            {{ $user['phone'] }}
-                        </span>
-                    </div>
-                </div>
-                @endforeach 
+                            <h2 class="business-name">
+                                <a href="{{ url('card/' . $card['slug']) }}" title="{{ $card['business_name'] }}" rel="bookmark">
+                                    {{ $card['business_name'] }}
+                                </a>
+                            </h2>
 
-                @else
-                <div class="no-search-message">
-                    <h3> {{ __('messages.search_users_empty') }} </h3>
-                </div>
-                @endif
+                            <div>
+                                {{ $card['address'] }}
+                                {{ $card['contact_primary'] }}
+                            </div>
+                        </div>
+                    
             </div>
+            <div class="panel-footer">Panel Footer</div>
         </div>
-    </div>
+        </div>
+        @endforeach 
+
+        @else
+        <div class="no-search-message">
+            <h3> Currently there are no business found for your search criteria. </h3>
+        </div>
+        @endif 
+</div>    
 </div>
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="editProviderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{ __('messages.service_provider_info') }}</h4>
-            </div>
-            <form action="{{ route('provider.update','test') }}" method="post" class="form-horizontal" id="providerEditForm"  enctype="multipart/form-data">
-                {{ method_field('patch') }}
-                {{ csrf_field() }}
-                <div class="modal-body">
-                    <div class="alert alert-danger" style="display:none"></div>
-                    <input type="hidden" id="id" name="id">
-                    @include('admin.users.provider_info')
-                </div>
-            </form>
-        </div>
-    </div>
-</div> 
 
 <!-- Modal -->
 <div class="modal fade" id="editCustomerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -156,31 +128,6 @@
     </div>
 </div> 
 
-
-<!-- Booking View Modal -->
-<div class="modal fade" id="viewBookingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width:101%;">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{ __('messages.booking_info') }}</h4>
-            </div>
-            <form action="#" method="post" class="form-horizontal" id="bookingViewForm">
-                <div class="modal-body">
-                    <input type="hidden" id="id" name="id">
-                    <div class="form-group">
-                        <label for="unique_id" class="col-sm-3 control-label">{{ __('messages.booking_id') }}</label>
-
-                        <div class="col-sm-9">
-                            <input id="unique_id" type="text" placeholder="{{ __('messages.booking_id') }}" class="form-control" name="unique_id" value="{{ old('unique_id') }}" required disabled="">
-                        </div>
-                    </div>
-                    @include('admin.bookings.view')
-                </div>
-            </form>
-        </div>
-    </div>
-</div>    
 
 @endsection
 

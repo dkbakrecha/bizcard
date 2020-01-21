@@ -16,7 +16,7 @@ return [
     'password' => 'Passwords must be at least six characters and match the confirmation.',
     'reset' => 'Your password has been reset!',
     'sent' => 'Thanks, we have emailed you instructions on resetting your password.',
-    'token' => 'This password reset token is not associate with current flair account.',
-    'user' => "Sorry, Flair doesn’t recognize that email address.",
+    'token' => 'This password reset token is not associate with current CardBiz account.',
+    'user' => "Sorry, CardBiz doesn’t recognize that email address.",
 
 ];

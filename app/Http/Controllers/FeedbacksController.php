@@ -56,7 +56,7 @@ class FeedbacksController extends Controller {
         $feedbackData = Feedback::where('parent_id', '=', $request->id)
                         ->get()->toArray();
 
-        $userData = User::select(["id", "unique_id", "name", "profile_image", "isAdmin", "status", "user_type"])
+        $userData = User::select(["id", "name", "profile_image", "status", "user_type"])
                         ->where('id', '=', $request->user_id)->first();
 
 

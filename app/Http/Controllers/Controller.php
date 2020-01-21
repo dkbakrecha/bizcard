@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Edujugon\PushNotification\PushNotification;
 use App\User;
 use Auth;
+use DB;
 use AWS;
 use Illuminate\Support\Carbon;
 
@@ -34,6 +35,10 @@ class Controller extends BaseController {
         }
 
         return response()->json($response, $code);
+    }
+    
+    public function getCategoryList(){
+        return $roles = DB::table('business_category')->get()->keyBy('name');
     }
 
     public function unique_key($str = "SR", $table) {

@@ -34,7 +34,7 @@ class RegisterToken extends Mailable {
                             'token' => $this->token,
                         ])
                         ->markdown('emails.api.register_token')
-                        ->subject("Welcome to FLAIR");
+                        ->subject("Welcome to CardBiz");
     }
 
 }

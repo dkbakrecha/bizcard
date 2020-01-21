@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Sorry, Flair doesn’t recognize that email address.',
+    'failed' => 'Sorry, CardBiz doesn’t recognize that email address.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

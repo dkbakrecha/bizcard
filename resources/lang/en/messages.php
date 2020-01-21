@@ -179,7 +179,7 @@ return [
     'supervisor_id' => 'Supervisor ID',
     'supervisor_name' => 'Supervisor Name',
     'staff_list_empty' => 'Currently there are no staff member found.',
-    'admin' => 'Admin Flair',
+    'admin' => 'Admin CardBiz',
     'other_settings' => 'Other Settings',
     'new_password' => 'New Password',
     'update_profile' => 'Update Profile',

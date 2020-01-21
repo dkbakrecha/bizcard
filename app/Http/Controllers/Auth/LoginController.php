@@ -50,7 +50,7 @@ use AuthenticatesUsers;
           } */
         //return $request;
         // Attempt to log the user in
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'user_type' => [0, 1], 'status' => 1], $request->remember)) {
+        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
             // if successful, then redirect to their intended location
             return redirect()->intended('home');
         }
@@ -74,20 +74,11 @@ use AuthenticatesUsers;
         // Check if user was successfully loaded, that the password matches
         // and active is not 1. If so, override the default error message.
         if ($user && \Hash::check($request->password, $user->password)) {
-            if ($user->status == 3) {
-                $errors = [$this->username() => trans('Your account is not approved by admin, please contact support team for more details.')];
-            } elseif ($user->status == 0) {
+            if ($user->status == 0) {
                 $errors = [$this->username() => trans('Your shop account is blocked by admin, please contact support team for more details.')];
             }
         }
 
-        /* Block Supervisor concept */
-        if ($user->user_type == 1) {
-            $shopData = User::where('id', '=', $user->user_type)->first();
-            if($shopData->status == 0){
-                $errors = [$this->username() => trans('Your shop account is blocked by admin, please contact support team for more details.')];
-            }
-        }
         //prd($user);
         if (!empty($user)) {
             $errors = ['password' => trans('Your login credentials are invalid.')];

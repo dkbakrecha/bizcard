@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'login_error' => "Sorry, Flair doesn't recognize the email address or phone number.",
+    'login_error' => "Sorry, CardBiz doesn't recognize the email address or phone number.",
     'favorite_success' => "Shop added in favorite list successfully.",
     'favorite_exist' =>"Shop already added in favorite list.",
     'favorite_removed' => "Shop removed from favorite list successfully.",
@@ -33,7 +33,7 @@ return [
     'review_submit_success' => "Review submitted to shop successfully.",
     'booking_rejected_notifiaction' => "Your booking has been rejected.",
     'booking_approve_notifiaction' => "Your booking has been approved.",
-    'auto_reply_feedback' => "Thanks for using Flair chat. Our support team will get back to you within 24 hours.",
+    'auto_reply_feedback' => "Thanks for using CardBiz chat. Our support team will get back to you within 24 hours.",
     'password_updated' => "Your password update successfully",
     'settings_updated '=> "Setting update successfully.",
     'shop_empty' => "Currently there are no active shop found",

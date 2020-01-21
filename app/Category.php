@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+	protected $table = 'business_category';
+
     protected $fillable = [
-        'name', 'unique_id'
+        'name'
     ];
     
-    public function services() {
-        return $this->hasMany('App\Service', 'category_id');
-    }
+    /*public function services() {
+        return $this->hasMany('App\Card', 'card_id');
+    }*/
     
-    public function barbers() {
-        return $this->hasMany('App\BarberService', 'category_id');
-    }
     
 }

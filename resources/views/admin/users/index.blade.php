@@ -21,9 +21,12 @@
 <table class="table table-bordered flair-datatable">
     <thead>
         <tr class="table-heading">
-            <th width="420px">{{ __('messages.customer_name') }}</th>
-            <th width="100px">{{ __('messages.email') }}</th>
-            <th width="100px">{{ __('messages.phone') }}</th>
+            <th width="100px">Fullname</th>
+            <th width="80px">{{ __('messages.email') }}</th>
+            <th width="80px">{{ __('messages.phone') }}</th>
+            <th width="80px">Date Created</th>
+            <th width="80px">Login</th>
+            <th width="80px">Status</th>
             <th width="150px">{{ __('messages.details') }}</th>
         </tr>
     </thead>
@@ -32,8 +35,11 @@
         @foreach ($users as $user)
         <tr>
             <td>{{ $user->name }}</td>
-            <td align="center">{{ $user->email }}</td>
-            <td align="center">{{ $user->phone }}</td>
+            <td>{{ $user->email }}</td>
+            <td align="right">{{ $user->phone }}</td>
+            <td align="right">{{ $user->created_at }}</td>
+            <td align="right">{{ $user->last_login_date }}</td>
+            <td align="right">{{ $user->status }}</td>
             <td align="center" class="user-buttons">
                 <button class="btn btn-action" data-id="{{ $user->id }}" data-toggle="modal" data-target="#editCustomerModal">
                      <i class="fa fa-pencil"></i>

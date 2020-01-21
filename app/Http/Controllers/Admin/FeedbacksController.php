@@ -139,7 +139,7 @@ class FeedbacksController extends Controller {
 //->orderBy('id', 'DESC')
                         ->get()->toArray();
 
-        $userData = User::select(["id", "unique_id", "name", "profile_image", "isAdmin", "status", "user_type"])
+        $userData = User::select(["id", "name", "profile_image", "status", "user_type"])
                         ->where('id', '=', $request->user_id)->first();
 
 
@@ -234,6 +234,7 @@ class FeedbacksController extends Controller {
                 }
 
                 // Send push notification
+                /*
                 $device = User::find($_user)
                         ->mobileSessions()
                         ->where('status', '=', 1)
@@ -256,6 +257,7 @@ class FeedbacksController extends Controller {
                     default:
                         break;
                 }
+                */
             }
 
             return redirect('/admin/feedbacks')->with('success', __('messages.messages_sent_success'));

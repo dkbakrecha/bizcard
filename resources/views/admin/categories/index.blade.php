@@ -11,8 +11,6 @@
         <tr class="table-heading">
             <th width="110px">{{ __('messages.category_id') }}</th>
             <th>{{ __('messages.category') }}</th>
-            <th>{{ __('messages.staff') }}</th>
-            <th>{{ __('messages.services') }}</th>
             <th width="180px">{{ __('messages.details') }}</th>
         </tr>
     </thead>
@@ -20,10 +18,8 @@
     <tbody>
         @foreach ($categories as $category)
         <tr>
-            <td>{{ $category->unique_id }}</td>
+            <td>{{ $category->id }}</td>
             <td>{{ $category->name }}</td>
-            <td align="center">{{ $category->count }}</td>
-            <td align="center">{{ $category->services->count() }}</td>
             <td align="center" class="user-buttons">
 
                 <button data-title="{{ $category->name }}" data-cat_id="{{ $category->id }}" data-cate_id="{{ $category->cate_id }}" class="btn btn-action" data-toggle="modal" data-target="#editModal">

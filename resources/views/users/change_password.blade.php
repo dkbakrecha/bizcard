@@ -1,13 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.site.app')
 
 @section('content')
 
-@section('sectionTitle', __('messages.settings'))
-@include('admin.elements.general_top')
 
-@include('admin.elements.messages')
+<div class="container" id="roomContent">
+    <div class="row">
+        <div class="col-lg-3">
+            @include('layouts.site.sidebar_user')
+        </div>
 
-<div class="panel">
+        <div class="col-lg-9">
+            <div class="panel">
     <form action="{{ route('change_password.store') }}" method="post" class="form-horizontal">
         {{ csrf_field() }}
         <div class="panel-body">
@@ -48,6 +51,12 @@
     </form>
 
 </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 

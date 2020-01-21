@@ -446,8 +446,8 @@ jQuery(document).ready(function () {
                 "previous": "<",
                 "next": ">",
             },
-            "emptyTable": "{{ (Auth::user()->preferred_language == 'en')?'No records found':'لا توجد سجلات' }}",
-            "zeroRecords":"{{ (Auth::user()->preferred_language == 'en')?'No matching records found':'لم يتم العثور على سجلات مطابقة' }}",
+            "emptyTable": "{{ 'No records found' }}",
+            "zeroRecords":"{{ 'No matching records found' }}",
         },
     });
 

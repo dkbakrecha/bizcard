@@ -14,10 +14,33 @@
   return view('admintemplate');
   });
  */
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@front');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/about-us', 'HomeController@aboutus')->name('about-us');
+Route::get('/card/{cardslug}', 'CardsController@view')->where('cardslug', '[a-z-]+');
+Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/list', 'HomeController@search')->name('search');
 
 Auth::routes();
+
+
+Route::get('cards', 'CardsController@index')->name('cards');
+Route::get('cards/store', 'CardsController@create');
+Route::post('cards/store', 'CardsController@store')->name('card.store');
+Route::get('cards/create', 'CardsController@create')->name('card.create');
+//Route::match(['put', 'patch'], '/company/update/{id}','CompanyMasterController@update');
+
+//Route::post('offers/update', 'OffersController@update')->name('offer.update');
+//Route::post('getOffer', 'OffersController@getOffer')->name('getOffer');
+//Route::post('getOfferPrice', 'OffersController@getOfferPrice');
+//Route::delete('offer_delete', 'OffersController@offer_delete')->name('offer.destroy');
+
+
+
+
+
+
+
 
 Route::get('/test_pay', 'CronsController@test_pay')->name('test_pay');
 Route::get('/test_res', 'CronsController@test_res')->name('test_res');
@@ -36,7 +59,6 @@ Route::get('app/cancellation', 'HomeController@appCalcellation');
 Route::get('app/terms', 'HomeController@appTerms')->name('appterms');
 Route::get('app/terms_ar', 'HomeController@appTermsAr')->name('appterms_ar');
 
-Route::get('search', 'HomeController@search')->name('search');
 Route::post('viewCustomer', 'UsersController@viewCustomer')->name('viewCustomer');
 Route::post('viewStatistics', 'HomeController@viewStatistics')->name('viewStatistics');
 
@@ -114,6 +136,15 @@ Route::prefix('admin')->group(function () {
     Route::post('login', 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
     Route::post('logout', 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
 
+
+
+    Route::get('cards', 'Admin\CardsController@index')->name('admin.cards');
+    Route::get('cards/create/{id?}', 'Admin\CardsController@create')->name('card.add');
+    //Route::post('cards/create', 'Admin\CardsController@create')->name();
+    Route::match(['put', 'patch', 'post'], 'cards/create/{id?}','Admin\CardsController@create')->name('card.store');
+
+    
+
     //Search
     Route::get('search', 'AdminController@search')->name('admin.search');
 
@@ -177,6 +208,8 @@ Route::prefix('admin')->group(function () {
     Route::post('offer_inactive', 'Admin\OffersController@offer_inactive')->name('admin.offer.inactive');
     Route::post('offer_active', 'Admin\OffersController@offer_active')->name('admin.offer.active');
 
+    
+
     Route::get('coupon_code', 'Admin\CouponCodesController@index')->name('admin.coupon_codes');
     Route::post('getCouponInfo', 'Admin\OffersController@getCouponInfo')->name('admin.getCouponInfo');
     Route::post('coupon_code_store', 'Admin\CouponCodesController@store')->name('admin.coupon_code.store');
@@ -199,6 +232,7 @@ Route::prefix('admin')->group(function () {
     Route::post('getReceipt', 'Admin\FinancialController@getReceipt')->name('admin.getReceipt');
     Route::post('getRefund', 'Admin\FinancialController@getRefund')->name('admin.getRefund');
     Route::post('getrrChartData', 'Admin\FinancialController@getrrChartData')->name('admin.getRrChartStats');
+
 
     // Dashboard Chart Routes
     Route::post('get-user-registration-chart-data', 'AdminController@getUserRegistrationChartData')->name('admin.getUserRegistrationChartData');

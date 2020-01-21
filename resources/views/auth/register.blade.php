@@ -1,9 +1,13 @@
-@extends('layouts.register')
+@extends('layouts.site.app')
 
 @section('content')
 
-    <p class="login-box-msg reset-pwd-heading register-heading">{{ __('Register Here') }}</p>
-    <form method="POST" id="registerSP" action="{{ route('register') }}" class="form-horizontal"  enctype="multipart/form-data">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h2 class="formHeading-2">Sign up {{ config('app.name') }}</h2>
+            <h3 class="formHeading-3">It's fast and easy.</h3>
+    <form method="POST" id="registerSP" action="{{ route('register') }}" class="biz-form"  enctype="multipart/form-data">
         @csrf
 
         @if (count($errors) > 0)
@@ -15,7 +19,6 @@
             </ul>
         </div>
         @endif
-
 
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
@@ -35,24 +38,36 @@
                         <input id="password" type="password" placeholder="{{ __('messages.password') }}" class="form-control" name="password">
                 </div>
 
-                <div class="form-group row">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                <div class="form-group">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"  placeholder="{{ __('messages.confirm_password') }}">
                         </div>
             </div>
            
         </div>
 
         <div class="form-group row mb-0">
-            <div class="col-md-12 btn-create">
+            <div class="col-md-12">
                 <center>
-                    <button type="submit" class="btn btn-primary register-btn">
-                        {{ __('Create') }}
+                    <p class="textTerm">Creating an account means you’re okay with our Terms of Service, Privacy Policy, and our default Notification Settings.</p>
+                    <button type="submit" class="btn btn-block">
+                        {{ __('Create Account') }}
                     </button>
                 </center>
             </div>
-            <div class="col-md-12">
-                <a href="{{ route("login") }}">Back to Sign In</a> | <a href="{{ route("appterms") }}">Terms of Use</a>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 verify center">
+                <a href="{{ route("login") }}">Back to Sign In</a>
             </div>
         </div>
-    </form>
+    </form>        
+        </div>
+    </div>
+</div>
+
+    
+
+
 @endsection

@@ -15,12 +15,12 @@ class Feedback extends Model {
 
     public function sender() {
         return $this->belongsTo('App\User', 'from_id')
-                        ->select(["id", "unique_id", "name", "profile_image", "isAdmin", "status", "user_type"]);
+                        ->select(["id", "name", "profile_image", "status", "user_type"]);
     }
 
     public function receiver() {
         return $this->belongsTo('App\User', 'to_id')
-                        ->select(["id", "unique_id", "name", "profile_image", "isAdmin", "status", "user_type"]);
+                        ->select(["id", "name", "profile_image", "status", "user_type"]);
     }
 
     /** Function to return first conversion ID between two users

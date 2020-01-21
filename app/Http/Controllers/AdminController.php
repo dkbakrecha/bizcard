@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\User;
+use App\Card;
 use App\ShopOffer;
 use App\Service;
 use App\Area;
@@ -25,55 +26,21 @@ class AdminController extends Controller {
      */
     public function index() {
     
+        // Active User and pending
+        $userActive = User::where('status', '=', 1)->where('user_type', '=', 0)->count();
+        $userPending = User::where('status', '=', 3)->where('user_type', '=', 0)->count();
 
-        $customer = User::where('status', '!=', 2)->where('user_type', '=', 2)->count();
-        //return $customer;
-        $getUser24Hrs = User::where('status', '!=', 2)
-                        ->whereDate('created_at', '>=', date('Y-m-d H:i:s', strtotime('-1 days')))->count();
-
-        $getUserLast10Days = User::where('status', '!=', 2)
-                        ->whereDate('created_at', '>=', date('Y-m-d H:i:s', strtotime('-10 days')))->count();
-
-        $getUserPrev10Days = User::where('status', '!=', 2)
-                ->whereDate('created_at', '>=', date('Y-m-d H:i:s', strtotime('-20 days')))
-                ->whereDate('created_at', '<=', date('Y-m-d H:i:s', strtotime('-10 days')))
-                ->count();
-
-        $getUserPrev10Days = ($getUserPrev10Days === 0) ? 1 : $getUserPrev10Days;
-
-        $user_percentage = number_format((float) (($getUserLast10Days - $getUserPrev10Days) / $getUserPrev10Days) * 100, 1, '.', '');
-
-        /* Last 10 days statistics */
-        // Build an array of the dates we want to show, oldest first
-        $dates = collect();
-        foreach (range(-10, 0) AS $i) {
-            $date = Carbon::now()->addDays($i)->format('Y-m-d');
-            $dates->put($date, 0);
-        }
-
-// Get the post counts
-        $users = User::where('created_at', '>=', $dates->keys()->first())
-                ->groupBy('date')
-                ->orderBy('date')
-                ->get([
-                    DB::raw('DATE( created_at ) as date'),
-                    DB::raw('COUNT( * ) as "count"')
-                ])
-                ->pluck('count', 'date');
-
-// Merge the two collections; any results in `$posts` will overwrite the zero-value in `$dates`
-        $dates = $dates->merge($users);
-
-        $comma_separated = implode(",", $dates->toArray());
-
+        $cardActive = Card::where('status', '=', 1)->count();
+        $cardPending = Card::where('status', '=', 3)->count();
+        
+        
 
         //return $getUser24Hrs;
-        return view('admin.dashboard', ['user24hrs' => $getUser24Hrs,
-            'customer' => $customer,
-            'getUserLast10Days' => $getUserLast10Days,
-            'getUserPrev10Days' => $getUserPrev10Days,
-            'user_percentage' => $user_percentage,
-            'dates' => $comma_separated,
+        return view('admin.dashboard', [
+            'user_active' => $userActive,
+            'user_pending' => $userPending,
+            'card_active' => $cardActive,
+            'card_pending' => $cardPending,
         ]);
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\User;
+use App\Card;
 use App\Service;
 use App\ShopService;
 use App\ShopImage;
@@ -21,7 +22,16 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:web')->except(['appAboutus', 'appCalcellation', 'appTerms', 'appTermsAr', 'siteTerms']);
+        $this->middleware('auth:web')->except(['appAboutus', 'appCalcellation', 'appTerms', 'appTermsAr', 'siteTerms', 'front', 'search']);
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function front() {
+        return view('front');
     }
 
     /**
@@ -33,6 +43,11 @@ class HomeController extends Controller {
         
         /** Bookings and Walk-ins current month graph END HERE */
         return view('home');
+    }
+
+    public function aboutus() {
+        
+        return view('site/aboutus');
     }
 
     /** Setting Page for service provider */
@@ -253,36 +268,18 @@ class HomeController extends Controller {
     public function search(Request $request) {
         $_searchTerm = $request->q;
 
-        $userData = array();
-        $bookingData = array();
-        if (!empty($request->q)) {
-            $userData = User::Where(function ($query) use ($request) {
-                                $query->where('name', 'like', "%" . $request->q . "%")
-                                ->orWhere('unique_id', 'like', "%" . $request->q . "%")
-                                ->orWhere('phone', 'like', "%" . $request->q . "%");
+        $cardData = array();
+        //if (!empty($request->q)) {
+            $cardData = Card::Where(function ($query) use ($request) {
+                                $query->where('business_name', 'like', "%" . $request->q . "%")
+                                ->orWhere('keywords', 'like', "%" . $request->q . "%");
                             })
-                            ->where('shop_id', '=', $this->_shop_id())
                             ->get()->toArray();
-
-            $bookingData = Booking::With(['customer'])
-                            ->where(function ($query) use ($request) {
-                                if (!empty($request->q)) {
-                                    $query->where('unique_id', 'like', "%" . $request->q . "%")
-                                    ->orWhereHas('customer', function($query) use ($request) {
-                                        $query->where('name', 'like', "%" . $request->q . "%")
-                                        ->orWhere('unique_id', 'like', "%" . $request->q . "%")
-                                        ->orWhere('phone', 'like', "%" . $request->q . "%");
-                                    });
-                                }
-                            })
-                            ->where('shop_id', '=', $this->_shop_id())
-                            ->get()->toArray();
-        }
-//prd($bookingData);
+        //}
+       // prd($cardData);
         return view('search', [
             'searchTerm' => $_searchTerm,
-            'userData' => $userData,
-            'bookingData' => $bookingData
+            'cardData' => $cardData,
         ]);
     }
 

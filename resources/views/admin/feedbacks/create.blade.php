@@ -26,17 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">{{ __('messages.select_area') }}</label>
-                <div class="col-sm-9 col-md-7 col-lg-7">
-                    <select name="area_id" id="area_id" class="form-control">
-                        <option value="" selected>{{ __('messages.select_area') }}</option>
-                        @foreach($areaList as $key => $area)
-                        <option value="{{ $key }}">{{ $area }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <label class="col-sm-3 control-label">{{ __('messages.select_users') }}</label>
                 <div class="col-sm-9 col-md-7 col-lg-7">

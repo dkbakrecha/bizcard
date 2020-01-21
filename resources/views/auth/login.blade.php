@@ -1,5 +1,5 @@
 <!-- Service Provider and Supervisor Login Form -->
-@extends('layouts.login')
+@extends('layouts.site.app')
 
 @section('content')
 @section('sectionTitle', __('Login'))
@@ -7,21 +7,19 @@
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
     <button class="close" data-dismiss="alert">&times;</button>
-
     <p>{{ $message }}</p>
 </div>
 @endif
 
-<div class="login-box-body shop-login">
-    <div class="login-logo">
-        <a href="{{ route("login") }}">
-            <img src="{{ url('images') }}/logo.png" width="50px">
-        </a>
-    </div>
-    <p class="login-box-msg">Welcome back! Please login to your account.</p>
+<div class="container">
+    <div class="row">
 
-    <form method="POST" action="{{ route('login') }}">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h2 class="formHeading-2">Sign in to {{ config('app.name') }}</h2>
+
+            <form method="POST" action="{{ route('login') }}" class="biz-form">
         @csrf
+
 
         <div class="form-group  has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
             <input id="email" type="email" placeholder="E-Mail Address" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
@@ -41,47 +39,37 @@
             @endif
         </div>
 
-       
-
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="checkbox icheck">
-                    <label>
-                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember me') }}
-                    </label>
-                </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-xs-6 verify">
-                <a class="btn btn-link" href="{{ route('password.request') }}">
-                    {{ __('Forgot Password') }}
-                </a>
-            </div>
-            <!-- /.col -->
-        </div>
 
         <div class="row">
             <div class="col-xs-12">
-                <button type="submit" class="btn btn-primary btn-block btn-flat">
-                    {{ __('Login') }}
+                <button type="submit" class="btn btn-block">
+                    {{ __('Log In') }}
                 </button>
+            
             </div>
         </div>
 
         <div class="row">
-            <div class="col-xs-12">
-                <a class="btn btn-primary btn-block btn-flat" href="{{ route('register') }}">
-                    {{ __('Register New Profile Here') }}
+            <div class="col-xs-12 verify center">
+                <a class="btn btn-link" href="{{ route('password.request') }}">
+                    {{ __('Forgot Password ?') }}
                 </a>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-12 reset-width" style="margin-top: 25px;">
-                <a href="{{ route("siteterms") }}">Terms of Use</a>
+            <div class="col-xs-12 center">
+                <a class="btn btn-biz green" href="{{ route('register') }}">
+                    {{ __('Register New Profile') }}
+                </a>
             </div>
         </div>
-    </form>
+    </form>        
+        </div>
 
+    
+    
+    </div>
+    
 </div>
 @endsection

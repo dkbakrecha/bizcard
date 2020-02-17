@@ -50,19 +50,8 @@
                 <div class="panel-body">
                     <form method="post" action="{{ route('card.store') }}">
                         @csrf
-                        <div>
-                          <!-- Nav tabs -->
-                          <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">General Information</a></li>
-                            <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a></li>
-                            <li role="presentation"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-                            <li role="presentation"><a href="#social" aria-controls="social" role="tab" data-toggle="tab">Social</a></li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="basic">
-                                <label for="business_person">Business Category :</label>
+                       
+                          <label for="business_person">Business Category :</label>
                                 <div class="form-group middle">
 
                                     <select name="business_category" id="business_category" class="form-control">
@@ -86,8 +75,7 @@
                                     <label for="business_person">Business Person :</label>
                                     <input type="text" class="form-control" name="business_person" value="{{ (!empty($cardData->business_person))?$cardData->business_person:"" }}"/>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="contact">
+
                                 <div class="form-group">
                                   <label for="address">Address :</label>
                                   <input type="text" class="form-control" name="address" value="{{ (!empty($cardData->address))?$cardData->address:"" }}"/>
@@ -104,9 +92,8 @@
                                   <label for="contact_secondary">Contact Secondary :</label>
                                   <input type="text" class="form-control" name="contact_secondary" value="{{ (!empty($cardData->contact_secondary))?$cardData->contact_secondary:"" }}"/>
                               </div>      
-                          </div>
-                          <div role="tabpanel" class="tab-pane" id="description">
-                            <div class="form-group">
+
+<div class="form-group">
                               <label for="description">Description :</label>
                               <input type="text" class="form-control" name="description" value="{{ (!empty($cardData->description))?$cardData->description:"" }}"/>
                           </div>
@@ -114,26 +101,35 @@
                               <label for="keywords">Keywords :</label>
                               <input type="text" class="form-control" name="keywords" value="{{ (!empty($cardData->keywords))?$cardData->keywords:"" }}"/>
                           </div>
-                      </div>
-                      <div role="tabpanel" class="tab-pane" id="social">
-                          <div class="form-group">
+<div class="row">
+                    <div class="col-lg-6">
+<div class="form-group">
                               <label for="facebook">Facebook :</label>
                               <input type="text" class="form-control" name="facebook" value="{{ (!empty($cardData->facebook))?$cardData->facebook:"" }}"/>
                           </div>
-                          <div class="form-group">
+                    </div>
+                    <div class="col-lg-6">
+<div class="form-group">
                               <label for="instagram">Instagram :</label>
                               <input type="text" class="form-control" name="instagram" value="{{ (!empty($cardData->instagram))?$cardData->instagram:"" }}"/>
                           </div>
-                          <div class="form-group">
+                    </div>
+                  </div>
+                        
+                        <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
                               <label for="linkedin">Linked In :</label>
                               <input type="text" class="form-control" name="linkedin" value="{{ (!empty($cardData->linkedin))?$cardData->linkedin:"" }}"/>
                           </div>
-                          <div class="form-group">
+                    </div>
+                    <div class="col-lg-6">
+                                                <div class="form-group">
                               <label for="twitter">Twitter :</label>
                               <input type="text" class="form-control" name="twitter" value="{{ (!empty($cardData->twitter))?$cardData->twitter:"" }}"/>
                           </div>
-                      </div>
-                  </div>
+                    </div>
+                    </div>  
               </div>
               
               @if(!empty($cardData))

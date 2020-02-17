@@ -12,6 +12,10 @@
 
 
 @media (max-width: 500px) {
+    #changethewords {
+      margin-top: 0px;  
+    }
+
     section {
         padding: 15px 0px;
     }

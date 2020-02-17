@@ -39,8 +39,9 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="{{  $mnuDashboard }}"><a href="{{ url('/admin') }}"><img src="{{ url('images') }}/dashboard.png" alt="Dashboard"> &nbsp; <span>{{ __('messages.dashboard') }}</span></a></li>
-            <li class=""><a href="{{ route('admin.cards') }}"><img src="{{ url('images') }}/schedule-booking.png" alt="Cards"> &nbsp;  <span>Cards</span></a></li>
+            <li class=""><a href="{{ route('admin.cards.index') }}"><img src="{{ url('images') }}/schedule-booking.png" alt="Cards"> &nbsp;  <span>Cards</span></a></li>
             <li class="{{  $mnuUser }}"><a href="{{ route('users.index') }}"><img src="{{ url('images') }}/user-reservation.png" alt="User Management"> &nbsp; <span>{{ __('messages.user_management') }}</span></a></li>
+            <li class=""><a href="{{ route('admin.items.index') }}"><i class="fa fa-binoculars"></i> <span>{{ __('Marketplace Items') }}</span></a></li>
             <li class="{{  $mnuCategory }}"><a href="{{ route('categories.index') }}"><i class="fa fa-star"></i> <span>{{ __('Category') }}</span></a></li>
             <?php /*
 <li class="{{  $mnuFinancial }}"><a href="{{ route('admin.financial') }}"><img src="{{ url('images') }}/staff-financial.png" alt="Financial"> &nbsp; <span>{{ __('messages.financials') }}</span></a></li>

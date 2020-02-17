@@ -4,6 +4,9 @@
 @section('content')
 @include('admin.elements.general_top')
 @include('admin.elements.messages')
+<div class="">
+    <a class="btn btn-success" href="{{ route('admin.cards.create') }}"> Create New Card</a>
+</div>
 
 <table class="table table-bordered flair-datatable">
     <thead>
@@ -33,18 +36,29 @@
                 <span class="label label-primary booking-status-cancelled">{{ __('messages.cancelled') }}</span>
                 @elseif($booking->status == 5)
                 <span class="label label-primary booking-status-rejected">{{ __('messages.rejected') }}</span>
+                @elseif($booking->status == 0)
+                <span class="label label-primary booking-status-idle">{{ __('Idle') }}</span>
                 @endif
             </td>
-            <td align="center">
-                <a class="btn btn-action" href="{{ url('cards/create/' . $booking->id) }}">
-                    <i class="fa fa-pencil" title="{{ __('Edit') }}"></i>
-                </a>
+            <td align="right">
+                <form action="{{ route('admin.cards.destroy',$booking->id) }}" method="POST">
+                    @if(!empty($booking->slug))
+                        <a href="{{ url('card/' . $booking->slug) }}" class="btn btn-info btn-sm" title="View Card" target="_BLANK"><i class="fa fa-eye"></i>
+                        </a>
+                    @endif
 
-                @if(!empty($booking->slug))
-                        <a href="{{ url('card/' . $booking->slug) }}" target="_BLANK">View Card</a>
-                @endif
-            </td>
-            
+                    <a class="btn btn-primary btn-sm" href="{{ route('admin.cards.edit',$booking->id) }}"><i class="fa fa-pencil" title="{{ __('Edit') }}"></i></a>
+
+                    <!-- SUPPORT ABOVE VERSION 5.5 -->
+                    {{-- @csrf
+                    @method('DELETE') --}} 
+                    
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                
+                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-times"></i></button>
+                </form>
+            </td>            
         </tr>
         @endforeach
     </tbody>

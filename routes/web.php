@@ -19,7 +19,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about-us', 'HomeController@aboutus')->name('about-us');
 Route::get('/card/{cardslug}', 'CardsController@view')->where('cardslug', '[a-z-]+');
 Route::get('/search', 'HomeController@search')->name('search');
-Route::get('/list', 'HomeController@search')->name('search');
+Route::get('/list', 'HomeController@search')->name('list');
+Route::get('/marketplace', 'HomeController@marketplace')->name('marketplace');
+Route::get('/product/{product}', 'HomeController@productshow')->name('product.show');
 
 Auth::routes();
 
@@ -126,6 +128,10 @@ Route::get('getTopServices', 'HomeController@getTopServices')->name('getTopServi
 Route::post('getTopServices', 'HomeController@getTopServices')->name('getTopServices');
 Route::post('get_quick_details', 'HomeController@getQuickDetails')->name('get_quick_details');
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('/cards','Admin\CardsController');
+    Route::resource('/items','Admin\ItemsController');
+});
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
@@ -136,14 +142,10 @@ Route::prefix('admin')->group(function () {
     Route::post('login', 'Auth\Admin\LoginController@loginAdmin')->name('admin.auth.loginAdmin');
     Route::post('logout', 'Auth\Admin\LoginController@logout')->name('admin.auth.logout');
 
-
-
-    Route::get('cards', 'Admin\CardsController@index')->name('admin.cards');
-    Route::get('cards/create/{id?}', 'Admin\CardsController@create')->name('card.add');
+    //Route::get('cards', 'Admin\CardsController@index')->name('admin.cards');
+    //Route::get('cards/create/{id?}', 'Admin\CardsController@create')->name('card.add');
     //Route::post('cards/create', 'Admin\CardsController@create')->name();
-    Route::match(['put', 'patch', 'post'], 'cards/create/{id?}','Admin\CardsController@create')->name('card.store');
-
-    
+    //Route::match(['put', 'patch', 'post'], 'cards/create/{id?}','Admin\CardsController@create')->name('card.store');
 
     //Search
     Route::get('search', 'AdminController@search')->name('admin.search');

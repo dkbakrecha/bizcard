@@ -14,50 +14,99 @@ class CardsController extends Controller {
     }
 
     public function index() {
-        $cards = Card::latest('created_at')
-                ->get();
+        $cards = Card::latest('created_at')->get();
 
-        return view('admin.cards.index', compact('cards'));
+        return view('admin/cards/index', compact('cards'));
     }
 
-    public function create($id = '', Request $request) {
+    public function create(Request $request) {
         $categoryList = $this->getCategoryList();
+        return view('admin/cards/create', compact('categoryList'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'business_category' => 'required',
+            'business_name' => 'required|max:50',
+            'business_person' => 'required|max:50',
+        ]);
+
+        $cardData = new Card();
+        $cardData->status = 0; // Idle
         
-        $cardData = array();
-        if(!empty($id)){
-            $cardData = Card::where('id', $id)->first();    
-        }
+        $cardData->business_category = $request->get('business_category');
+        $cardData->business_name = $request->get('business_name');
+        $cardData->business_person = $request->get('business_person');
+        $cardData->slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($request->get('business_name'))));
+
+        $cardData->address = $request->get('address');
+        $cardData->email_address = $request->get('email_address');
+        $cardData->contact_primary = $request->get('contact_primary');
+        $cardData->contact_secondary = $request->get('contact_secondary');
+
+        $cardData->description = $request->get('description');
+        $cardData->keywords = $request->get('keywords');
+
+        $cardData->facebook = $request->get('facebook');
+        $cardData->instagram = $request->get('instagram');
+        $cardData->linkedin = $request->get('linkedin');
+        $cardData->twitter = $request->get('twitter');
+
+        $cardData->user_id = 1; //Created by Admin
+        $cardData->save();
+
+        return redirect()->route('admin.cards.index')->with('success','User created successfully.');
+    }
+
+
+    public function edit($id)
+    {
+        $cardData = Card::find($id);
+        $categoryList = $this->getCategoryList();
+        return view('admin/cards/edit', compact('cardData', 'id', 'categoryList'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $cardData = Card::find($id);
         
-        //echo $id; exit;
-        if ($request->isMethod('post')) {
-            $cardData = new Card();
-            $cardData->status = 0; // Idle
-            
-            $cardData->business_category = $request->get('business_category');
-            $cardData->business_name = $request->get('business_name');
-            $cardData->business_person = $request->get('business_person');
-            $cardData->slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($request->get('business_name'))));
+        $cardData->business_category = $request->get('business_category');
+        $cardData->business_name = $request->get('business_name');
+        $cardData->business_person = $request->get('business_person');
+        $cardData->slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($request->get('business_name'))));
 
-            $cardData->address = $request->get('address');
-            $cardData->email_address = $request->get('email_address');
-            $cardData->contact_primary = $request->get('contact_primary');
-            $cardData->contact_secondary = $request->get('contact_secondary');
+        $cardData->address = $request->get('address');
+        $cardData->email_address = $request->get('email_address');
+        $cardData->contact_primary = $request->get('contact_primary');
+        $cardData->contact_secondary = $request->get('contact_secondary');
 
-            $cardData->description = $request->get('description');
-            $cardData->keywords = $request->get('keywords');
+        $cardData->description = $request->get('description');
+        $cardData->keywords = $request->get('keywords');
 
-            $cardData->facebook = $request->get('facebook');
-            $cardData->instagram = $request->get('instagram');
-            $cardData->linkedin = $request->get('linkedin');
-            $cardData->twitter = $request->get('twitter');
+        $cardData->facebook = $request->get('facebook');
+        $cardData->instagram = $request->get('instagram');
+        $cardData->linkedin = $request->get('linkedin');
+        $cardData->twitter = $request->get('twitter');
 
-            $cardData->user_id = 1; //Created by Admin
-            $cardData->save();
+        $cardData->user_id = $request->get('user_id');  
+        $cardData->status = $request->get('status');
+        $cardData->save();
 
-            //
-            return redirect('/admin/cards/create')->with('success', 'Card information update successfully!');
-        }
-        //echo "Asd"; exit;
-        return view('admin/cards/create', compact('categoryList', 'cardData'));
+        /*$userData->save();
+                $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+         ]);*/
+        //$userData->update($request->all());
+  
+        return redirect()->route('admin.cards.index')->with('success','Card update successfully.');
+    }
+
+    public function destroy($id)
+    {
+        Card::find($id)->delete();
+  
+        return redirect()->route('admin.cards.index')->with('success','Card delete successfully');
     }
 }

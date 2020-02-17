@@ -109,7 +109,7 @@ class CardsController extends Controller {
 
     public function view($cardslug)
     {
-        $card = Card::where('slug', $cardslug)->first();
+        $card = Card::where('slug', $cardslug)->with(['category'])->first();
         if(empty($card)){
             return redirect()->action('HomeController@index');
         }else{

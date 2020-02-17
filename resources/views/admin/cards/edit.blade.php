@@ -14,8 +14,10 @@
           <a href="{{ url('card/' . $cardData->slug) }}" class="pull-right" target="_BLANK">View Card</a>
           @endif
         </div>
-        <form method="post" action="{{ route('admin.cards.store') }}">
+        <form method="post" action="{{ route('admin.cards.update',$cardData->id) }}">
           {{ csrf_field() }}
+          {{ method_field('PATCH') }}
+
           <div class="panel-body">
 
             @csrf
@@ -52,6 +54,11 @@
             <div class="form-group">
               <label for="business_person">Business Person :</label>
               <input type="text" class="form-control" name="business_person" value="{{ (!empty($cardData->business_person))?$cardData->business_person:"" }}"/>
+            </div>
+
+            <div class="form-group">
+              <label for="user_id">User ID :</label>
+              <input type="text" class="form-control" name="user_id" value="{{ (!empty($cardData->user_id))?$cardData->user_id:"" }}"/>
             </div>
 
             <div>

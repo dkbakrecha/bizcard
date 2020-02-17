@@ -5,7 +5,7 @@
                 <div class="col-lg-8">
 
                     <div class="links">
-                        <a href="" class="link">About</a>
+                        <a href="{{ route('about-us') }}" class="link">About</a>
                         <a href="" class="link">FAQ'S</a>
                         <a href="" class="link">Contact Us</a>
                         <a href="" class="link">Privacy &amp; Terms</a>

@@ -6,10 +6,7 @@ use DB;
 use Auth;
 use App\User;
 use App\Card;
-use App\Service;
-use App\ShopService;
-use App\ShopImage;
-use App\Booking;
+use App\Item;
 use App\Http\Controllers\Admin\ProviderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -22,7 +19,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:web')->except(['appAboutus', 'appCalcellation', 'appTerms', 'appTermsAr', 'siteTerms', 'front', 'search']);
+        $this->middleware('auth:web')->except(['appAboutus', 'appCalcellation', 'appTerms', 'appTermsAr', 'siteTerms', 'front', 'search' , 'marketplace', 'productshow','aboutus']);
     }
 
     /**
@@ -31,7 +28,12 @@ class HomeController extends Controller {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function front() {
-        return view('front');
+        $resentCards = Card::latest('created_at')->with(['category'])->where('status', 1)->take(3)->get()->toArray();
+        $resentItems = Item::latest('created_at')->where('status', 1)->take(4)->get();
+        //echo "<pre>";
+        //print_r($resentCards);
+        //exit;
+        return view('front', compact('resentCards', 'resentItems'));
     }
 
     /**
@@ -41,7 +43,6 @@ class HomeController extends Controller {
      */
     public function index() {
         
-        /** Bookings and Walk-ins current month graph END HERE */
         return view('home');
     }
 
@@ -270,17 +271,37 @@ class HomeController extends Controller {
 
         $cardData = array();
         //if (!empty($request->q)) {
-            $cardData = Card::Where(function ($query) use ($request) {
-                                $query->where('business_name', 'like', "%" . $request->q . "%")
-                                ->orWhere('keywords', 'like', "%" . $request->q . "%");
-                            })
-                            ->get()->toArray();
+        $cardData = Card::Where(function ($query) use ($request) {
+                            $query->where('business_name', 'like', "%" . $request->q . "%")
+                            ->orWhere('keywords', 'like', "%" . $request->q . "%");
+                        })->latest('created_at')->with(['category'])
+                        ->get()->toArray();
         //}
        // prd($cardData);
         return view('search', [
             'searchTerm' => $_searchTerm,
             'cardData' => $cardData,
         ]);
+    }
+
+    public function marketplace(Request $request){
+        $itemData = Item::latest('created_at')->where('status', 1)->get();
+
+
+
+        return view('marketplace', [
+            'itemData' => $itemData,
+        ]);
+    }
+
+    public function productshow($slug)
+    {
+        //$item = Item::findById($slug);
+        $item = Item::whereId($slug)->first();
+        //$reviews = $this->productReviewRepository->getAllReviewsByProductId($product->id);
+        
+        return view('product')
+            ->with(compact('item'));
     }
 
     public function viewStatistics(Request $request) {

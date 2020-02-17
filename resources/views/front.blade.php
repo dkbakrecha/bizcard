@@ -4,12 +4,19 @@
 @include('elements.messages')
 
 <style>
-    .section-resent-rooms, .biz-search, .biz-home-add-listing{
+    .biz-search{
+        background: linear-gradient(86deg, rgba(0, 0, 0, 0.5) 0%, rgba(28, 70, 197, .9) 100%), url('{{ asset('images/banner.jpg') }}');
+        background-size: cover;
+        color: #fff;
+        padding: 100px 0;
+    }
+    .section-resent-rooms, .biz-home-add-listing{
         background: url('{{ asset('images/bg-jodhpur.jpg') }}');
+        padding: 20px 0;
     }
 </style>
 
-<section class="biz-search">
+<section class="section-front biz-search">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -33,13 +40,189 @@
               </form>
             </div>
             <div class="col-lg-6 no-mobile">
-                <img src="">
+                <div class="category-bx">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-cogs"></i>
+                                <p>Automotive</p>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-camera"></i>
+                                <p>BUSINESS SERVICES</p>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-book"></i>
+                                <p>EDUCATION</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                        <a href="{{ route('list') }}" class="category">
+                            <i class="fa fa-cutlery"></i>
+                            <p>Food</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ route('list') }}" class="category">
+                            <i class="fa fa-heartbeat"></i>
+                            <p>HEALTH</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ route('list') }}" class="category">
+                            <i class="fa fa-laptop"></i>
+                            <p>IT SERVICES</p>
+                        </a>
+                    </div>
+                    </div>    
+                    <div class="row">
+                        <div class="col-md-4">
+                        <a href="{{ route('list') }}" class="category">
+                            <i class="fa fa-shopping-bag"></i>
+                            <p>RETAIL SHOPPING</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ route('list') }}" class="category">
+                            <i class="fa fa-futbol-o"></i>
+                            <p>SPORTS & RECREATION</p>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{{ route('list') }}" class="category">
+                            <i class="fa fa-bus"></i>
+                            <p>TRAVEL & TRANSPORT</p>
+                        </a>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>    
     </div>
 </section>
 
-<section class="biz-home-add-listing">
+<section class="section-front biz-resentbiz">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-8">
+                <h2 class="section-heading">{{ __('Resent added business') }}</h2>
+            </div>
+            <div class="col-lg-6 col-md-4">
+                <a href="{{ route('list') }}" class="btn btn-biz pull-right">View All</a>
+            </div>
+        </div>
+        
+        
+        
+        <div class="row search-row">
+            
+               @if(!empty($resentCards))
+
+               @foreach ($resentCards as $card)
+
+                <div class="col-md-4">
+                    <div class="panel panel-default card">
+                        <div class="panel-body flow">
+                                    <div class="search-info">
+                                        <span class="label label-primary">{{ $card['category']['name'] }}</span>
+                                        <!--TO DO if Business Contact number is verified -->                            
+                                        <span class="label label-success"><i class="fa fa-check"></i> Verified</span>
+
+                                        <!--TO DO Mark as feverate -->
+                                        <a href="#" class="btn btn-primary pull-right">
+                                            <i class="fa fa-heart-o"></i>
+                                        </a>
+
+                                        <h2 class="business-name">
+                                            <a href="{{ url('card/' . $card['slug']) }}" title="{{ $card['business_name'] }}" rel="bookmark">
+                                                {{ $card['business_name'] }}
+                                            </a>
+                                        </h2>
+
+                                        <div>
+                                            {{ $card['address'] }}
+                                            {{ $card['contact_primary'] }}
+                                        </div>
+                                    </div>
+                                
+                        </div>
+                        <div class="panel-footer">
+                            <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-primary">
+                                <i class="fa fa-phone"></i>
+                            </a>
+
+                            <!--TO DO if permission to whatapp message -->
+                            <a href="https://wa.me/91{{ $card['contact_primary'] }}" class="btn btn-primary">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+
+                            <!--TO DO if Proper lat lang is available -->
+                            <a href="#" class="btn btn-primary">
+                                <i class="fa fa-map-o"></i>
+                            </a>                
+
+                            <!--TO DO Enquery(LEAD) FORM -->
+                            <a href="#" class="btn btn-primary pull-right">
+                                <i class="fa fa-envelope-o"></i> Get Best Deal
+                            </a>
+
+                            <!-- Share contact open -->
+                        </div>
+                    </div>
+                </div>
+            @endforeach 
+            <div class="col-lg-6 col-lg-offset-3 col-xs-12">
+                
+            </div>
+            @endif 
+        </div>    
+    </div>
+</section>
+
+<section class="section-front biz-resentitem">
+    <div class="container">
+        <h2 class="section-heading">{{ __('Resent added items') }}</h2>
+
+        <div class="row search-row">
+            
+               @if(!empty($resentItems))
+
+               @foreach ($resentItems as $item)
+
+                <div class="col-md-3 col-xs-6">
+                    <div class="panel panel-success card">
+                        <div class="panel-body flow">
+                            <a href="{{ route('product.show', $item->id) }}" title="{{ $item['item_name'] }}" rel="bookmark">
+                                <img id="blah" src="{{URL::to('/')}}/images/items/{{$item->image}}" alt="your image" class="img-responsive" />
+                            </a>
+                            <h2 class="business-name">
+                                {{ $item['item_name'] }}
+                            </h2>
+
+                            <div>
+                                {{ $item->price }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach 
+
+            <div class="col-lg-6 col-lg-offset-3 col-xs-12">
+                <a href="{{ route('marketplace') }}" class="btn btn-biz btn-block">Explorer Marketplace</a>
+            </div>
+            @endif 
+        </div>    
+    </div>
+</section>
+
+<?php /* 
+<section class="section-front biz-home-add-listing">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 no-mobile">
@@ -53,6 +236,8 @@
         </div>    
     </div>
 </section>
+*/?>
+
 
 
 
@@ -230,104 +415,4 @@
 </script>
 
 */ ?>  
-@endsection
-
-@section('page-js-script')
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-        
-
-
-        $('.servicebox_tik').on('ifChanged', function (event) {
-            var totalPrice = 0;
-
-            $('input[name="services[]"]:checked').each(function () {
-                var _sprice = $(this).data('price');
-                totalPrice = totalPrice + _sprice;
-            });
-            $("#price").val(totalPrice);
-        });
-
-        $('#viewCustomerModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var _id = button.data('id');
-
-            var modal = $(this)
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            jQuery.ajax({
-                url: "{{ url('/viewCustomer') }}",
-                method: 'POST',
-                data: {id: _id},
-                success: function (result) {
-                    modal.find('.modal-body #id').val(result.data.id);
-                    modal.find('.modal-body #unique_id').val(result.data.unique_id);
-                    modal.find('.modal-body #name').val(result.data.name);
-                    modal.find('.modal-body #email').val(result.data.email);
-                    modal.find('.modal-body #phone').val(result.data.phone);
-
-                    modal.find('.modal-body #address').val(result.data.address);
-
-                    modal.find('.modal-body input:radio[name=gender]').filter('[value="' + result.data.gender + '"]').iCheck('check');
-
-                    modal.find('.modal-footer .block_customer').attr('data-id', result.data.id);
-                    if (result.data.area != null) {
-                        modal.find('.modal-body #area').val(result.data.area.name);
-                    }
-
-
-
-                }
-            });
-        });
-
-        $('#viewBookingModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget);
-            var _id = button.data('id');
-
-            var modal = $(this);
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            jQuery.ajax({
-                url: "{{ route('getBooking') }}",
-                method: 'post',
-                data: {id: _id},
-                success: function (result) {
-                    //console.log(result.data);
-                    modal.find('.modal-body #id').val(result.data.id);
-                    modal.find('.modal-body #unique_id').val(result.data.unique_id);
-                    modal.find('.modal-body #username').val(result.data.customer.name);
-                    modal.find('.modal-body #booking_date').val(result.data.booking_date);
-                    modal.find('.modal-body #booking_time').val(result.data.booking_starttime);
-                    modal.find('.modal-body #service_provider').val(result.data.shop.name);
-                    modal.find('.modal-body #payment').val(result.data.final_amount);
-                    modal.find('.modal-body #services').val(result.services);
-                    modal.find('.modal-body #staff').val(result.barber);
-
-                    modal.find('.modal-body #payment_method').val(result.data.payment_method);
-                    modal.find('.modal-body .label-primary').removeClass().addClass("label label-primary " + result.data.booking_class);
-                    modal.find('.modal-body .label-primary').html(result.data.booking_status);
-
-
-                }
-            });
-        });
-    });
-</script>
 @endsection

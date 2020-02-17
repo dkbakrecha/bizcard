@@ -913,11 +913,22 @@ section.ca_newsletter {
 }
 
 
+.section-heading {
+    font-size: 36px;
+    color: #3a3a3a;
+    text-transform: capitalize;
+    margin-top: 0;
+    margin-bottom: 25px;
+    line-height: 46px;
+    font-weight: 700;
+}
+
+
 
 /* ================  Footer ================= */
 #footer-bottom {
     border-top: 1px solid #dddddd;
-    background: #37353d;
+    background: url('../images/city.png') center bottom repeat-x #EDEDED;
     clear: both;
     color: #444;
     font-size: 13px;
@@ -1551,11 +1562,6 @@ ul.dropdown-menu {
     }
 }
 
-
-section {
-    padding: 80px 0px;
-}
-
 a.navbar-brand.text {
     font-size: 24px;
     line-height: 24px;
@@ -1650,7 +1656,6 @@ a.navbar-brand.text span {
     border-radius: 5px;
     margin-right: 15px;
     background-color: #EEE;
-    display: none;
 }
 
 .card-top h2 {
@@ -1742,8 +1747,8 @@ img.logoicon {
   color: white;
 }
 .panel-default.card {
-    background: #feffed;
-    border: 1px solid #ffc108;
+    background: #FFF;
+    border: 1px solid #f1f2f7;
 }
 .card .panel-body {
     padding: 20px 25px 15px 25px;
@@ -1774,4 +1779,91 @@ ul.list-unstyled li .fa {
     line-height: 1.2;
     padding: 15px;
     border-bottom: 1px solid #EFEFEF;
+}
+
+.section-front{
+    padding: 80px 0;
+}
+
+/* Card page design */
+.card-default section.card-top {
+    background: #182B53;
+    color: #A8B8CE;
+}
+
+.card-default .card-top h2 {
+    color: #EFBA88;
+}
+
+.card-default section.card-menu {
+    background: #3998AC;
+}
+
+.card-default .card-menu a.nav-link {
+    color: #FFF;
+    padding: 12px 20px;
+}
+
+.card-default .card-menu a.nav-link.active,
+.card-default .card-menu a:hover {
+    color: #182B53;
+    font-weight: 600;
+    background: #F1B988;
+    border-radius: 0;
+}
+
+
+
+
+#changethewords {
+    margin-top: 80px;
+}
+
+.category-bx .category {
+    display: inline-block;
+    height: 100px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding-top: 15px;
+    transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -ms-transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 15px;
+}
+
+.category-bx .category i {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.category-bx .category p {
+    margin: 4px 0 0 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.category-bx .category:hover {
+    background: #fff;
+    color: #4611a7;
+    text-decoration: none;
+}
+
+h2.business-name {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+h2.business-name a {
+    color: #2a2c36;
+    text-decoration: none;
 }

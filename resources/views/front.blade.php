@@ -113,7 +113,7 @@
             <div class="col-lg-6 col-md-8">
                 <h2 class="section-heading">{{ __('Resent added business') }}</h2>
             </div>
-            <div class="col-lg-6 col-md-4">
+            <div class="col-lg-6 col-md-4 no-mobile">
                 <a href="{{ route('list') }}" class="btn btn-biz pull-right">View All</a>
             </div>
         </div>
@@ -138,7 +138,7 @@
     </div>
 </section>
 
-<section class="section-front biz-resentitem">
+<section class="section-front biz-resentitem" style="display: none;">
     <div class="container">
         <h2 class="section-heading">{{ __('Resent added items') }}</h2>
 

@@ -9,7 +9,7 @@
         @if(!empty($cardData))
 
             @foreach ($cardData as $card)
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-6">
                 @include('elements.cardbox')
             </div>
             @endforeach 

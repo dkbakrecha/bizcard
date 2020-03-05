@@ -1649,15 +1649,6 @@ a.navbar-brand.text span {
     padding: 2px 0;
 }
 
-.logo-card {
-    float: left;
-    padding: 5px;
-    /* border: 5px solid #FFF; */
-    border-radius: 5px;
-    margin-right: 15px;
-    background-color: #EEE;
-}
-
 .card-top h2 {
     font-weight: 600;
     font-size: 36px;
@@ -1688,8 +1679,24 @@ p.keywords {
     text-transform: uppercase;
 }
 
+#mapid { height: 180px; }
+
+.map-wrapper {
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    border-radius: 4px;
+    padding: 20px;
+    background: #FFF;
+    position: absolute;
+    /* width: 100%; */
+}
+
+.profile-header {
+    min-height: 200px;
+    padding: 30px 0;
+}
+
 section.card-top {
-    padding: 50px 0 30px;
+    padding: 30px 0 30px;
 }
 
 .card-social {
@@ -1754,8 +1761,12 @@ img.logoicon {
     padding: 20px 25px 15px 25px;
 }
 
+.card.business .panel-body {
+    padding: 10px 15px 15px 15px;
+}
+
 .card .panel-footer {
-        padding: 20px 15px 17px 20px;
+    padding:0;
     border-top: 1px solid #ededed;
     background-color: #fffad5;
 }
@@ -1782,17 +1793,17 @@ ul.list-unstyled li .fa {
 }
 
 .section-front{
-    padding: 80px 0;
+    padding: 40px 0;
 }
 
 /* Card page design */
 .card-default section.card-top {
-    background: #182B53;
+    background: #FDFDFD;
     color: #A8B8CE;
 }
 
 .card-default .card-top h2 {
-    color: #EFBA88;
+    color: rgb(255, 96, 66);
 }
 
 .card-default section.card-menu {
@@ -1810,6 +1821,17 @@ ul.list-unstyled li .fa {
     font-weight: 600;
     background: #F1B988;
     border-radius: 0;
+}
+
+.card-default .label-primary,
+.card.business .label-primary {
+    background: none;
+    color: #737373;
+    padding: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: normal;
 }
 
 
@@ -1856,14 +1878,30 @@ ul.list-unstyled li .fa {
     text-decoration: none;
 }
 
-h2.business-name {
+.card.business h2.business-name {
     font-size: 18px;
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 
-h2.business-name a {
+.card.business h2.business-name a {
     color: #2a2c36;
     text-decoration: none;
+}
+
+.card.business .address {
+    min-height: 45px;
+    overflow: hidden;
+}
+
+.card.business .panel-footer .btn-group {
+    width: 100%;
+}
+
+.card.business .panel-footer .btn-group .btn {
+    padding: 12px;
+    font-size: 16px;
+    width: 50%;
 }

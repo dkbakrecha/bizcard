@@ -274,7 +274,7 @@ class HomeController extends Controller {
         $cardData = Card::Where(function ($query) use ($request) {
                             $query->where('business_name', 'like', "%" . $request->q . "%")
                             ->orWhere('keywords', 'like', "%" . $request->q . "%");
-                        })->latest('created_at')->with(['category'])
+                        })->where('status', 1)->latest('created_at')->with(['category'])
                         ->get()->toArray();
         //}
        // prd($cardData);

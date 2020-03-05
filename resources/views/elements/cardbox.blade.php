@@ -1,46 +1,36 @@
-<div class="panel panel-default card">
+<div class="panel panel-default card business">
     <div class="panel-body flow">
-                <div class="search-info">
-                    <span class="label label-primary pull-rig">{{ $card['category']['name'] }}</span>
-                    
-
-                    <h2 class="business-name">
-                        <a href="{{ url('card/' . $card['slug']) }}" title="{{ $card['business_name'] }}" rel="bookmark">
-                            {{ $card['business_name'] }}
-                        </a>
-                    </h2>
-
-                    <div>
-                        {{ $card['address'] }}
-                        
-                    </div>
-                </div>
-            
+        <span class="label label-primary pull-rig">{{ $card['category']['name'] }}</span>
+        <h2 class="business-name">
+            <a href="{{ url('card/' . $card['slug']) }}" title="{{ $card['business_name'] }}" rel="bookmark">
+                {{ $card['business_name'] }}
+            </a>
+        </h2>
+        <div class="address">
+            {{ $card['address'] }}
+        </div>
     </div>
     <div class="panel-footer">
-        <div class="row">
-            <div class="col-md-6">
+            <div class="btn-group" role="group">
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-success btn-block">
+                    <a href="{{ route('login') }}" class="btn btn-success">
                 @else
-                    <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-primary btn-block">
+                    <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-primary">
                 @endguest
 
-                    <i class="fa fa-phone"></i> {{  str_repeat("*", strlen($card['contact_primary'])-4) . substr($card['contact_primary'], -4) }}
+                    <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
                 </a>        
-            </div>
-            <div class="col-md-6">
+
+
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-block">
+                    <a href="{{ route('login') }}" class="btn btn-primary">
                 @else
                     <a href="#" class="btn btn-primary btn-block">
                 @endguest
 
                     <i class="fa fa-heart-o"></i> Favorite
                 </a>
-                
             </div>
-        </div>
         
         <?php
         /*

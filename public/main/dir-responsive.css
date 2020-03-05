@@ -10,8 +10,22 @@
       }
 }
 
+@media (min-width: 768px) {
+  .card.business .address{
+    min-height: 66px;
+  }
+}
+
 
 @media (max-width: 500px) {
+  .biz-search{
+    padding: 50px 0 !important;
+  }
+
+  .section-front{
+    padding: 10px 0;
+  }
+
     #changethewords {
       margin-top: 0px;  
     }
@@ -44,6 +58,37 @@
     .no-mobile {
       display: none;
   }
+
+  .panel-default.card {
+    margin-bottom: 0;
+}
+
+  .section-heading {
+      font-size: 24px;
+      font-weight: unset;
+      color: #29a036;
+      text-align: center;
+      margin-bottom: 5px;
+  }
+
+  .search-row .col-md-4 {
+    padding: 0;
+}
+
+.card-default section.card-top {
+    padding-top: 10px;
+}
+
+.card-default .card-top h2 {
+    font-size: 22px;
+    text-align: center;
+}
+
+.map-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
+}
 
 }
 

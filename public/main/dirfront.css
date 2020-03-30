@@ -934,7 +934,7 @@ section.ca_newsletter {
     font-size: 13px;
     line-height: 10px;
     margin: 0;
-    padding: 50px 0;
+    padding: 30px 0 60px;
 }
 
 footer {
@@ -1481,10 +1481,8 @@ div.carousel .fill {
 }
 
 ul.dropdown-menu {
-    top: 65px;
     border-top: 0 !important;
     box-shadow: none;
-    width: 100%;
     border: 1px solid #DEDEDE;
 }
 
@@ -1657,6 +1655,7 @@ a.navbar-brand.text span {
 
 p.keywords {
     font-size: 20px;
+    min-height: 100px;
 }
 
 .noisy {
@@ -1686,17 +1685,15 @@ p.keywords {
     border-radius: 4px;
     padding: 20px;
     background: #FFF;
-    position: absolute;
-    /* width: 100%; */
 }
 
 .profile-header {
     min-height: 200px;
-    padding: 30px 0;
+    padding: 30px 0 0;
 }
 
 section.card-top {
-    padding: 30px 0 30px;
+    padding: 30px 0 90px;
 }
 
 .card-social {
@@ -1798,12 +1795,12 @@ ul.list-unstyled li .fa {
 
 /* Card page design */
 .card-default section.card-top {
-    background: #FDFDFD;
-    color: #A8B8CE;
+    color: #FFF;
+    background: url("../images/bg.png") 0 50% #0E406A;
 }
 
 .card-default .card-top h2 {
-    color: rgb(255, 96, 66);
+    color: #FFF;
 }
 
 .card-default section.card-menu {
@@ -1826,12 +1823,12 @@ ul.list-unstyled li .fa {
 .card-default .label-primary,
 .card.business .label-primary {
     background: none;
-    color: #737373;
+    color: #BDBDBD;
     padding: 0;
     font-size: 14px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: normal;
+    letter-spacing: 2px;
+    font-weight: 600;
 }
 
 
@@ -1878,6 +1875,60 @@ ul.list-unstyled li .fa {
     text-decoration: none;
 }
 
+.box-card-detail {
+    margin-top: -100px;
+    background: #FFF;
+    padding: 20px 20px 40px;
+    box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.16);
+    border: 1px solid #EBEBEB;
+    min-height: 250px;
+}
+
+.otherbusiness {
+    background: #EDEDED;
+    padding: 50px 0;
+    margin-top: 30px;
+}
+
+.otherbusiness h3 {
+    text-align: center;
+    margin: 0 0 30px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #5D5D5D;
+}
+
+.btn-detail{
+    padding: 10px 20px;
+    line-height: 1.4;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.contact-phone, .contact-email {
+    background: #18ab9b;
+    color: #FFF;
+}
+
+.contact-phone:hover, .contact-email:hover {
+    background: #159587;       
+    color: #FFF;
+}
+
+.favorite, .share {
+    background-color: #666666;
+    color: #fff;
+}
+
+.favorite:hover, .share:hover {
+    background-color: #555555;
+    color: #fff;
+}
+
+.dropdown.share-wrapper {
+    display: inline-block;
+}
+
 .card.business h2.business-name {
     font-size: 18px;
     font-weight: 700;
@@ -1904,4 +1955,187 @@ ul.list-unstyled li .fa {
     padding: 12px;
     font-size: 16px;
     width: 50%;
+}
+
+div#content .search-row{
+    min-height: 350px;
+}
+
+/* Style all font awesome icons */
+.social-icon .fa {
+    padding: 10px;
+    font-size: 16px;
+    line-height: 16px;
+    min-width: 40px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 4px 2px 8px -4px rgba(0,0,0,0.75);
+    border-radius: 5px;
+}
+
+/* Add a hover effect if you want */
+.social-icon .fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.social-icon .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+/* Twitter */
+.social-icon .fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.social-icon .fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.social-icon .fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.social-icon .fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.social-icon .fa-instagram {
+  background: #C13584;
+  color: white;
+}
+
+.social-icon .fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.social-icon .fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.social-icon .fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.social-icon .fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.social-icon .fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.social-icon .fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.social-icon .fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.social-icon .fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.social-icon .fa-foursquare {
+  background: #45bbff;
+  color: white;
+}
+
+.social-icon .fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.social-icon .fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.social-icon .fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.social-icon .fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.social-icon .fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.social-icon .fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+
+.pagination-wrapper {
+    text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination .active .page-link,
+.pagination .page-link {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.pagination .active .page-link{
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination .page-link:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.search-filter {
+    padding: 30px;
+    background: #F1F1F1;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 15px;
+}
+
+.search-filter .home-search input.search-text {
+    height: auto;
+    padding: 12px 15px;
+    min-width: 250px;
+    border-radius: 4px;
+}
+
+h1.results-header {
+    font-weight: 400;
+    font-size: 20px;
+    color: #29a036;
+    margin: 12px 0;
 }

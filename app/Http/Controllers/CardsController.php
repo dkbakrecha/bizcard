@@ -110,10 +110,13 @@ class CardsController extends Controller {
     public function view($cardslug)
     {
         $card = Card::where('slug', $cardslug)->with(['category'])->first();
+        $otherCards = Card::inRandomOrder()->with(['category'])
+            ->where('status', 1)->take(3)->get()->toArray();
+
         if(empty($card)){
             return redirect()->action('HomeController@index');
         }else{
-            return view('cards.view', compact('card'));
+            return view('cards.view', compact('card', 'otherCards'));
         }
     }
 

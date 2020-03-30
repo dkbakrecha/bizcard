@@ -23,7 +23,7 @@
 
 
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-primary">
+                    <a href="{{ route('login') }}" class="btn btn-default">
                 @else
                     <a href="#" class="btn btn-primary btn-block">
                 @endguest

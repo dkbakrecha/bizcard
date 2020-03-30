@@ -39,7 +39,6 @@
             @endif
         </div>
 
-
         <div class="row">
             <div class="col-xs-12">
                 <button type="submit" class="btn btn-block">
@@ -49,6 +48,13 @@
             </div>
         </div>
 
+        <?php /*
+        <div id="my-signin2" class="g-signin2"></div>
+
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+        */ ?>
+        
         <div class="row">
             <div class="col-xs-12 verify center">
                 <a class="btn btn-link" href="{{ route('password.request') }}">

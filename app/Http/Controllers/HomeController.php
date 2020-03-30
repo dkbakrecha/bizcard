@@ -19,7 +19,7 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:web')->except(['appAboutus', 'appCalcellation', 'appTerms', 'appTermsAr', 'siteTerms', 'front', 'search' , 'marketplace', 'productshow','aboutus']);
+        $this->middleware('auth:web')->except(['appCalcellation', 'terms', 'front', 'search' , 'marketplace', 'productshow','aboutus', 'features']);
     }
 
     /**
@@ -50,6 +50,20 @@ class HomeController extends Controller {
         
         return view('site/aboutus');
     }
+
+    public function terms() {
+        
+        return view('site/terms');
+    }
+
+    public function features() {
+        
+        return view('site/features');
+    }
+
+    
+
+    
 
     /** Setting Page for service provider */
     public function getSetting() {
@@ -228,34 +242,9 @@ class HomeController extends Controller {
         }
     }
 
-    public function appAboutus() {
-        return view('app/aboutus');
-    }
-    
-    public function appTerms() {
-        return view('app/terms');
-    }
 
-    public function appTermsAr() {
-        return view('app/terms_ar');
-    }
     
-    public function siteTerms() {
-        $currentUserID = Auth::guard('web')->id();
-        $currentUser = Auth::guard('web')->user();
-        //prd($currentUser->preferred_language);
-        if(!empty($currentUserID)){
-            if($currentUser->preferred_language == "ar"){
-                return view('app/terms_sp_ar');
-            }else{
-                return view('app/terms_sp');
-            }
-            
-        }else{
-            return view('app/site_terms');
-        }
-        
-    }
+    
 
     public function appCalcellation() {
         return view('app/cancellation');
@@ -274,14 +263,20 @@ class HomeController extends Controller {
         $cardData = Card::Where(function ($query) use ($request) {
                             $query->where('business_name', 'like', "%" . $request->q . "%")
                             ->orWhere('keywords', 'like', "%" . $request->q . "%");
-                        })->where('status', 1)->latest('created_at')->with(['category'])
-                        ->get()->toArray();
+                        })->where('status', 1)
+                    ->latest('created_at')
+                    ->with(['category'])
+                    ->paginate(6);
+
+        $pagination = $cardData->appends ( array (
+            'q' => $request->q 
+        ) );
         //}
        // prd($cardData);
         return view('search', [
             'searchTerm' => $_searchTerm,
             'cardData' => $cardData,
-        ]);
+        ])->withQuery ( $_searchTerm );
     }
 
     public function marketplace(Request $request){

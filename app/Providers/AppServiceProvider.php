@@ -9,6 +9,7 @@ use App\Area;
 use App\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 
 use View;
 use Auth;
@@ -21,6 +22,8 @@ class AppServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
+        //URL::forceScheme('https'); // add this
+
         Schema::defaultStringLength(191);
 
         view()->composer('*', function ($view) {

@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }} | B2C Marketplace</title>
+        <title>@yield('title') {{ config('app.name') }} | B2C Marketplace</title>
 
 
         <!-- Fonts -->
@@ -24,6 +24,16 @@
         <link href="{{ asset('main/dir-responsive.css') }}" rel="stylesheet">
         <link href="{{ asset('main/colors.css') }}" rel="stylesheet">
         <link href="{{ asset('main/fonts.css') }}" rel="stylesheet">
+
+        <?php 
+        /*
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+        
+        <meta name="google-signin-client_id" content="687229957552-gsgfrm8d6e69jv5hl7l8eb3p9vql1hmc.apps.googleusercontent.com">
+        */
+        ?>
+        
+
     </head>
     <body>
         <div id="container">
@@ -52,7 +62,7 @@
                 repeat: true // false
               });
             });
-        </script>
+            </script>
         
         @yield('page-js-script')
     </body>

@@ -17,6 +17,8 @@
 Route::get('/', 'HomeController@front');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about-us', 'HomeController@aboutus')->name('about-us');
+Route::get('/features', 'HomeController@features')->name('features');
+Route::get('/privacy-terms', 'HomeController@terms')->name('privacy-terms');
 Route::get('/card/{cardslug}', 'CardsController@view')->where('cardslug', '[a-z-]+');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/list', 'HomeController@search')->name('list');
@@ -54,12 +56,9 @@ Route::post('getProfile', 'HomeController@getProfile');
 Route::post('updateProfile', 'HomeController@updateProfile')->name('profile.update');
 Route::post('removeShopImage', 'HomeController@removeShopImage');
 
-Route::get('terms', 'HomeController@siteTerms')->name('siteterms');
     
 Route::get('app/aboutus', 'HomeController@appAboutus');
 Route::get('app/cancellation', 'HomeController@appCalcellation');
-Route::get('app/terms', 'HomeController@appTerms')->name('appterms');
-Route::get('app/terms_ar', 'HomeController@appTermsAr')->name('appterms_ar');
 
 Route::post('viewCustomer', 'UsersController@viewCustomer')->name('viewCustomer');
 Route::post('viewStatistics', 'HomeController@viewStatistics')->name('viewStatistics');

@@ -1,24 +1,26 @@
 @extends('layouts.site.app')
 
-@section('content')
-    
-    @php 
-        $cateImgArr = array('1' => 'automotive.png', '2' => 'business.png', '3' => 'education.png', '4' => 'food.png', '5' => 'health.png', '6' => 'it.png', '7' => 'shop.png', '8' => 'sport.png', '9' => 'travel.png');
+@section('title', $card->business_name . ' | ')
 
-        
-    @endphp
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
+@section('content')
+
+@php 
+$cateImgArr = array('1' => 'automotive.png', '2' => 'business.png', '3' => 'education.png', '4' => 'food.png', '5' => 'health.png', '6' => 'it.png', '7' => 'shop.png', '8' => 'sport.png', '9' => 'travel.png');
+
+
+@endphp
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+crossorigin=""></script>
 
 <div class="card-default">
     <section class="card-top ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
 
                     <div class="card-name">
                         <span class="label label-primary">{{ $card['category']['name'] }}</span>                        
@@ -28,43 +30,42 @@
 
                         <div class="card-contact">
                             @guest
-                                <a href="{{ route('login') }}" class="btn btn-success">
-                            @else
-                                <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-primary">
-                            @endguest
+                            <a href="{{ route('login') }}" class="btn btn-detail contact-phone">
+                                @else
+                                <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-detail contact-phone">
+                                    @endguest
 
-                                <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
-                            </a>            
+                                    <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
+                                </a>            
 
-                            <a href="tel:{{ $card['email_address'] }}" class="btn btn-primary">
-                                <i class="fa fa-envelope"></i> {{ $card->email_address }} 
-                            </a>
+                                @if(!empty($card->email_address))
+                                <a href="mailto:{{ $card['email_address'] }}" class="btn btn-detail contact-email">
+                                    <i class="fa fa-envelope"></i> {{ $card->email_address }} 
+                                </a>
+                                @endif
+                            </div>
                         </div>
-                        
-                        
+                    </div>
+                    <div class="col-md-4">
+                        <div class="map-wrapper">
+                         <div id="mapid"></div>
+
+                         <ul class="list-unstyled text-right pull-right">
+
+
+                            <li>
+                                {{ $card->address }} <i class="fa fa-map-o"></i>
+                            </li>
+                        </ul>    
                     </div>
 
-                </div>
-                <div class="col-md-4">
-                    <div class="map-wrapper">
-                     <div id="mapid"></div>
-
-                    <ul class="list-unstyled text-right pull-right">
-                        
-                        
-                        <li>
-                            {{ $card->address }} <i class="fa fa-map-o"></i>
-                        </li>
-                    </ul>    
-                </div>
-
                     
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<?php
+    <?php
 /*
 <section class="card-menu ">
     <div class="container">
@@ -86,42 +87,74 @@
 
 
 <div class="profile-header">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-12 col-xl-7 align-self-center order-xl-2 order-1 text-xl-right">
-<ul class="list-inline">
-                                
-                                <li class="list-inline-item py-2 mr-0"><a href="#" class="lis-light"><i class="fa fa-heart-o pr-1"></i> Favorite</a> </li>
-                                <li class="list-inline-item py-2 mr-0"><a href="#" class="lis-light rounded-left"><i class="fa fa-share-alt pr-1"></i> Share</a> </li>
-                            </ul>
+    <div class="container">
+        <div class="row">
 
-                        {{ $card->description }}
+            <div class="col-12 col-xl-7 box-card-detail">
 
-                        <li>
-                            {{ $card->business_person }} <i class="fa fa-user-o"></i>
-                        </li>
+                <a href="#" class="btn btn-detail favorite">
+                    <i class="fa fa-heart-o pr-1"></i> Favorite
+                </a> 
 
-                        <div class="card-social col-md-12">
-                        @if (!empty($card->facebook))
-                            <a href="#" class="fa fa-facebook"></a>
-                        @endif
-                        @if (!empty($card->linkedin))
-                            <a href="#" class="fa fa-linkedin"></a>
-                        @endif
-                        @if (!empty($card->twitter))
-                            <a href="#" class="fa fa-twitter"></a>
-                        @endif
-                        @if (!empty($card->instagram))
-                            <a href="#" class="fa fa-instagram"></a>
-                        @endif
-                            
-                            
-                    </div>
-                    </div>
+                <div class="dropdown share-wrapper">
+                    <button class="btn btn-detail share" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="fa fa-share-alt pr-1"></i> Share
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </div>
+
+                <div>        
+                    {{ $card->description }}
+                </div>
+
+                <li>
+                    {{ $card->business_person }} <i class="fa fa-user-o"></i>
+                </li>
+
+                <div class="card-social col-md-12">
+                    @if (!empty($card->facebook))
+                    <a href="#" class="fa fa-facebook"></a>
+                    @endif
+                    @if (!empty($card->linkedin))
+                    <a href="#" class="fa fa-linkedin"></a>
+                    @endif
+                    @if (!empty($card->twitter))
+                    <a href="#" class="fa fa-twitter"></a>
+                    @endif
+                    @if (!empty($card->instagram))
+                    <a href="#" class="fa fa-instagram"></a>
+                    @endif
+
+
                 </div>
             </div>
-        </div>    
+
+
+            
+        </div>
+    </div>
+
+    <!-- Other Cards -->
+    <div class="otherbusiness">
+        <div class="container">
+            <div class="row">
+                <h3>Explorer More Business</h3>
+                @foreach ($otherCards as $card)
+                <div class="col-md-4">
+                    @include('elements.cardbox')
+                </div>
+                @endforeach 
+            </div>
+        </div>
+
+    </div>
+</div>    
 </div>
 <script>
 

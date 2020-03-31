@@ -306,6 +306,23 @@ span.room-rate {
     text-align: center;
 }
 
+.biz-form.home-search {
+    width: 600px;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.home-search input.search-text {
+    border-radius: 4px;
+    height: 60px;
+    width: 450px;
+}
+
+section.category {
+    background: #EDEDED;
+    padding: 40px 0;
+}
+
 /****** General From ******/
 
 .panel-heading .btn-top-panel {
@@ -914,8 +931,8 @@ section.ca_newsletter {
 
 
 .section-heading {
-    font-size: 36px;
-    color: #3a3a3a;
+    font-size: 30px;
+    color: #5D5D5D;
     text-transform: capitalize;
     margin-top: 0;
     margin-bottom: 25px;
@@ -1163,9 +1180,11 @@ h2.title::before {
 .faq_wrapper .panel-title{
     font-weight: 600;
 }
+
+
 /* =============== Slider ============== */
 /* Home Page Carousel */
-.section-room-search{
+.section-room-ch{
     position: relative;
 }
 
@@ -1832,17 +1851,11 @@ ul.list-unstyled li .fa {
 }
 
 
-
-
-#changethewords {
-    margin-top: 80px;
-}
-
 .category-bx .category {
     display: inline-block;
     height: 100px;
-    width: 100%;
-    color: #fff;
+    min-width: 230px;
+    color: #18ab9b;
     text-align: center;
     padding-top: 15px;
     transition: all 0.4s;
@@ -1851,10 +1864,10 @@ ul.list-unstyled li .fa {
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     border-radius: 4px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.4);
     border: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 15px;
-}
+}   
 
 .category-bx .category i {
     font-size: 24px;
@@ -1890,12 +1903,13 @@ ul.list-unstyled li .fa {
     margin-top: 30px;
 }
 
-.otherbusiness h3 {
+h3.section-title {
     text-align: center;
     margin: 0 0 30px;
     font-size: 28px;
     font-weight: 800;
     color: #5D5D5D;
+    text-transform:initial;
 }
 
 .btn-detail{
@@ -1955,10 +1969,6 @@ ul.list-unstyled li .fa {
     padding: 12px;
     font-size: 16px;
     width: 50%;
-}
-
-div#content .search-row{
-    min-height: 350px;
 }
 
 /* Style all font awesome icons */

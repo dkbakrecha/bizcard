@@ -144,7 +144,7 @@ crossorigin=""></script>
     <div class="otherbusiness">
         <div class="container">
             <div class="row">
-                <h3>Explorer More Business</h3>
+                <h3 class="section-title">Explorer More Business</h3>
                 @foreach ($otherCards as $card)
                 <div class="col-md-4">
                     @include('elements.cardbox')

@@ -266,7 +266,7 @@ class HomeController extends Controller {
                         })->where('status', 1)
                     ->latest('created_at')
                     ->with(['category'])
-                    ->paginate(6);
+                    ->paginate(9);
 
         $pagination = $cardData->appends ( array (
             'q' => $request->q 

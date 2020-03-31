@@ -5,10 +5,10 @@
 
 <style>
     .biz-search{
-        background: linear-gradient(86deg, rgba(0, 0, 0, 0.5) 0%, rgba(28, 70, 197, .9) 100%), url('{{ asset('images/banner.jpg') }}');
+        background: linear-gradient(86deg, rgba(0, 0, 0, 0.8) 0%, rgba(28, 70, 197, .9) 100%), url('{{ asset('images/banner.jpg') }}');
         background-size: cover;
         color: #fff;
-        padding: 100px 0;
+        padding: 80px 0;
     }
     .section-resent-rooms, .biz-home-add-listing{
         background: url('{{ asset('images/bg-jodhpur.jpg') }}');
@@ -16,10 +16,10 @@
     }
 </style>
 
-<section class="section-front biz-search">
+<section class="section-front biz-search center">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
               <h2 id="changethewords"><strong>Find Local 
                       <span class="text-green" data-id="1">Business</span>
                       <span class="text-turquoise" data-id="2">Health Services</span>
@@ -39,70 +39,7 @@
                 </div>
               </form>
             </div>
-            <div class="col-lg-6 no-mobile">
-                <div class="category-bx">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-cogs"></i>
-                                <p>Automotive</p>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-camera"></i>
-                                <p>BUSINESS SERVICES</p>
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-book"></i>
-                                <p>EDUCATION</p>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                        <a href="{{ route('list') }}" class="category">
-                            <i class="fa fa-cutlery"></i>
-                            <p>Food</p>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{{ route('list') }}" class="category">
-                            <i class="fa fa-heartbeat"></i>
-                            <p>HEALTH</p>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{{ route('list') }}" class="category">
-                            <i class="fa fa-laptop"></i>
-                            <p>IT SERVICES</p>
-                        </a>
-                    </div>
-                    </div>    
-                    <div class="row">
-                        <div class="col-md-4">
-                        <a href="{{ route('list') }}" class="category">
-                            <i class="fa fa-shopping-bag"></i>
-                            <p>RETAIL SHOPPING</p>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{{ route('list') }}" class="category">
-                            <i class="fa fa-futbol-o"></i>
-                            <p>SPORTS & RECREATION</p>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="{{ route('list') }}" class="category">
-                            <i class="fa fa-bus"></i>
-                            <p>TRAVEL & TRANSPORT</p>
-                        </a>
-                    </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>    
     </div>
 </section>
@@ -138,6 +75,61 @@
     </div>
 </section>
 
+<section class="category">
+    <h3 class="section-title">Popular Category</h3>
+
+    <div class="container clear-mob-pd">
+        <div class="col-lg-12 clear-mob-pd">
+                <div class="category-bx center">
+                    <div class="row clear-mob-pd">
+                        
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-cogs"></i>
+                                <p>Automotive</p>
+                            </a>
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-camera"></i>
+                                <p>BUSINESS SERVICES</p>
+                            </a>
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-book"></i>
+                                <p>EDUCATION</p>
+                            </a>
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-cutlery"></i>
+                                <p>Hotels and Restaurants</p>
+                            </a>
+                    
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-heartbeat"></i>
+                                <p>HEALTH</p>
+                            </a>
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-laptop"></i>
+                                <p>IT SERVICES</p>
+                            </a>
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-shopping-bag"></i>
+                                <p>RETAIL SHOPPING</p>
+                            </a>
+                    
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-futbol-o"></i>
+                                <p>SPORTS & RECREATION</p>
+                            </a>
+                        
+                            <a href="{{ route('list') }}" class="category">
+                                <i class="fa fa-bus"></i>
+                                <p>TRAVEL & TRANSPORT</p>
+                            </a>
+                    
+                </div>
+            </div>
+    </div>
+</section>
+
+<?php
+/* 
 <section class="section-front biz-resentitem" style="display: none;">
     <div class="container">
         <h2 class="section-heading">{{ __('Resent added items') }}</h2>
@@ -173,6 +165,10 @@
         </div>    
     </div>
 </section>
+
+*/
+?>
+
 
 <?php /* 
 <section class="section-front biz-home-add-listing">

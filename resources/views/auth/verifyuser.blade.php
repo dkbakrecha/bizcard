@@ -5,9 +5,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
-            <h2 class="formHeading-2">Sign up {{ config('app.name') }}</h2>
-            <h3 class="formHeading-3">It's fast and easy.</h3>
-    <form method="POST" id="registerSP" action="{{ route('register') }}" class="biz-form"  enctype="multipart/form-data">
+            <h2 class="formHeading-2">Sign up Verification</h2>
+            <h3 class="formHeading-3">Please verify your phone number</h3>
+    <form method="POST" id="registerSP" action="{{ route('verifyuser') }}" class="biz-form"  enctype="multipart/form-data">
         @csrf
 
         @if (count($errors) > 0)
@@ -37,16 +37,25 @@
                         </div>
 
                 */
+
                 ?>
                 
+                <?php
+                //echo "<pre>";
+                //print_r($user->toArray());
+                //echo "</pre>";
+                ?>
 
 
                 <div class="form-group">
-                        <input id="phone" type="text" placeholder="{{ __('messages.phone') }}" class="form-control" name="phone" value="{{ old('phone') }}" data-mask="0000000000">
+                        <input id="phone_show" type="text" placeholder="{{ __('messages.phone') }}" class="form-control" name="phone_show" value="{{ $user->phone }}" disabled>
+
+                        <input id="phone" type="hidden" name="phone" value="{{ $user->phone }}">
+                        ({{ $user->token }})
                 </div>
 
                 <div class="form-group">
-                        <input id="email" type="text" placeholder="{{ __('messages.email_address') }}" class="form-control" name="email" value="{{ old('email') }}">
+                        <input id="otp" type="text" placeholder="Enter 4 digit OTP here" class="form-control" name="otp" value="" data-mask="0000">
                 </div>
 
 
@@ -57,13 +66,11 @@
         <div class="form-group row mb-0">
             <div class="col-md-12">
                 <center>
-                    <p class="textTerm">Creating an account means you’re okay with our Terms of Service, Privacy Policy, and our default Notification Settings.</p>
                     <button type="submit" class="btn btn-block">
-                        {{ __('Create Account') }}
+                        {{ __('Verify OTP') }}
                     </button>
                 </center>
             </div>
-            
         </div>
 
         <div class="row">
@@ -78,9 +85,5 @@
 
     
 
-
-@endsection
-
-@section('page-js-script')
 
 @endsection

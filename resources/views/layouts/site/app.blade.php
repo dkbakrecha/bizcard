@@ -51,6 +51,7 @@
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}" defer></script>
         <script src="{{ asset('js/changethewords/jquery.changethewords.js') }}" defer></script>
+        <script src="{{ asset('js/jquery.mask.min.js') }}" defer></script>
 
 
         <script type="text/javascript">

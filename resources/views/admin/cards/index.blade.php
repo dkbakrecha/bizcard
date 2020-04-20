@@ -47,6 +47,8 @@
                         </a>
                     @endif
 
+                    <a class="btn btn-primary btn-sm" href="{{ route('admin.cards.view',$booking->id) }}"><i class="fa fa-id-card" title="{{ __('Card') }}"></i></a>
+
                     <a class="btn btn-primary btn-sm" href="{{ route('admin.cards.edit',$booking->id) }}"><i class="fa fa-pencil" title="{{ __('Edit') }}"></i></a>
 
                     <!-- SUPPORT ABOVE VERSION 5.5 -->

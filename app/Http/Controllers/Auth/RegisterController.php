@@ -13,6 +13,7 @@ use App\Service;
 use App\ShopService;
 use Illuminate\Http\Request;
 use App\WebNotification;
+use App\MSG91;
 
 /* For mail */
 use App\Mail\Admin\ServiceProviderRegister;
@@ -57,18 +58,19 @@ use RegistersUsers;
     protected function validator(array $data) {
 
         return Validator::make($data, [
-                    'name' => 'required|max:50',
+                    //'name' => 'required|max:50',
                     'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
                     'phone' => 'required|digits:10|unique:users',
-                    'password' => ['required', 'string', 'min:6', 'confirmed'],
+                    //'password' => ['required', 'string', 'min:6', 'confirmed'],
                         ], [
                     'name.regex' => 'The service provider name format is invalid.',
                     'images.*.mimes' => 'Only jpeg, jpg, png, bmp formats are allowed.',
                     'images.*.max' => 'Photos not be grater then 1MB.',
-                    'phone.unique' => 'The service provider phone number has already been taken.',
-                    'phone.digits' => 'The service provider phone number must be 10 digits.',
+                    'phone.unique' => 'The phone number has already been taken.',
+                    'phone.digits' => 'The phone number must be 10 digits.',
         ]);
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -80,11 +82,10 @@ use RegistersUsers;
 
        
         $userCreated = User::create([
-                    'name' => $data['name'],
-                    'email' => $data['email'],
-                    'phone' => $data['phone'],
-                    'password' => Hash::make($data['password']),
-                    'status' => '3' // Pending
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+            'status' => '3' // Pending
         ]);
         
         //prd($userCreated);
@@ -107,24 +108,6 @@ use RegistersUsers;
             }
         }
 
-        //Update Services selection of shop
-        if (!empty($data['services'])) {
-            foreach ($data['services'] as $service_id) {
-                $serviceData = Service::findOrFail($service_id);
-
-                $_shopService = new ShopService();
-                $_shopService->shop_id = $userCreated->id;
-                $_shopService->service_id = $serviceData->id;
-                $_shopService->unique_id = $serviceData->unique_id;
-                $_shopService->category_id = $serviceData->category_id;
-                $_shopService->name = $serviceData->name;
-                $_shopService->category_id = $serviceData->category_id;
-                $_shopService->duration = $serviceData->duration;
-                $_shopService->price = $serviceData->price;
-                $_shopService->save();
-            }
-        }
-
         // Save new service provider registration as a web notification
         // Fetch Admin user's user id
         $admin_user_id = $this->_admin_id();
@@ -133,12 +116,40 @@ use RegistersUsers;
             'notification_for' => $admin_user_id, // Admin
             'user_id' => $userCreated->id, // User who triggered the notification
             'event_type' => 0,
-            'event' => 'New user ' . $userCreated->name . ' Registered',
+            'event' => 'New user ' . $userCreated->name . ' Registered into system',
         ]);
 
-        //Mail To admin service provider information
-        Mail::to('adminflair@harakirimail.com')->send(new ServiceProviderRegister($userCreated->id));
+        //Mail To admin user information
+        Mail::to('dkb4biz@gmail.com')->send(new ServiceProviderRegister($userCreated->id));
 
+        return $userCreated;
+    }
+
+    protected function registerUser(array $data) {
+        //echo "<pre>";
+        //print_r($data);
+        //exit();
+        $userData = User::where('phone', $data['phone'])->first();
+        $token = str_pad(mt_rand(1000, 9999), 4 , "0",STR_PAD_LEFT) ;
+        
+        if(empty($userData)){
+          $this->validator($data)->validate();
+        
+          $userCreated = User::create([
+              'email' => $data['email'],
+              'phone' => $data['phone'],
+              'token' => $token,
+              'is_phone_verified' => 0,
+              //'password' => Hash::make($data['password']),
+              'status' => '3' // Pending
+          ]);  
+        }else{
+          $userCreated = $userData;
+        }
+
+        
+        
+        //prd($userCreated);     
         return $userCreated;
     }
 
@@ -158,13 +169,80 @@ use RegistersUsers;
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request) {
-        $this->validator($request->all())->validate();
+        
 
-        $user = $this->create($request->all());
+        $user = $this->registerUser($request->all());
 
-        //$this->guard()->login($user);
+        if($user->is_phone_verified == 0){
+          //return redirect('auth/verifyuser', compact('user'));
+          session(['registerUser' => $user]);
 
-        return redirect('/login')->with('success', __('messages.register_shop_success'));
+          return redirect()->route('verifyuser');
+        }
+        //echo "<pre>";
+        //print_r($user->toArray());
+        //exit;
+
+        //$user = $this->create($request->all());
+        //return view('auth/verifyuser', compact('user'));
+        //$this->guard()->login($user)->with('success', __('Your account has been successfully registered. Please verify your account email.'));
     }
+
+
+    public function verifyuser(Request $request) {
+        
+        
+        $rUser = session('registerUser');
+        $userData = User::where('phone', $rUser->phone)->first();
+        $token = str_pad(mt_rand(1000, 9999), 4 , "0",STR_PAD_LEFT) ;
+        $reqData = $request->all();
+
+        if(!empty($reqData)){
+          $validator = Validator::make($reqData, [
+            'phone' => 'required|digits:10',
+            'otp' => 'required|digits:4|in:'.$rUser->token,
+                ], [
+            'otp' => 'Please enter valid OTP.',
+          ]);
+
+          if ($validator->fails())
+          {
+              return redirect()->back()->withErrors($validator->errors());
+          }
+
+          //OPT Success
+          $userData->token = 1;
+          $userData->is_phone_verified = 1;
+          $userData->status = 1;
+          $userData->password = Hash::make($reqData['otp']);
+          $userData->save();
+
+          session(['registerUser' => ""]);
+          $this->guard()->login($userData)->with('success', __('Your account has been successfully registered.'));
+        }else{
+          if(!empty($rUser) || $rUser->status == 3){
+            //If user is not verify then enter
+            if($rUser->is_phone_verified == 0 && empty($rUser->token)){
+              //If token is not generated then generate token
+              $userData->token = $token;
+              $rUser->token = $token;
+              $userData = $userData->save();
+            }
+
+            $MSG91 = new MSG91();
+            $bizCode = array();
+            $bizCode['number'] = $userData->phone;
+            $bizCode['optcode'] = $userData->token;
+
+            $msg91Response = $MSG91->send_sms($bizCode);
+
+            return view('auth/verifyuser', ['user' => $rUser]);    
+          }  
+        }
+        
+        
+      return view('auth/verifyuser', ['user' => $rUser]);    
+    }
+      
 
 }

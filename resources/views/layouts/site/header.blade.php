@@ -124,6 +124,11 @@
 
                     <ul class="dropdown-menu logout-admin" role="menu">
                         <li>
+                            <a href="{{ route('settings') }}">
+                                Profile
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('change_password') }}">
                                 {{ __('messages.change_password') }}
                             </a>

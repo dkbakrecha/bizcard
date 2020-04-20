@@ -59,7 +59,6 @@
             <li class="{{  $mnuReports }}"><a href="{{ route('reports') }}"><img src="{{ url('images') }}/settings-report.png" alt="Reports" class="set-gap"> &nbsp; <span>{{ __('messages.reports') }}</span></a></li>
             @endif
             <li class="{{  $mnuSetting }}"><a href="{{ route('settings') }}"><img src="{{ url('images') }}/settings-report.png" alt="Settings" class="set-gap"> &nbsp; <span>{{ __('messages.settings') }}</span></a></li>
-            <li class="{{  $mnuTerm }}"><a href="{{ route('siteterms') }}"><i class="glyphicon glyphicon-print"></i> &nbsp; <span>{{ __('messages.terms') }}</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

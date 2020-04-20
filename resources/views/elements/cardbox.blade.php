@@ -14,13 +14,12 @@
             <div class="btn-group" role="group">
                 @guest
                     <a href="{{ route('login') }}" class="btn btn-success">
+                    <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
                 @else
                     <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-primary">
+                    <i class="fa fa-phone"></i> {{ $card['contact_primary'] }}
                 @endguest
-
-                    <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
                 </a>        
-
 
                 @guest
                     <a href="{{ route('login') }}" class="btn btn-default">

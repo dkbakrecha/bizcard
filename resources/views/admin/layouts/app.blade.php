@@ -135,6 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- AdminLTE App -->
         <script src="{{ asset("/bower_components/admin-lte/dist/js/adminlte.min.js") }}"></script>
+        <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
 
 
         <!-- Optionally, you can add Slimscroll and FastClick plugins.

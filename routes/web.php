@@ -28,6 +28,10 @@ Route::get('/product/{product}', 'HomeController@productshow')->name('product.sh
 Auth::routes();
 
 
+Route::get('verifyuser', 'Auth\RegisterController@verifyuser')->name('verifyuser');
+Route::post('verifyuser', 'Auth\RegisterController@verifyuser')->name('verifyuser');
+
+
 Route::get('cards', 'CardsController@index')->name('cards');
 Route::get('cards/store', 'CardsController@create');
 Route::post('cards/store', 'CardsController@store')->name('card.store');
@@ -130,6 +134,8 @@ Route::post('get_quick_details', 'HomeController@getQuickDetails')->name('get_qu
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('/cards','Admin\CardsController');
     Route::resource('/items','Admin\ItemsController');
+    Route::get('/cards/view/{id}', 'Admin\CardsController@view')->name('cards.view');
+    Route::post('/cards/savecard', 'Admin\CardsController@savecard')->name('cards.savecard');
 });
 
 Route::prefix('admin')->group(function () {

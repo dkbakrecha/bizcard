@@ -336,6 +336,12 @@ section.category {
     margin-right: -15px;
 }
 
+.panel-heading {
+    color: rgb(255, 96, 66);
+    font-weight: 600;
+    border-bottom: 1px solid;
+}
+
 .form-control {
     border-radius: 0;
     height: auto;
@@ -1610,7 +1616,7 @@ a.navbar-brand.text span {
 .btn-biz, .biz-form button{
     color: rgb(255, 255, 255);
     background-color: rgb(255, 96, 66);
-    padding: 15px 40px;
+    padding: 10px 40px;
     text-align: center;
     font-size: 16px;    
 }
@@ -1674,7 +1680,7 @@ a.navbar-brand.text span {
 
 p.keywords {
     font-size: 20px;
-    min-height: 100px;
+    min-height: 40px;
 }
 
 .noisy {

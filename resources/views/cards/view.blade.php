@@ -27,7 +27,7 @@ crossorigin=""></script>
 
                         <h2 class="">{{ $card->business_name }}</h2>
                         <p class="keywords">{{ $card->keywords }}</p>
-
+                        <p ><i class="fa fa-map-o"></i> {{ $card->address }}</p>
                         <div class="card-contact">
                             @guest
                             <a href="{{ route('login') }}" class="btn btn-detail contact-phone">
@@ -35,19 +35,26 @@ crossorigin=""></script>
                                 <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-detail contact-phone">
                                     @endguest
 
-                                    <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
+                                    <i class="fa fa-phone"></i> Call
+                                    <?php /* str_repeat("*", 6) . substr($card['contact_primary'], 4) */ ?>
                                 </a>            
 
                                 @if(!empty($card->email_address))
                                 <a href="mailto:{{ $card['email_address'] }}" class="btn btn-detail contact-email">
-                                    <i class="fa fa-envelope"></i> {{ $card->email_address }} 
+                                    <i class="fa fa-envelope"></i> Send Mail 
                                 </a>
                                 @endif
+
+                                <a href="#" class="btn btn-detail favorite hide">
+                                        <i class="fa fa-heart-o pr-1"></i> Favorite
+                                    </a> 
+
+                                
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="map-wrapper">
+                        <div class="map-wrapper hide">
                          <div id="mapid"></div>
 
                          <ul class="list-unstyled text-right pull-right">
@@ -90,49 +97,100 @@ crossorigin=""></script>
     <div class="container">
         <div class="row">
 
-            <div class="col-12 col-xl-7 box-card-detail">
+            <div class="col-md-12 box-card-detail">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h4>Overview</h4>
+                            </div>
+                            <div class="col-md-9">
+                                <div>        
+                                    {{ $card->description }}
+                                </div>        
+                            </div>
+                        </div>
 
-                <a href="#" class="btn btn-detail favorite">
-                    <i class="fa fa-heart-o pr-1"></i> Favorite
-                </a> 
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h4>Social Profiles</h4>
+                            </div>
+                            <div class="col-md-9">
+                                <div>        
+                                    <div class="card-social">
+                                        @if (!empty($card->facebook))
+                                        <a href="#" class="fa fa-facebook"></a>
+                                        @endif
+                                        @if (!empty($card->linkedin))
+                                        <a href="#" class="fa fa-linkedin"></a>
+                                        @endif
+                                        @if (!empty($card->twitter))
+                                        <a href="#" class="fa fa-twitter"></a>
+                                        @endif
+                                        @if (!empty($card->instagram))
+                                        <a href="#" class="fa fa-instagram"></a>
+                                        @endif
+                                    </div>
+                                </div>        
+                            </div>
+                        </div>
 
-                <div class="dropdown share-wrapper">
-                    <button class="btn btn-detail share" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <i class="fa fa-share-alt pr-1"></i> Share
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                        
+
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h4>Share</h4>
+                            </div>
+                            <div class="col-md-9">
+                                
+
+                                <div class="dropdown share-wrapper">
+                                    <button class="btn btn-detail share" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <i class="fa fa-share-alt pr-1"></i> Share
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                @if(file_exists( public_path().'/images/cards/'.$card->id.'-'.$card->slug.'.jpg' ))
+                                    <a href="{{ asset('public/images/cards/'.$card['id'] .'-'. $card['slug'] .'.jpg') }}" class="btn btn-detail contact-email" download="{{$card->slug}}">
+                                        <i class="fa fa-address-card-o"></i> Download Card
+                                    </a>
+                                @endif
+                               
+
+                            </div>
+                        </div>
+
+
+                        
+                        
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Contact Info</h3>
+                        <div>
+                            <i class="fa fa-user-o"></i> {{ $card->business_person }}
+                        </div>
+                        <div>
+                            <i class="fa fa-map-o"></i> {{ $card->address }}
+                        </div>
+                    </div>
                 </div>
+                
 
-                <div>        
-                    {{ $card->description }}
-                </div>
+                
+                
 
-                <li>
-                    {{ $card->business_person }} <i class="fa fa-user-o"></i>
-                </li>
+                
 
-                <div class="card-social col-md-12">
-                    @if (!empty($card->facebook))
-                    <a href="#" class="fa fa-facebook"></a>
-                    @endif
-                    @if (!empty($card->linkedin))
-                    <a href="#" class="fa fa-linkedin"></a>
-                    @endif
-                    @if (!empty($card->twitter))
-                    <a href="#" class="fa fa-twitter"></a>
-                    @endif
-                    @if (!empty($card->instagram))
-                    <a href="#" class="fa fa-instagram"></a>
-                    @endif
-
-
-                </div>
+                
             </div>
 
 

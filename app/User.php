@@ -76,12 +76,7 @@ class User extends Authenticatable {
                         ->select(["id", "unique_id", "name"]);
     }
 
-    /*
-      public function sendPasswordResetNotification($token) {
-      // Your your own implementation.
-      $this->notify(new ResetPasswordNotification($token));
-      }
-     */
+    
 
     public function mobileSessions() {
         return $this->hasMany('App\MobileSessions');

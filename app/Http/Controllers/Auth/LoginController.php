@@ -41,16 +41,26 @@ use AuthenticatesUsers;
     public function login(Request $request) {
         // Validate the form data
         $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:6'
+            'email' => 'required',
+            'password' => 'required'
         ]);
+
+
         /* $is_remember = 0;
           if(isset($request->remember)){
           $is_remember = 1;
           } */
+        $req = array();
+        $req['password'] = $request->get('password');
+        if(is_numeric($request->get('email'))){
+          $req['phone'] = $request->get('email');
+        }else{
+          $req['email'] = $request->get('email');
+        }
+
         //return $request;
         // Attempt to log the user in
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('web')->attempt($req, $request->remember)) {
             // if successful, then redirect to their intended location
             return redirect()->intended('home');
         }
@@ -70,7 +80,7 @@ use AuthenticatesUsers;
 
         // Load user from database
         $user = User::where($this->username(), $request->{$this->username()})->first();
-
+        //print_r($errors); exit;
         // Check if user was successfully loaded, that the password matches
         // and active is not 1. If so, override the default error message.
         if ($user && \Hash::check($request->password, $user->password)) {
@@ -79,13 +89,12 @@ use AuthenticatesUsers;
             }
         }
 
-        //prd($user);
+        //print_r($user); exit;
         if (!empty($user)) {
             $errors = ['password' => trans('Your login credentials are invalid.')];
-        }
-        /* else{
+        }else{
           $errors = [$this->username() => trans('Your login credentials are invalid.')];
-          } */
+        }
 
         if ($request->expectsJson()) {
             return response()->json($errors, 422);
@@ -99,5 +108,4 @@ use AuthenticatesUsers;
         Auth::guard('web')->logout();
         return redirect()->route('login');
     }
-
 }

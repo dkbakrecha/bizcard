@@ -6,11 +6,12 @@
 
 <div class="hr-line"></div>
 <?php
-$userData = array();
 
-$userData['User']['first_name'] = "Dharmendra";
-$userData['User']['last_name'] = "Bagrecha";
-$userData['User']['email'] = "dkbakrecha@gmail.com";
+$userData = Auth::guard('web')->user();
+
+//$userData['User']['first_name'] = "Dharmendra";
+//$userData['User']['last_name'] = "Bagrecha";
+//$userData['User']['email'] = "dkbakrecha@gmail.com";
 //pr($userData);
 //pr($userRooms);
 ?>
@@ -33,18 +34,21 @@ $userData['User']['email'] = "dkbakrecha@gmail.com";
 
 
         <div class="col-lg-9">
-            <div class="alert alert-warning dashboard-top" role="alert"> 
+            <?php
+            /*
+                <div class="alert alert-warning dashboard-top" role="alert"> 
                 <strong>Verify your email address</strong> 
                 <div>To help keep your account secure, please verify your email address. Send a verification email to <?php echo $userData['User']['email'] ?> or update your email address. </div>
                 <a href="" class="btn btn-default">Send verification email</a>
             </div>
+            */
+            ?>
 
             <div class="panel panel-default">
                 <div class="panel-body">
                     <blockquote>
                         <?php //pr($userData); ?>
-                        <p>Welcome, <?php echo $userData['User']['first_name'] . " " . @$userData['User']['last_name'] ?></p>
-                        <small><cite title="Source Title"> <?php echo $userData['User']['email']; ?> </cite></small>
+                        <p>Welcome, We're glad you're here!</p>
                     </blockquote>
 
                     <div class="btn-submitproperties pull-right">

@@ -11,6 +11,9 @@
 
         <div class="col-lg-9">
             <div class="panel">
+                <div class="panel-heading">
+                    Change Password
+                </div>
     <form action="{{ route('change_password.store') }}" method="post" class="form-horizontal">
         {{ csrf_field() }}
         <div class="panel-body">
@@ -21,7 +24,6 @@
                     <div class="col-md-6">
                         <input id="current_password" type="password" class="form-control" name="current_password" required>
 
-                        
                     </div>
                 </div>
 
@@ -46,7 +48,7 @@
             </div>
         </div>
         <div class="panel-footer">
-            <button type="submit" class="btn btn-primary">{{ __('messages.save_changes') }}</button>
+            <button type="submit" class="btn btn-biz">{{ __('messages.save_changes') }}</button>
         </div>    
     </form>
 

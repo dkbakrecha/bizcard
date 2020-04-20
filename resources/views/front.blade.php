@@ -32,7 +32,7 @@
               <p> All the best businesses, professionals, and service providers are waiting for your call</p>
               <form action="{{ route('search') }}" method="get" class="form biz-form home-search">
                 <div class="input-append">
-                  <input class="search-text" type="text" placeholder="Type your keyword" name="q">
+                  <input class="search-text" type="text" placeholder="Type your keyword" name="q" required>
                   <button class="btn btn-biz" type="submit">
                     <i class="glyphicon glyphicon-search"></i>
                   </button>

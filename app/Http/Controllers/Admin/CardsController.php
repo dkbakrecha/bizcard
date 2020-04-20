@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Card;
 use App\BookingService;
 use Illuminate\Http\Request;
+use Image;
 use App\Http\Controllers\Controller;
 
 class CardsController extends Controller {
@@ -65,6 +66,27 @@ class CardsController extends Controller {
         $cardData = Card::find($id);
         $categoryList = $this->getCategoryList();
         return view('admin/cards/edit', compact('cardData', 'id', 'categoryList'));
+    }
+
+    public function view($id)
+    {
+        $cardData = Card::find($id);
+
+            // get previous user id
+            $previous = Card::where('id', '<', $id)->max('id');
+            // get next user id
+            $next = Card::where('id', '>', $id)->min('id');
+
+        return view('admin/cards/view', compact('cardData', 'id', 'previous', 'next'));
+    }
+
+    public function savecard(Request $request)
+    {
+        $image = Image::make($request->get('imgBase64'));
+        $imagename = $request->get('image_name');
+        
+        $image->save('public/images/cards/'. $imagename . '.jpg');
+        echo "done"; exit;
     }
 
     public function update($id, Request $request)

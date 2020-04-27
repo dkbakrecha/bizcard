@@ -9,12 +9,19 @@ class Category extends Model
 	protected $table = 'business_category';
 
     protected $fillable = [
-        'name'
+        'name','slug','icon'
+    ];
+
+    protected $appends = [
+        'cardCount'
     ];
     
-    /*public function services() {
-        return $this->hasMany('App\Card', 'card_id');
-    }*/
-    
-    
+    public function cards() {
+        return $this->hasMany('App\Card', 'business_category');
+    }
+
+    public function getCardCountAttribute()
+    {
+        return $this->cards()->count();
+    }
 }

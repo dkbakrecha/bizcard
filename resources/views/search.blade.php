@@ -1,11 +1,24 @@
 @extends('layouts.site.app')
 
 @section('content')
+
 <div class="search-filter">
     <div class="container">
-         <form action="{{ route('search') }}" method="get" class="form biz-form home-search">
+         <form action="{{ route('list') }}" method="get" class="form biz-form home-search" id="filter-form">
             <div class="input-append">
               <input class="search-text" type="text" placeholder="Type your keyword" name="q" value="{{ __($searchTerm) }}">
+
+                <div class="filter-select">
+
+                <select name="c" id="filter-category">
+                    <option value="">Business Category</option>
+
+                    @foreach ($bizCategory as $cate)
+                        <option value="{{ $cate->slug }}" {{ ($cate->slug == $filterCategory)?"selected":"" }}>{{ $cate->name }}</option>
+                    @endforeach
+                </select>
+                </div>
+
               <button class="btn btn-biz" type="submit" style="display: none;">
                 <i class="glyphicon glyphicon-search"></i>
               </button>
@@ -43,4 +56,15 @@
         {{ $cardData->links() }}
     </div>
 </div>
+@endsection
+
+
+
+
+@section('page-js-script')
+<script type="text/javascript">
+    $( "#filter-category" ).change(function() {
+      $("#filter-form").submit();
+    });
+</script>
 @endsection

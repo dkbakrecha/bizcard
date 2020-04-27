@@ -8,6 +8,6 @@ class Card extends Model
 {
     public function category() {
         return $this->belongsTo('App\Category', 'business_category')
-                        ->select(["id", "name"]);
+                        ->select(["id", "name", "slug"]);
     }
 }

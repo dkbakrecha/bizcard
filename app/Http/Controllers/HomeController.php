@@ -19,7 +19,42 @@ class HomeController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('auth:web')->except(['appCalcellation', 'terms', 'front', 'search' , 'marketplace', 'productshow','aboutus', 'features']);
+        $this->middleware('auth:web')->except(['appCalcellation', 'terms', 'front', 'search' , 'marketplace', 'productshow','aboutus', 'features', 'tcbot']);
+    }
+
+    public function tcbot(){
+        $token = "1077497893:AAFXRJ8w-0wmWlB-EgH_kYyLnt0H-MMCsZ4";
+        $website = "https://api.telegram.org/bot" . $token;
+
+        //If webhook not set
+        //$_update = $this->file_get_contents($website . "/getUpdates");
+        $_update = file_get_contents("php://input");
+        $updateArray = json_decode($_update, TRUE);
+
+        $chat_id = $updateArray['result'][0]['message']['chat']['id'];
+
+        $msg = "Welcome To CardBiz";
+
+        $request_param = [
+            'chat_id' => $chat_id,
+            'text' => $msg
+        ];
+
+        $requestUrl =  $website . "/sendMessage?" . http_build_query($request_param);
+
+        $this->file_get_contents_curl($requestUrl);
+
+        echo "---"; exit;
+    }
+
+    function file_get_contents_curl($url) {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Set curl to return the data instead of printing it to the browser.
+        curl_setopt($ch, CURLOPT_URL, $url);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        return $data;
     }
 
     /**
@@ -257,6 +292,10 @@ class HomeController extends Controller {
 
     public function search(Request $request) {
         $_searchTerm = $request->q;
+        $_searchCategory = $request->category;
+        
+        $categoryList = $this->getCategoryList();
+
 
         $cardData = array();
         //if (!empty($request->q)) {
@@ -264,17 +303,23 @@ class HomeController extends Controller {
                             $query->where('business_name', 'like', "%" . $request->q . "%")
                             ->orWhere('keywords', 'like', "%" . $request->q . "%");
                         })->where('status', 1)
+                    ->whereHas('category', function($query) use ($request){
+                        if(!empty($request->c)){
+                            $query->where('slug', '=', $request->c);    
+                        }
+                    })
                     ->latest('created_at')
                     ->with(['category'])
                     ->paginate(9);
 
         $pagination = $cardData->appends ( array (
-            'q' => $request->q 
+            'q' => $request->q, 
+            'c' => $request->c 
         ) );
-        //}
-       // prd($cardData);
+        
         return view('search', [
             'searchTerm' => $_searchTerm,
+            'filterCategory' => $request->c,
             'cardData' => $cardData,
         ])->withQuery ( $_searchTerm );
     }

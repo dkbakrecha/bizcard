@@ -30,7 +30,7 @@
                       <span class="text-mango" data-id="7">Travel Places</span>
                 </strong></h2>
               <p> All the best businesses, professionals, and service providers are waiting for your call</p>
-              <form action="{{ route('search') }}" method="get" class="form biz-form home-search">
+              <form action="{{ route('list') }}" method="get" class="form biz-form home-search">
                 <div class="input-append">
                   <input class="search-text" type="text" placeholder="Type your keyword" name="q" required>
                   <button class="btn btn-biz" type="submit">
@@ -82,47 +82,14 @@
         <div class="col-lg-12 clear-mob-pd">
                 <div class="category-bx center">
                     <div class="row clear-mob-pd">
+
+                        @foreach ($bizCategory as $cate)
+                            <a href="{{ route('list') }}/?c={{ $cate->slug }}" class="category">
+                                <i class="fa {{ $cate->icon }}"></i>
+                                <p>{{ $cate->name }}</p>
+                            </a>
+                        @endforeach
                         
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-cogs"></i>
-                                <p>Automotive</p>
-                            </a>
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-camera"></i>
-                                <p>BUSINESS SERVICES</p>
-                            </a>
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-book"></i>
-                                <p>EDUCATION</p>
-                            </a>
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-cutlery"></i>
-                                <p>Hotels and Restaurants</p>
-                            </a>
-                    
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-heartbeat"></i>
-                                <p>HEALTH</p>
-                            </a>
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-laptop"></i>
-                                <p>IT SERVICES</p>
-                            </a>
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-shopping-bag"></i>
-                                <p>RETAIL SHOPPING</p>
-                            </a>
-                    
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-futbol-o"></i>
-                                <p>SPORTS & RECREATION</p>
-                            </a>
-                        
-                            <a href="{{ route('list') }}" class="category">
-                                <i class="fa fa-bus"></i>
-                                <p>TRAVEL & TRANSPORT</p>
-                            </a>
-                    
                 </div>
             </div>
     </div>

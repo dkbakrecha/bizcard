@@ -247,14 +247,17 @@ function getCookie(cname) {
 }
 
 $('#editModal').on('show.bs.modal', function (event) {
-
     var button = $(event.relatedTarget)
     var title = button.data('title')
+    var slug = button.data('slug')
+    var icon = button.data('icon')
     var cate_id = button.data('cate_id')
     var _id = button.data('cat_id')
 
     var modal = $(this)
     modal.find('.modal-body #name').val(title)
+    modal.find('.modal-body #slug').val(slug)
+    modal.find('.modal-body #icon').val(icon)
     modal.find('.modal-body #cat_id').val(_id)
     modal.find('.modal-body #cate_id').val(cate_id)
 });

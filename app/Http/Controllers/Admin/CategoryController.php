@@ -44,6 +44,8 @@ class CategoryController extends Controller {
 
         $category = new Category();
         $category->name = $request->get('name');
+        $category->slug = $request->get('slug');
+        $category->icon = $request->get('icon');
         $category->save();
 
         return response()->json(['success' => __('messages.category_add_success')]);

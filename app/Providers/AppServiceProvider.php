@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider {
         Schema::defaultStringLength(191);
 
         view()->composer('*', function ($view) {
+            $view->with('bizCategory', Category::get()->keyBy('name'));
         });
     }
 

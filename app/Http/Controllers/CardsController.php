@@ -113,6 +113,8 @@ class CardsController extends Controller {
         $otherCards = Card::inRandomOrder()->with(['category'])
             ->where('status', 1)->take(3)->get()->toArray();
 
+
+
         if(empty($card)){
             return redirect()->action('HomeController@index');
         }else{

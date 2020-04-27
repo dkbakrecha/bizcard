@@ -165,6 +165,51 @@ a.list-group-item{
     padding-bottom: 5px;
 }
 
+
+/* Custom Select */
+.filter-select {
+    position: relative;
+    display: inline-flex;
+    width: 250px;
+    height: 43px;
+    line-height: 3;
+    background: #FFF;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.filter-select select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #333;
+  cursor: pointer;
+  border: 0;
+}
+/* Arrow */
+.filter-select::after {
+  content: '\25BC';
+  position: absolute;
+  top: -2px;
+  right: 0;
+  padding: 0 20px;
+  background: rgb(255, 96, 66);
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+  color: #FFF;
+}
+/* Transition */
+.filter-select:hover::after {
+  background: rgb(255, 150, 70);
+}
+
+
+
+
+
+
 /*****  section-resent-rooms *****/
 .section-resent-rooms {
     padding: 50px 0;
@@ -307,8 +352,6 @@ span.room-rate {
 }
 
 .biz-form.home-search {
-    width: 600px;
-    display: inline-block;
     margin-top: 15px;
 }
 

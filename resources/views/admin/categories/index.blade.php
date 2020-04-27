@@ -11,18 +11,25 @@
         <tr class="table-heading">
             <th width="110px">{{ __('messages.category_id') }}</th>
             <th>{{ __('messages.category') }}</th>
+            <th>{{ __('slug') }}</th>
+            <th>{{ __('icon') }}</th>
+            <th>{{ __('Card Listed') }}</th>
             <th width="180px">{{ __('messages.details') }}</th>
         </tr>
     </thead>
 
     <tbody>
         @foreach ($categories as $category)
+        
         <tr>
             <td>{{ $category->id }}</td>
             <td>{{ $category->name }}</td>
+            <td>{{ $category->slug }}</td>
+            <td><i class="fa {{ $category->icon }}"></i></td>
+            <td>{{ $category->cardCount }}</td>
             <td align="center" class="user-buttons">
 
-                <button data-title="{{ $category->name }}" data-cat_id="{{ $category->id }}" data-cate_id="{{ $category->cate_id }}" class="btn btn-action" data-toggle="modal" data-target="#editModal">
+                <button data-title="{{ $category->name }}" data-slug="{{ $category->slug }}" data-icon="{{ $category->icon }}" data-cat_id="{{ $category->id }}" data-cate_id="{{ $category->cate_id }}" class="btn btn-action" data-toggle="modal" data-target="#editModal">
                     <i class="fa fa-pencil"></i>
                 </button>
 

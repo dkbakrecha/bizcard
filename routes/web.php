@@ -25,6 +25,9 @@ Route::get('/list', 'HomeController@search')->name('list');
 Route::get('/marketplace', 'HomeController@marketplace')->name('marketplace');
 Route::get('/product/{product}', 'HomeController@productshow')->name('product.show');
 
+
+Route::get('/tcbot', 'HomeController@tcbot')->name('tcbot');
+
 Auth::routes();
 
 

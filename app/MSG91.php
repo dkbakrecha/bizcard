@@ -70,7 +70,7 @@ class MSG91 {
     public function send_sms($bCode){
     $curl = curl_init();
 
-    $_msg = "Your cardbiz code is " . $bCode['optcode'];
+    $_msg = "Your cardbiz OTP is " . $bCode['optcode'];
     $_num = $bCode['number'];
     $authentication_key = "252766ASSlpguV5c1b7f59";
 

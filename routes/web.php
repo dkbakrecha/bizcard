@@ -33,7 +33,11 @@ Auth::routes();
 
 Route::get('verifyuser', 'Auth\RegisterController@verifyuser')->name('verifyuser');
 Route::post('verifyuser', 'Auth\RegisterController@verifyuser')->name('verifyuser');
+Route::get('phonevalidation', 'Auth\ForgotPasswordController@phonevalidation')->name('password.phone');
+Route::post('phonevalidation', 'Auth\ForgotPasswordController@phonevalidation')->name('password.phone');
 
+Route::get('reset-password/{token}', 'Auth\ResetPasswordController@showPasswordResetForm')->name('resetpassword');
+Route::post('reset-password/{token}', 'Auth\ResetPasswordController@resetPassword')->name('resetpassword');
 
 Route::get('cards', 'CardsController@index')->name('cards');
 Route::get('cards/store', 'CardsController@create');

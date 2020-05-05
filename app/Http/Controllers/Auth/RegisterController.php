@@ -199,10 +199,20 @@ use RegistersUsers;
 
         if(!empty($reqData)){
           $validator = Validator::make($reqData, [
+            'password' => [
+                  'required',
+                  'string',
+                  'min:6',             // must be at least 10 characters in length
+                  'regex:/[a-z]/',      // must contain at least one lowercase letter
+                  'regex:/[A-Z]/',      // must contain at least one uppercase letter
+                  'regex:/[0-9]/',      // must contain at least one digit
+                  'regex:/[@$!%*#?&]/', // must contain a special character
+              ],
             'phone' => 'required|digits:10',
             'otp' => 'required|digits:4|in:'.$rUser->token,
                 ], [
             'otp' => 'Please enter valid OTP.',
+            'password.regex' => 'Password must have at least, 6 characters with 1 upper case, 1 number, and 1 special character'
           ]);
 
           if ($validator->fails())
@@ -214,11 +224,12 @@ use RegistersUsers;
           $userData->token = 1;
           $userData->is_phone_verified = 1;
           $userData->status = 1;
-          $userData->password = Hash::make($reqData['otp']);
+          $userData->password = Hash::make($reqData['password']);
           $userData->save();
 
           session(['registerUser' => ""]);
-          $this->guard()->login($userData)->with('success', __('Your account has been successfully registered.'));
+          $this->guard()->login($userData);
+          return redirect()->to('home')->with('success', __('Your account has been successfully registered.'));
         }else{
           if(!empty($rUser) || $rUser->status == 3){
             //If user is not verify then enter

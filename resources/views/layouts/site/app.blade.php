@@ -46,6 +46,8 @@
         </div>
 
         @include('layouts.site.footer')
+        @include('partials.login')
+
         <!-- Scripts -->
         
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
@@ -62,8 +64,33 @@
                 selector: "span",
                 repeat: true // false
               });
+
+            $('[data-toggle="slide-collapse"]').on('click', function() {
+                $navMenuCont = $($(this).data('target'));
+                $navMenuCont.animate({
+                'width': 'toggle'
+                }, 350);
+                $(".menu-overlay").fadeIn(500);
+            });
+            
+            $(".menu-overlay").click(function(event) {
+                $(".navbar-toggle").trigger("click");
+                $(".menu-overlay").fadeOut(500);
+            });
+
             });
             </script>
+
+        @if($errors->has('email') || $errors->has('password'))
+            <script type="text/javascript">
+            $(function() {
+                $('#loginModal').modal({
+                    show: true
+                });
+            });
+            </script>
+        @endif
+
         
         @yield('page-js-script')
     </body>

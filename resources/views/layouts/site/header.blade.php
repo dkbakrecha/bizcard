@@ -45,7 +45,7 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="slide-collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -61,13 +61,12 @@
             <ul class="nav navbar-nav pull-right menu-prifile">
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link pointer" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link pointer"data-toggle="modal" data-target="#loginModal">{{ __('Log In') }}</a>
                 </li>
-
 
                 @if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary green" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link btn btn-primary green" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                 </li>
                 @endif
                 @else
@@ -156,5 +155,5 @@
 </div>
 <!-- /.container -->
 </nav>
-
+<div class="menu-overlay"></div>
 <div class="clear"></div>

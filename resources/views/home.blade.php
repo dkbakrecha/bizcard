@@ -22,7 +22,7 @@ $userData = Auth::guard('web')->user();
         <div class="col-lg-3">
             @include('layouts.site.sidebar_user')
 
-             <div class="panel panel-default dashboard">
+             <div class="panel panel-default dashboard hide">
                 <div class="panel-title">
                     Tips
                 </div>

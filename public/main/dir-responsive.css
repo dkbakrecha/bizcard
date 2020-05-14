@@ -18,6 +18,30 @@
 
 
 @media (max-width: 768px) {
+  #bs-example-navbar-collapse-1 {
+    position: fixed;
+    top: 0;
+    left: 15px;
+    z-index: 99;
+    width: 280px;
+    height: 100%;
+    background-color: #ddd;
+    overflow: auto;
+  }
+  .menu-overlay {
+    display: none;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    /* IE7 & 8 */
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 49;
+  }
+
   .biz-form.home-search{
     width: 100%;
   }
@@ -69,6 +93,13 @@
       padding: 12px 30px;
     }
 
+.card.business .panel-body{
+  padding: 5px;
+}
+
+.card.business .address{
+  min-height: 30px;
+}
  
 
   .panel-default.card {
@@ -110,9 +141,9 @@
     font-size: 24px;
     line-height: 30px;
     float: left;
-    padding: 0 25px;
+    padding: 0 15px;
     border-right: 1px solid;
-    width: 80px;
+    width: 60px;
     display: inline-block;
 }
 
@@ -139,6 +170,21 @@
     position: relative;
     display: inline-block;
     margin: 20px 0;
+}
+
+.otherbusiness{
+  margin: 0;
+  padding: 0;
+}
+
+.otherbusiness .container{
+  display: inline-block;
+  width: 100%;
+}
+
+.box-card-detail{
+  box-shadow: none;
+  border: 0px;
 }
 
 }

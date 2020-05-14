@@ -51,7 +51,6 @@
                         <input id="phone_show" type="text" placeholder="{{ __('messages.phone') }}" class="form-control" name="phone_show" value="{{ $user->phone }}" disabled>
 
                         <input id="phone" type="hidden" name="phone" value="{{ $user->phone }}">
-                        ({{ $user->token }})
                 </div>
 
                 <div class="form-group">

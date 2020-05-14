@@ -63,6 +63,9 @@ use AuthenticatesUsers;
         if (Auth::guard('web')->attempt($req, $request->remember)) {
             // if successful, then redirect to their intended location
             return redirect()->intended('home');
+               // return redirect()->intended('defaultpage');
+
+            
         }
         // if unsuccessful, then redirect back to the login with the form data
         //return redirect()->back()->withInput($request->only('email', 'remember'));

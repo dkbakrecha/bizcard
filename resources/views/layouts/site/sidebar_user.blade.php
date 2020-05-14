@@ -10,7 +10,7 @@
         Enquiries <span class="badge">0</span>
     </a>
 
-    <a href="/" class="list-group-item">
+    <a href="/" class="list-group-item hide">
         <span class="fa fa-heart"></span> 
         Favorites <span class="badge">
             <?php
@@ -21,7 +21,23 @@
 
     <a href="/" class="list-group-item">
         <span class="fa fa-address-card"></span> 
-        Address Book <span class="badge">
+        My Contacts 
+        <span class="badge">
+            <?php
+            echo (!empty($favCount) ? $favCount : '0');
+            ?>
+        </span>
+    </a>
+
+    <a href="/" class="list-group-item">
+        <span class="fa fa-address-card"></span> 
+        Add Contact
+    </a>
+
+    <a href="/" class="list-group-item">
+        <span class="fa fa-bell-o"></span> 
+        Offers
+        <span class="badge">
             <?php
             echo (!empty($favCount) ? $favCount : '0');
             ?>
@@ -34,7 +50,7 @@
     </a>
      
 
-    <a href="/" class="list-group-item hide">
+    <a href="{{ route('settings') }}" class="list-group-item">
         <span class="glyphicon glyphicon-user"></span>
         My Profile 
     </a>

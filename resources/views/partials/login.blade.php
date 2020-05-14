@@ -1,21 +1,14 @@
-<!-- Service Provider and Supervisor Login Form -->
-@extends('layouts.site.app')
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Log In to Your {{ config('app.name') }} Account!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
 
-@section('content')
-@section('sectionTitle', __('Login'))
-
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-    <button class="close" data-dismiss="alert">&times;</button>
-    <p>{{ $message }}</p>
-</div>
-@endif
-
-<div class="container">
-    <div class="row">
-
-        <div class="col-lg-4 col-lg-offset-4">
-            <h2 class="formHeading-2">Log In to Your {{ config('app.name') }} Account!</h2>
 
             <form method="POST" action="{{ route('login') }}" class="biz-form">
         @csrf
@@ -72,8 +65,6 @@
         </div>
     </form>        
         </div>
-
+        </div>
     </div>
-    
 </div>
-@endsection

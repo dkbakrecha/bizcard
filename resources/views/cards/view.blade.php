@@ -200,15 +200,14 @@ crossorigin=""></script>
 
     <!-- Other Cards -->
     <div class="otherbusiness">
-        <div class="container">
-            <div class="row">
-                <h3 class="section-title">Explorer More Business</h3>
+        <h3 class="section-title">Explorer More Business</h3>
+
+        <div class="container clear-mob-pd">
                 @foreach ($otherCards as $card)
-                <div class="col-md-4">
+                <div class="col-md-4 clear-mob-pd">
                     @include('elements.cardbox')
                 </div>
                 @endforeach 
-            </div>
         </div>
 
     </div>

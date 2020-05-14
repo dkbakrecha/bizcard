@@ -59,7 +59,7 @@ use ResetsPasswords;
       $userData = User::where('phone', $tData[1])->first();
       
       if ( !$userData ) return redirect()->to('home'); //redirect them anywhere you want if the token does not exist.
-      return view('Auth.passwords_show')->with(['user'=> $userData, 'token' => $token]);
+      return view('auth.passwords_show')->with(['user'=> $userData, 'token' => $token]);
     }
 
 

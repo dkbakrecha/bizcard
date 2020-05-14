@@ -1628,6 +1628,13 @@ ul.dropdown-menu {
     }
 }
 
+h5.modal-title {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 600;
+    display: inline-block;
+}
+
 a.navbar-brand.text {
     font-size: 24px;
     line-height: 24px;
@@ -1640,6 +1647,10 @@ a.navbar-brand.text span {
     font-style: oblique;
     display: block;
     text-align: right;
+}
+
+form.biz-form{
+    margin-bottom: 40px;
 }
 
 .biz-form input[type="text"],
@@ -1659,7 +1670,7 @@ a.navbar-brand.text span {
 .btn-biz, .biz-form button{
     color: rgb(255, 255, 255);
     background-color: rgb(255, 96, 66);
-    padding: 10px 40px;
+    padding: 10px 20px;
     text-align: center;
     font-size: 16px;    
 }

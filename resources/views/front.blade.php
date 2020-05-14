@@ -1,7 +1,6 @@
 @extends('layouts.site.app')
 
 @section('content')
-@include('elements.messages')
 
 <style>
     .biz-search{
@@ -32,7 +31,7 @@
               <p> All the best businesses, professionals, and service providers are waiting for your call</p>
               <form action="{{ route('list') }}" method="get" class="form biz-form home-search">
                 <div class="input-append">
-                  <input class="search-text" type="text" placeholder="Type your keyword" name="q" required>
+                  <input class="search-text" type="text" placeholder="What near about service/business your want to know?" name="q" required>
                   <button class="btn btn-biz" type="submit">
                     <i class="glyphicon glyphicon-search"></i>
                   </button>
@@ -81,16 +80,12 @@
     <div class="container clear-mob-pd">
         <div class="col-lg-12 clear-mob-pd">
                 <div class="category-bx center">
-                    <div class="row clear-mob-pd">
-
-                        @foreach ($bizCategory as $cate)
-                            <a href="{{ route('list') }}/?c={{ $cate->slug }}" class="category">
-                                <i class="fa {{ $cate->icon }}"></i>
-                                <p>{{ $cate->name }}</p>
-                            </a>
-                        @endforeach
-                        
-                </div>
+                    @foreach ($bizCategory as $cate)
+                        <a href="{{ route('list') }}/?c={{ $cate->slug }}" class="category">
+                            <i class="fa {{ $cate->icon }}"></i>
+                            <p>{{ $cate->name }}</p>
+                        </a>
+                    @endforeach
             </div>
     </div>
 </section>

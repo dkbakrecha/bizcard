@@ -136,4 +136,18 @@ class CardsController extends Controller {
   
         return redirect()->route('admin.cards.index')->with('success','Card delete successfully');
     }
+
+
+    public function update_status(Request $request){
+        $id = $request->get('id');
+        $cardData = Card::find($id);
+        $_status = $request->get('status');
+        if($_status != 1){
+            $cardData->status = 1;    
+        }else{
+            $cardData->status = 0;    
+        }
+        
+        $cardData->save();        
+    }
 }

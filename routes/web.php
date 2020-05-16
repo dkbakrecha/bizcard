@@ -143,6 +143,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('/items','Admin\ItemsController');
     Route::get('/cards/view/{id}', 'Admin\CardsController@view')->name('cards.view');
     Route::post('/cards/savecard', 'Admin\CardsController@savecard')->name('cards.savecard');
+    Route::post('/cardStatus', 'Admin\CardsController@update_status')->name('cardUpdate');
 });
 
 Route::prefix('admin')->group(function () {

@@ -168,6 +168,7 @@
 
     $(document).ready(function () {
         $("#block_customer").click(function () {
+            e.preventDefault();
             var customer_id = $(this).data('id');
 
             $.ajaxSetup({
@@ -177,7 +178,7 @@
             });
 
             jQuery.ajax({
-                url: "{{ url('/admin/customerBlock') }}",
+                url: "{{ url('/admin/cardUpdate') }}",
                 method: 'post',
                 data: {id: customer_id},
                 success: function (result) {

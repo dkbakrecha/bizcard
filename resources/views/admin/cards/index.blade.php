@@ -40,8 +40,16 @@
                 <span class="label label-primary booking-status-idle">{{ __('Idle') }}</span>
                 @endif
             </td>
+
             <td align="right">
                 <form action="{{ route('admin.cards.destroy',$booking->id) }}" method="POST">
+                    @if($booking->status == 1)
+                        <span class="btn btn-success btn-sm update_status" data-status="<?php echo $booking->status; ?>" data-id="<?php echo $booking->id; ?>"><i class="fa fa-circle greeen" title="{{ __('Card') }}"></i></span>
+                    @else
+                        <span class="btn btn-info btn-sm update_status" data-status="<?php echo $booking->status; ?>" data-id="<?php echo $booking->id; ?>"><i class="fa fa-circle greeen" title="{{ __('Card') }}"></i></span>
+                    @endif
+
+
                     @if(!empty($booking->slug))
                         <a href="{{ url('card/' . $booking->slug) }}" class="btn btn-info btn-sm" title="View Card" target="_BLANK"><i class="fa fa-eye"></i>
                         </a>
@@ -97,6 +105,30 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $(".update_status").click(function (e) {
+            e.preventDefault();
+            var customer_id = $(this).data('id');
+            var status = $(this).data('status');
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            jQuery.ajax({
+                url: "{{ url('/admin/cardStatus') }}",
+                method: 'post',
+                data: {id: customer_id,status: status},
+                success: function (result) {
+                    console.log(result);
+                    //setCookie("success", result.success, 1);
+                    location.reload();
+                }
+            });
+        });
+
+
         $('#viewBookingModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var _id = button.data('id');

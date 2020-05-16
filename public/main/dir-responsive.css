@@ -187,6 +187,44 @@
   border: 0px;
 }
 
+
+#bottomNav {
+    display: block;
+    position: fixed;
+    width: 100%;
+    background: #ec5252;
+    border-top: 2px solid #880000;
+    bottom: 0;
+    z-index: 99;
+    margin: 0;
+    color: #FFF;
+    box-shadow: 0 -2px 5px -2px #333;
+}
+
+#bottomNav .menu-item {
+    width: 25%;
+    float: left;
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    height: 50px;
+}
+
+#bottomNav .menu-item:hover,#bottomNav .menu-item:active {
+    background: rgb(255, 96, 66);
+    font-size: 15px;
+}
+
+#bottomNav a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#bottomNav a:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
 }
 
 /* =========== LAPTOPS =========== */

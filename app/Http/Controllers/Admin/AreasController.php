@@ -42,8 +42,9 @@ class AreasController extends Controller {
      */
     public function store(Request $request) {
         $validator = \Validator::make($request->all(), [
-                    'name' => 'required|max:50',
-                    'address' => 'required',
+                    'area_name' => 'required|max:50',
+                    'postal_code' => 'required',
+                    'city_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -51,9 +52,9 @@ class AreasController extends Controller {
         }
 
         $area = new Area();
-        $area->name = $request->get('name');
-        $area->unique_id = $this->unique_key("AR", "areas");
-        $area->address = $request->get('address');
+        $area->area_name = $request->get('area_name');
+        $area->postal_code = $request->get('postal_code');
+        $area->city_id = $request->get('city_id');
 
         $area->save();
 
@@ -89,8 +90,9 @@ class AreasController extends Controller {
      */
     public function update(Request $request) {
         $validator = \Validator::make($request->all(), [
-                    'name' => 'required|max:50',
-                    'address' => 'required',
+                    'area_name' => 'required|max:50',
+                    'postal_code' => 'required',
+                    'city_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -98,8 +100,9 @@ class AreasController extends Controller {
         }
 
         $area = Area::findOrFail($request->id);
-        $area->name = $request->get('name');
-        $area->address = $request->get('address');
+        $area->area_name = $request->get('area_name');
+        $area->postal_code = $request->get('postal_code');
+        $area->city_id = $request->get('city_id');
         $area->save();
 
         return response()->json(['success' => __('messages.area_update_success')]);

@@ -12,6 +12,7 @@
         <tr class="table-heading">
             <th width="110px">{{ __('messages.area_id') }}</th>
             <th width="580px">{{ __('messages.area') }}</th>
+              <th width="580px">{{ __('messages.postal_code') }}</th>
             <th width="150px">{{ __('messages.details') }}</th>
         </tr>
     </thead>
@@ -19,8 +20,9 @@
     <tbody>
         @foreach ($areas as $area)
         <tr>
-            <td>{{ $area->unique_id }}</td>
-            <td>{{ $area->name }}</td>
+            <td>{{ $area->id }}</td>
+            <td>{{ $area->area_name }}</td>
+            <td>{{ $area->postal_code }}</td>
             <td align="center" class="user-buttons">
 
                 <button class="btn btn-action" data-id="{{ $area->id }}" data-toggle="modal" data-target="#areaEditModal">
@@ -32,9 +34,6 @@
                 </button>
 
                 <form action="{{ route('area.destroy',$area->id) }}" method="POST">
-
-
-
                     @csrf
                     @method('DELETE')
 

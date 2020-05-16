@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        {{ $mnuDashboard = $mnuCategory = $mnuUser = $mnuFeedback = $mnuOffer = $mnuBlock = $mnuReviews = $mnuBooking = $mnuCoupon =  $mnuFinancial = ""  }}
+        {{ $mnuDashboard = $mnuCategory = $mnuUser = $mnuFeedback = $mnuOffer = $mnuBlock = $mnuReviews = $mnuBooking = $mnuCoupon =  $mnuFinancial = $mnuArea = ""  }}
 
         @if (request()->is('admin'))
         @php $mnuDashboard = "active" @endphp
@@ -43,6 +43,7 @@
             <li class="{{  $mnuUser }}"><a href="{{ route('users.index') }}"><img src="{{ url('images') }}/user-reservation.png" alt="User Management"> &nbsp; <span>{{ __('messages.user_management') }}</span></a></li>
             <li class=""><a href="{{ route('admin.items.index') }}"><i class="fa fa-binoculars"></i> <span>{{ __('Marketplace Items') }}</span></a></li>
             <li class="{{  $mnuCategory }}"><a href="{{ route('categories.index') }}"><i class="fa fa-star"></i> <span>{{ __('Category') }}</span></a></li>
+            <li class="{{  $mnuArea }}"><a href="{{ route('areas.index') }}"><i class="fa fa-star"></i> <span>{{ __('Areas') }}</span></a></li>
             <?php /*
 <li class="{{  $mnuFinancial }}"><a href="{{ route('admin.financial') }}"><img src="{{ url('images') }}/staff-financial.png" alt="Financial"> &nbsp; <span>{{ __('messages.financials') }}</span></a></li>
             <li class="{{  $mnuBlock }}"><a href="{{ route('block_providers') }}"><img src="{{ url('images') }}/schedule-booking.png" alt="Blocked"> &nbsp; <span>{{ __('messages.blocked') }}</span></a></li>

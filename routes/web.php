@@ -14,7 +14,7 @@
   return view('admintemplate');
   });
  */
-Route::get('/', 'HomeController@front');
+Route::get('/', 'HomeController@front')->name('front');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about-us', 'HomeController@aboutus')->name('about-us');
 Route::get('/features', 'HomeController@features')->name('features');
@@ -172,6 +172,8 @@ Route::prefix('admin')->group(function () {
     Route::post('settings', 'AdminController@updateSetting')->name('admin.settings.store');
 
     Route::resource('categories', 'Admin\CategoryController');
+    Route::resource('areas', 'Admin\AreasController');
+    
     Route::resource('services', 'Admin\ServicesController');
     Route::resource('users', 'Admin\UsersController');
     Route::resource('area', 'Admin\AreasController');

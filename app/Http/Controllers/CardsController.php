@@ -74,6 +74,8 @@ class CardsController extends Controller {
         $cardData->linkedin = $request->get('linkedin');
         $cardData->twitter = $request->get('twitter');
 
+        $cardData->area_id = $request->get('area_id');
+
         $cardData->user_id = Auth::user()->id;
         $cardData->save();
         /*
@@ -159,6 +161,8 @@ class CardsController extends Controller {
 
         $shopOffer->price = $request->get('price');
         $shopOffer->days = $request->get('days');
+
+        $cardData->area_id = $request->get('area_id');
         $shopOffer->save();
 
         return response()->json(['success' => __('messages.offer_success_update')]);

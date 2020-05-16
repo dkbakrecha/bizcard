@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider {
 
         view()->composer('*', function ($view) {
             $view->with('bizCategory', Category::get()->keyBy('name'));
+            $view->with('bizArea', Area::get()->keyBy('area_name'));
         });
     }
 

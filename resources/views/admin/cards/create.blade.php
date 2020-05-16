@@ -37,6 +37,21 @@
             </div>
 
             <div class="form-group middle">
+              <label for="business_area">Area :</label>
+              <select name="area_id" id="area_id" class="form-control">
+                <option value="" {{ $_chk }}>Select Area</option>
+                @foreach ($bizArea as $area)
+
+                {{ $_chk = "" }}
+                @if(!empty($cardData->area_id) && $area->id == $cardData->area_id)
+                @php ($_chk = "selected")
+                @endif
+                <option value="{{ $area->id }}" {{ $_chk }}>{{ $area->area_name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group middle">
               <label for="status">Status</label>
               <select name="status" id="status" class="form-control">
                     <option value="">Select status</option>

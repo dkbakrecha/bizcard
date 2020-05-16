@@ -310,9 +310,9 @@ $('#areaEditModal').on('show.bs.modal', function (event) {
         data: {id: _id},
         success: function (result) {
             modal.find('.modal-body #id').val(result.data.id)
-            modal.find('.modal-body #unique_id').val(result.data.unique_id)
-            modal.find('.modal-body #name').val(result.data.name)
-            modal.find('.modal-body #address').val(result.data.address)
+            modal.find('.modal-body #area_name').val(result.data.area_name)
+            modal.find('.modal-body #postal_code').val(result.data.postal_code)
+            modal.find('.modal-body #city_id').val(result.data.city_id)
         }
     });
 });

@@ -54,6 +54,9 @@ class CardsController extends Controller {
         $cardData->linkedin = $request->get('linkedin');
         $cardData->twitter = $request->get('twitter');
 
+        $cardData->area_id = $request->get('area_id');  
+        $cardData->city_id = 1;  
+        
         $cardData->user_id = 1; //Created by Admin
         $cardData->save();
 
@@ -112,6 +115,8 @@ class CardsController extends Controller {
         $cardData->twitter = $request->get('twitter');
 
         $cardData->user_id = $request->get('user_id');  
+        $cardData->area_id = $request->get('area_id');  
+        $cardData->city_id = 1;  
         $cardData->status = $request->get('status');
         $cardData->save();
 

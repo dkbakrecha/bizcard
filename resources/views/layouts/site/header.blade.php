@@ -61,7 +61,7 @@
             <ul class="nav navbar-nav pull-right menu-prifile">
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link pointer"data-toggle="modal" data-target="#loginModal">{{ __('Log In') }}</a>
+                    <a class="nav-link pointer" data-toggle="modal" data-target="#loginModal">{{ __('Log In') }}</a>
                 </li>
 
                 @if (Route::has('register'))

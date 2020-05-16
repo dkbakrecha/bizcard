@@ -1,3 +1,26 @@
+<div id="bottomNav">
+    <a href="{{ route('front') }}" class="">
+        <div class="menu-item">
+                <i class="glyphicon glyphicon glyphicon-search"></i><br>Search
+        </div>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#loginModal">
+        <div class="menu-item">
+                <i class="glyphicon glyphicon glyphicon-credit-card"></i><br>My Contacts
+        </div>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#loginModal">
+        <div class="menu-item">
+                <i class="glyphicon glyphicon glyphicon-gift"></i><br> Offers
+        </div>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#loginModal">
+        <div class="menu-item">
+                <i class="glyphicon glyphicon glyphicon-user"></i><br>My Profile
+        </div>
+    </a>
+</div>
+
 <div id="footer-bottom">
     <div class="container">
         <footer >

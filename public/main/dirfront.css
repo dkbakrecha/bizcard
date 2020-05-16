@@ -1649,6 +1649,11 @@ a.navbar-brand.text span {
     text-align: right;
 }
 
+
+#bottomNav{
+    display: none;
+}
+
 form.biz-form{
     margin-bottom: 40px;
 }

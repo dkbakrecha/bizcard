@@ -31,7 +31,21 @@
         
         <meta name="google-signin-client_id" content="687229957552-gsgfrm8d6e69jv5hl7l8eb3p9vql1hmc.apps.googleusercontent.com">
         */
+        
+
         ?>
+
+        @if($_SERVER['HTTP_HOST'] == 'cardbiz.in')
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166868228-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-166868228-1');
+        </script>
+        @endif
         
 
     </head>

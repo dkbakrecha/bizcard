@@ -34,8 +34,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- iCheck -->
         <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/iCheck/square/blue.css") }}">
 
-        <link rel="stylesheet" href="{{ asset("/css/site_ui.css") }}">
-
         <link rel="shortcut icon" href="{{{ asset('favicon.ico') }}}">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -7,6 +7,7 @@ use Auth;
 use App\User;
 use App\Card;
 use App\Item;
+use App\Search;
 use App\Http\Controllers\Admin\ProviderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -294,7 +295,21 @@ class HomeController extends Controller {
         $_searchTerm = $request->q;
         $_searchCategory = $request->category;
         
+
         $categoryList = $this->getCategoryList();
+
+        if (!empty($_searchTerm)) {
+            $searchRow = Search::where('search_text', '=', $_searchTerm)->first();
+            if(!empty($searchRow)){
+                //TO DO -- update search count
+            }else{
+                $sRow = new Search();
+                $sRow->search_text = $_searchTerm;
+                $sRow->save();   
+                      //echo $_searchTerm;
+            }
+      
+        }
 
 
         $cardData = array();

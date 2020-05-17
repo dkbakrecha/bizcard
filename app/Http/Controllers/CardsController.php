@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CardsController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth:web')->except(['view']);
+        $this->middleware('auth:web')->except(['view','viewnew']);
     }
 
     public function index() {
@@ -123,6 +123,21 @@ class CardsController extends Controller {
             return redirect()->action('HomeController@index');
         }else{
             return view('cards.view', compact('card', 'otherCards'));
+        }
+    }
+
+     public function viewnew($cardslug)
+    {
+        $card = Card::where('slug', $cardslug)->with(['category'])->first();
+        $otherCards = Card::inRandomOrder()->with(['category'])
+            ->where('status', 1)->take(3)->get()->toArray();
+
+
+
+        if(empty($card)){
+            return redirect()->action('HomeController@index');
+        }else{
+            return view('cards.viewnew', compact('card', 'otherCards'));
         }
     }
 

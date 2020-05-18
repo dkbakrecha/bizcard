@@ -12,7 +12,9 @@ use App\Service;
 use App\Area;
 use App\SiteSetting;
 use App\Booking;
+use App\Search;
 use Illuminate\Support\Carbon;
+
 
 class AdminController extends Controller {
 
@@ -33,7 +35,7 @@ class AdminController extends Controller {
         $cardActive = Card::where('status', '=', 1)->count();
         $cardPending = Card::where('status', '=', 3)->count();
         
-        
+        $searchInfo = Search::where('status', '=', 1)->get();        
 
         //return $getUser24Hrs;
         return view('admin.dashboard', [
@@ -41,6 +43,7 @@ class AdminController extends Controller {
             'user_pending' => $userPending,
             'card_active' => $cardActive,
             'card_pending' => $cardPending,
+            'searchInfo' => $searchInfo
         ]);
     }
 

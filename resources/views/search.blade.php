@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="search-filter">
+<div class="search-filter bg-background">
     <div class="container">
          <form action="{{ route('list') }}" method="get" class="form biz-form home-search" id="filter-form">
             <div class="input-append">

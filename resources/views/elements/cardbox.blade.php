@@ -22,13 +22,13 @@
                 </a>        
 
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-default">
+                    <span data-toggle="modal" data-target="#loginModal" class="btn btn-default">
                 @else
-                    <a href="#" class="btn btn-primary btn-block">
+                    <span class="btn btn-default add-to-contact" data-id="{{ $card['id'] }}">
                 @endguest
 
-                    <i class="fa fa-heart-o"></i> Favorite
-                </a>
+                    <i class="fa fa-heart-o"></i> Add to My Contacts
+                </span>
             </div>
         
         <?php

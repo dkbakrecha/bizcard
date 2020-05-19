@@ -92,6 +92,32 @@
                 $(".menu-overlay").fadeOut(500);
             });
 
+            
+
+$('.add-to-contact').on('click', function () {
+    var _id = $(this).data('id');
+    var _this = $(this);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    jQuery.ajax({
+        url: "{{ url('add-to-contact') }}",
+        method: 'post',
+        data: {id: _id},
+        success: function (result) {
+            //console.log(result);
+            if(result == 0){
+                _this.html('<i class="fa fa-heart-o"></i> Add to My Contacts');
+            }else{
+                _this.html('<i class="fa fa-heart"></i> Unlink My Contacts');
+            }
+        }
+    });
+});            
+
             });
             </script>
 

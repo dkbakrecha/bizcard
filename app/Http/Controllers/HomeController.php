@@ -64,7 +64,9 @@ class HomeController extends Controller {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function front() {
-        $resentCards = Card::latest('created_at')->with(['category'])->where('status', 1)->take(3)->get()->toArray();
+        $resentCards = Card::latest('created_at')->with(['category','contact' => function ($contact){
+                    $contact->where('user_id', Auth::id());
+        }])->where('status', 1)->take(3)->get()->toArray();
         $resentItems = Item::latest('created_at')->where('status', 1)->take(4)->get();
         //echo "<pre>";
         //print_r($resentCards);
@@ -324,7 +326,9 @@ class HomeController extends Controller {
                         }
                     })
                     ->latest('created_at')
-                    ->with(['category'])
+                    ->with(['category','contact' => function ($contact){
+                    $contact->where('user_id', Auth::id());
+        }])
                     ->paginate(9);
 
         $pagination = $cardData->appends ( array (

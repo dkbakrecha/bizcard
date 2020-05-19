@@ -10,4 +10,9 @@ class Card extends Model
         return $this->belongsTo('App\Category', 'business_category')
                         ->select(["id", "name", "slug"]);
     }
+
+    public function contact() 
+	{ 
+	    return $this->HasMany('App\Contact')->where('status','=', 1); 
+	}
 }

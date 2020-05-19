@@ -27,7 +27,11 @@
                     <span class="btn btn-default add-to-contact" data-id="{{ $card['id'] }}">
                 @endguest
 
-                    <i class="fa fa-heart-o"></i> Add to My Contacts
+                    @if(count($card['contact']) > 0)
+                        <i class="fa fa-heart"></i> Unlink My Contacts
+                    @else
+                        <i class="fa fa-heart-o"></i> Add to My Contacts
+                    @endif
                 </span>
             </div>
         

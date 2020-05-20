@@ -10,16 +10,7 @@
         Enquiries <span class="badge">0</span>
     </a>
 
-    <a href="/" class="list-group-item hide">
-        <span class="fa fa-heart"></span> 
-        Favorites <span class="badge">
-            <?php
-            echo (!empty($favCount) ? $favCount : '0');
-            ?>
-        </span>
-    </a>
-
-    <a href="/" class="list-group-item">
+    <a href="{{ route('contacts') }}" class="list-group-item">
         <span class="fa fa-address-card"></span> 
         My Contacts 
         <span class="badge">
@@ -27,11 +18,6 @@
             echo (!empty($favCount) ? $favCount : '0');
             ?>
         </span>
-    </a>
-
-    <a href="/" class="list-group-item">
-        <span class="fa fa-address-card"></span> 
-        Add Contact
     </a>
 
     <a href="/" class="list-group-item">

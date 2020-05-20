@@ -66,7 +66,8 @@ class HomeController extends Controller {
     public function front() {
         $resentCards = Card::latest('created_at')->with(['category','contact' => function ($contact){
                     $contact->where('user_id', Auth::id());
-        }])->where('status', 1)->take(3)->get()->toArray();
+        }])->where('status', 1)->take(4)->get()->toArray();
+
         $resentItems = Item::latest('created_at')->where('status', 1)->take(4)->get();
         //echo "<pre>";
         //print_r($resentCards);

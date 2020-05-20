@@ -1,3 +1,13 @@
+<div class="card-wrap">
+    
+<div class="item-card-img">
+    <div class="ribbon ribbon-top-left text-danger"><span class="bg-danger">New</span></div>
+
+@if(file_exists( public_path().'/images/cards/'.$card['id'].'-'.$card['slug'].'.jpg' ))
+    <img src="{{ asset('public/images/cards/'.$card['id'] .'-'. $card['slug'] .'.jpg') }}" class="img-responsive">
+@endif
+</div>
+    
 <div class="panel panel-default card business">
     <div class="panel-body flow">
         <span class="label label-primary pull-rig">{{ $card['category']['name'] }}</span>
@@ -8,23 +18,23 @@
         </h2>
         <div class="address">
             {{ $card['address'] }}
+
+            @guest
+                <a href="{{ route('login') }}" class="">
+                <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
+            @else
+                <a href="tel:{{ $card['contact_primary'] }}" class="">
+                <i class="fa fa-phone"></i> {{ $card['contact_primary'] }}
+            @endguest
+            </a>
         </div>
     </div>
     <div class="panel-footer">
             <div class="btn-group" role="group">
                 @guest
-                    <a href="{{ route('login') }}" class="btn btn-success">
-                    <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
+                    <span data-toggle="modal" data-target="#loginModal" class="">
                 @else
-                    <a href="tel:{{ $card['contact_primary'] }}" class="btn btn-primary">
-                    <i class="fa fa-phone"></i> {{ $card['contact_primary'] }}
-                @endguest
-                </a>        
-
-                @guest
-                    <span data-toggle="modal" data-target="#loginModal" class="btn btn-default">
-                @else
-                    <span class="btn btn-default add-to-contact" data-id="{{ $card['id'] }}">
+                    <span class="add-to-contact" data-id="{{ $card['id'] }}">
                 @endguest
 
                     @if(count($card['contact']) > 0)
@@ -59,4 +69,6 @@
 
         <!-- Share contact open -->
     </div>
+</div>    
+
 </div>

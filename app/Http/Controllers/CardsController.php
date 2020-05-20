@@ -113,8 +113,12 @@ class CardsController extends Controller {
 
     public function view($cardslug)
     {
-        $card = Card::where('slug', $cardslug)->with(['category'])->first();
-        $otherCards = Card::inRandomOrder()->with(['category'])
+        $card = Card::where('slug', $cardslug)->with(['category','contact' => function ($contact){
+                    $contact->where('user_id', Auth::id());
+        }])->first();
+        $otherCards = Card::inRandomOrder()->with(['category','contact' => function ($contact){
+                    $contact->where('user_id', Auth::id());
+        }])
             ->where('status', 1)->take(3)->get()->toArray();
 
 
@@ -128,8 +132,12 @@ class CardsController extends Controller {
 
      public function viewnew($cardslug)
     {
-        $card = Card::where('slug', $cardslug)->with(['category'])->first();
-        $otherCards = Card::inRandomOrder()->with(['category'])
+        $card = Card::where('slug', $cardslug)->with(['category','contact' => function ($contact){
+                    $contact->where('user_id', Auth::id());
+        }])->first();
+        $otherCards = Card::inRandomOrder()->with(['category','contact' => function ($contact){
+                    $contact->where('user_id', Auth::id());
+        }])
             ->where('status', 1)->take(3)->get()->toArray();
 
 

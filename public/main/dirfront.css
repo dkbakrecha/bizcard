@@ -1837,6 +1837,8 @@ img.logoicon {
 .panel-default.card {
     background: #FFF;
     border: 1px solid #f1f2f7;
+    position: relative;
+    width: 100%;
 }
 .card .panel-body {
     padding: 20px 25px 15px 25px;
@@ -1847,9 +1849,8 @@ img.logoicon {
 }
 
 .card .panel-footer {
-    padding:0;
     border-top: 1px solid #ededed;
-    background-color: #fffad5;
+    background-color: #FBFBFB;
 }
 
 .alert.dashboard-top {
@@ -1865,6 +1866,48 @@ ul.list-unstyled li .fa {
 }
 
 
+
+span.add-to-contact {
+    color: #444;
+    cursor: pointer;
+}
+
+span.add-to-contact:hover {
+    color: rgb(255, 96, 66);
+    cursor: pointer;
+}
+
+.add-to-contact .fa-heart, .add-to-contact .fa-heart-o {
+    font-size: 14px;
+}
+
+.add-to-contact .fa-heart{
+    color: rgb(255, 96, 66);
+}
+
+.search-row > div.col-md-6 .card-wrap{
+    display: flex;
+    overflow: hidden;
+}
+
+.item-card-img {
+    display: none;
+    width: 520px;
+    position: relative;
+    height: 100%;
+}
+
+.search-row > div.col-md-6 .item-card-img{
+    display: block;
+}
+
+.item-card-img .bg-danger{
+    background: #d60f02;
+}
+
+.item-card-img img {
+    height: 192px;
+}
 
 .panel.dashboard .panel-title {
     font-size: 18px;
@@ -2239,3 +2282,65 @@ h1.results-header {
     display: inline-block;
 }
 
+
+
+.ribbon::after, .ribbon::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid;
+}
+.ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 8px 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-transform: capitalize;
+    text-align: center;
+}
+.ribbon-top-left {
+    top: -10px;
+    left: -10px;
+}
+.ribbon-top-left::after, .ribbon-top-left::before {
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+.ribbon-top-left::before {
+    top: 0;
+    right: 50px;
+}
+.ribbon-top-left::after {
+    bottom: 50px;
+    left: 0;
+}
+.ribbon-top-left span {
+    left: -80px;
+    top: 15px;
+    transform: rotate(-45deg);
+}
+.ribbon-top-right {
+    top: -10px;
+    right: -10px;
+}
+.ribbon-top-right::after, .ribbon-top-right::before {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+.ribbon-top-right::before {
+    top: 0;
+    left: 36px;
+}
+.ribbon-top-right::after {
+    bottom: 36px;
+    right: 0;
+}
+.ribbon-top-right span {
+    left: -8px;
+    top: 30px;
+    transform: rotate(45deg);
+}

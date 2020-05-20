@@ -12,6 +12,17 @@ class ContactsController extends Controller {
         $this->middleware('auth:web')->except([]);
     }
 
+    public function index() {
+        $userId = Auth::user()->id;
+
+        $contacts = Contact::Where('user_id', '=', $userId)
+                ->where('status', '=', 1)
+                ->with(['card'])
+                ->get()->toArray();
+        
+        return view('contacts.index', compact('contacts'));
+    }
+
     public function addToContact(Request $request) {
         $cardId = $request->id;
         $userId = Auth::user()->id;

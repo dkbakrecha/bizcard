@@ -13,6 +13,7 @@ $cateImgArr = array('1' => 'automotive.png', '2' => 'business.png', '3' => 'educ
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
       crossorigin=""/>
 <link href="{{ asset('main/dirfront_jay.css') }}" rel="stylesheet">
+
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 crossorigin=""></script>
@@ -168,6 +169,8 @@ crossorigin=""></script>
                     </div>
                 </div>
             </div>
+
+
         </div>
 
 
@@ -175,12 +178,121 @@ crossorigin=""></script>
         <hr>
         <div>
             <section class="card-top ">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-name">
+                            <div class="card-name-heading">{{ $card->business_name }}</div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </section>
+            <section class="sptb">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card-name">
-                                <div class="card-name-heading">{{ $card->business_name }}</div>
+                        <div class="col-xl-8 col-lg-8 col-md-12">
+                            <div class=""> 
+                                <div class="border-0"> 
+                                    <div class="border border-bottom-0 p-5 bg-white"> 
+                                        <h3 class="card-title mb-3 font-weight-semibold">Overview</h3> 
+                                        <div class="mb-0"> 
+                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atcorrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                            <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoraliz the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble thena bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain.</p>
+                                        </div> 
+                                        <h4 class="card-title mt-5 mb-3">Contact Info</h4> 
+                                        <div class="item-user mt-3">
+                                            <div class="row"> 
+                                                <div class="col-md-6"> 
+                                                    <h6 class="font-weight-normal">
+                                                        <span><i class="fa fa-map mr-3 mb-2"></i></span>
+                                                        <a href="#" class="text-body"> Mp-214, New York, NY 10012, US-52014</a>
+                                                    </h6> 
+                                                    <h6 class="font-weight-normal">
+                                                        <span><i class="fa fa-envelope mr-3 mb-2"></i>
+                                                        </span>
+                                                        <a href="#" class="text-body"> robert123@gmail.com</a>
+                                                    </h6>
+                                                </div> 
+                                                <div class="col-md-6"> 
+                                                    <h6 class="font-weight-normal">
+                                                        <span>
+                                                            <i class="fa fa-phone mr-3  mb-2">
+
+                                                            </i>
+                                                        </span>
+                                                        <a href="#" class="text-secondary"> 0-235-657-24587</a>
+                                                    </h6> 
+                                                    <h6 class="font-weight-normal">
+                                                        <span><i class="fa fa-link mr-3 "></i>
+                                                        </span><a href="#" class="text-secondary">https://spruko.com/</a>
+                                                    </h6> 
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                        <h4 class="card-title mt-5 mb-4">More Business Info</h4>
+                                        <div class="table-responsive"> 
+                                            <table class="table mb-0 table-bordered-0"> 
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="font-weight-semibold px-0">Established Year</td>
+                                                        <td class="px-0">1981</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-semibold px-0">Services</td>
+                                                        <td class="px-0">Education, Courses</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-semibold px-0">Payment Methods</td>
+                                                        <td class="px-0">VISA, Mastercard, Discover, American Express</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-semibold px-0">Fax</td>
+                                                        <td class="px-0">+25 485-9865-85</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-semibold px-0">TollFree</td>
+                                                        <td class="px-0">+25 485-9865-85</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="font-weight-semibold px-0">Certification</td>
+                                                        <td class="px-0">ISO Certified</td>
+                                                    </tr> 
+                                                </tbody>
+                                            </table> 
+                                        </div> 
+                                        
+                                        <div class="pt-4 pb-4 pl-5 pr-5 border border-bottom-0 bg-white">
+                                        <div class="list-id">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a class="mb-0">Business ID : #8256358</a> </div>
+                                                <div class="col col-auto"> Posted By 
+                                                    <a class="mb-0 font-weight-bold">Individual</a> / 21st Dec 2019 
+                                                </div> 
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                    <div class="card-footer border bg-white"> 
+                                        <div class="icons"> 
+                                            <a href="#" class="btn btn-info icons">
+                                                <i class="icon icon-share mr-1"></i> Share Ad</a> 
+                                            <a href="#" class="btn btn-pink icons"><i class="icon icon-heart  mr-1">
+
+                                                </i> 678</a> 
+                                            <a href="#" class="btn btn-primary icons">
+                                                <i class="icon icon-printer  mr-1"></i> Print</a>
+                                            <a href="#" class="btn btn-danger icons mb-1 mt-1" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>
+                                        </div>
+                                    </div> 
+                                    </div> 
+                                    
+                                </div> 
                             </div>
+
+
                         </div>
                     </div>
                 </div>

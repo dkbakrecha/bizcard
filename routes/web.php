@@ -44,6 +44,9 @@ Route::get('cards', 'CardsController@index')->name('cards');
 Route::get('cards/store', 'CardsController@create');
 Route::post('cards/store', 'CardsController@store')->name('card.store');
 Route::get('cards/create', 'CardsController@create')->name('card.create');
+
+Route::post('add-to-contact', 'ContactsController@addToContact')->name('add-to-contact');
+Route::get('contacts', 'ContactsController@index')->name('contacts');
 //Route::match(['put', 'patch'], '/company/update/{id}','CompanyMasterController@update');
 
 //Route::post('offers/update', 'OffersController@update')->name('offer.update');

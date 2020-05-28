@@ -1,7 +1,91 @@
+
 .card-top .card-name-heading{
     color: #fff;
     font-size: 60px;
     letter-spacing: 5px;
     text-align: center;
     text-transform: uppercase;
+}
+.card-title {
+    font-size: 25px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.text-body {
+    color: #3f3e50 !important;
+}
+.font-weight-normal {
+    font-weight: 400 !important;
+}
+.mt-5, .my-5 {
+    margin-top: 1.5rem !important;
+}
+.mt-3, .my-3 {
+    margin-top: 0.75rem !important;
+}
+.mb-3, .my-3 {
+    margin-bottom: 0.75rem !important;
+}
+
+.font-weight-semibold {
+    font-weight: 500 !important;
+}
+
+.mb-3, .my-3 {
+    margin-bottom: 0.75rem !important;
+}
+
+.sptb {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+
+.border {
+    border: 1px solid #e0e5f3 !important ;
+    border-bottom-color: rgb(224, 229, 243);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    vertical-align: top;
+}
+.p-5 {
+    padding: 1.5rem !important;
+}
+
+.border-bottom-0 {
+    border-bottom: 0 !important;
+}
+.bg-white {
+    background-color: #fff !important;
+}
+.pl-5, .px-5 {
+    padding-left: 1.5rem !important;
+}
+.pr-5, .px-5 {
+    padding-right: 1.5rem !important;
+}
+.pb-4, .py-4 {
+    padding-bottom: 1rem !important;
+}
+.pt-4, .py-4 {
+    padding-top: 1rem !important;
+}
+
+.col-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+}
+.col {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
 }

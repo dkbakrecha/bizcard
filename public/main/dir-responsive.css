@@ -18,6 +18,24 @@
 
 
 @media (max-width: 768px) {
+  button.navbar-toggle {
+      display: none;
+  }
+
+  a.navbar-brand.text {
+      font-size: 24px;
+      line-height: 24px;
+      padding: 12px 0;
+      margin: 15px auto !important;
+      display: block;
+      width: 170px;
+      float: initial;
+  }
+
+  .search-row > div.col-md-6 .item-card-img{
+    display: none;
+  }
+
   #bs-example-navbar-collapse-1 {
     position: fixed;
     top: 0;
@@ -192,8 +210,8 @@
     display: block;
     position: fixed;
     width: 100%;
-    background: #ec5252;
-    border-top: 2px solid #880000;
+    background: #18ab9b;
+    border-top: 2px solid #29a036;
     bottom: 0;
     z-index: 99;
     margin: 0;
@@ -205,14 +223,14 @@
     width: 25%;
     float: left;
     text-align: center;
-    padding: 5px;
-    font-size: 14px;
+    padding: 10px 5px;
+    font-size: 12px;
     height: 50px;
 }
 
 #bottomNav .menu-item:hover,#bottomNav .menu-item:active {
-    background: rgb(255, 96, 66);
-    font-size: 15px;
+    background: #2ecc71;
+    font-size: 12px;
 }
 
 #bottomNav a {

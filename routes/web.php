@@ -29,6 +29,11 @@ Route::get('/cardnew/{cardslug}', 'CardsController@viewnew')->where('cardslug', 
 
 Route::get('/tcbot', 'HomeController@tcbot')->name('tcbot');
 
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
 Auth::routes();
 
 

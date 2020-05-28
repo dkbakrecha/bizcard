@@ -6,9 +6,9 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="theme-color" content="#18ab9b">
 
         <title>@yield('title') {{ config('app.name') }} | B2C Marketplace</title>
-
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,20 +20,11 @@
         <link href="{{ asset('js/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('js/changethewords/animate.changethewords.css') }}">
 
-        <link href="{{ asset('main/dirfront.css') }}" rel="stylesheet">
-        <link href="{{ asset('main/dir-responsive.css') }}" rel="stylesheet">
+        <link href="{{ asset('main/dirfront.css?var=20202802') }}" rel="stylesheet">
+        <link href="{{ asset('main/dir-responsive.css?var=20202802') }}" rel="stylesheet">
         <link href="{{ asset('main/colors.css') }}" rel="stylesheet">
         <link href="{{ asset('main/fonts.css') }}" rel="stylesheet">
 
-        <?php 
-        /*
-        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-        
-        <meta name="google-signin-client_id" content="687229957552-gsgfrm8d6e69jv5hl7l8eb3p9vql1hmc.apps.googleusercontent.com">
-        */
-        
-
-        ?>
 
         @if($_SERVER['HTTP_HOST'] == 'cardbiz.in')
         <!-- Global site tag (gtag.js) - Google Analytics -->

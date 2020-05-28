@@ -38,6 +38,25 @@ use AuthenticatesUsers;
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        // Get URLs
+        $urlPrevious = url()->previous();
+        $urlBase = url()->to('/');
+
+        // Set the previous url that we came from to redirect to after successful login but only if is internal
+        if(($urlPrevious != $urlBase . '/login') && (substr($urlPrevious, 0, strlen($urlBase)) === $urlBase)) {
+            session()->put('url.intended', $urlPrevious);
+        }
+
+        return view('auth.login');
+    }
+
     public function login(Request $request) {
         // Validate the form data
         $this->validate($request, [
@@ -62,7 +81,7 @@ use AuthenticatesUsers;
         // Attempt to log the user in
         if (Auth::guard('web')->attempt($req, $request->remember)) {
             // if successful, then redirect to their intended location
-            return redirect()->intended('home');
+            return redirect()->intended(session()->get('url.intended'));
                // return redirect()->intended('defaultpage');
 
             

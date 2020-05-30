@@ -9,7 +9,7 @@
             @include('layouts.site.sidebar_user')
 
 
-            <div class="panel panel-default dashboard">
+            <div class="panel panel-default dashboard hide">
                 <div class="panel-title">
                     Card status
                 </div>
@@ -41,8 +41,8 @@
                       @endif
 
             <div class="panel panel-default dashboard">
-                <div class="panel-title">
-                    Card Profile
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-briefcase"></i> Card Profile
                     @if(!empty($cardData->slug))
                         <a href="{{ url('card/' . $cardData->slug) }}" class="pull-right" target="_BLANK">View Card</a>
                     @endif

@@ -122,6 +122,9 @@ class HomeController extends Controller {
             $currentUser->profile_image = $_filename;
         }
 
+        $currentUser->name = $request->get('name');   
+        
+
         $currentUser->save();
 
         return redirect()->route('settings')->with('success', __('messages.setting_update_success'));

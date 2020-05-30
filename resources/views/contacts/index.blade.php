@@ -22,7 +22,7 @@ $userData = Auth::guard('web')->user();
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    My Contacts
+                    <span class="fa fa-address-card"></span> My Contacts
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered">

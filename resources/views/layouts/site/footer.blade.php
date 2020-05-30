@@ -1,50 +1,64 @@
 <div id="bottomNav">
-    <a href="{{ route('front') }}" class="">
-        <div class="menu-item">
+    {{ $mnuList = $mnuMyContact = $mnuOffer = $mnuUser = ""  }}
+
+    {{ $islogined = ""  }}
+
+    @if (request()->is('list*'))
+    @php $mnuList = "active" @endphp
+    @elseif (request()->is('contacts*'))
+    @php $mnuMyContact = "active" @endphp
+    @elseif (request()->is('offer*'))
+    @php $mnuOffer = "active" @endphp
+    @endif
+
+
+    <a href="{{ route('list') }}" class="">
+        <div class="menu-item {{  $mnuList }}" >
                 <i class="glyphicon glyphicon glyphicon-search"></i><br>Search
         </div>
     </a>
+    
     @guest
-    <a href="#" data-toggle="modal" data-target="#loginModal">
-        <div class="menu-item">
-                <i class="glyphicon glyphicon glyphicon-credit-card"></i><br>My Contacts
-        </div>
-    </a>
-    <a href="#" data-toggle="modal" data-target="#loginModal">
-        <div class="menu-item">
-                <i class="glyphicon glyphicon glyphicon-gift"></i><br> Offers
-        </div>
-    </a>
-    <a href="#" data-toggle="modal" data-target="#loginModal">
-        <div class="menu-item">
-                <i class="glyphicon glyphicon glyphicon-user"></i><br>My Profile
-        </div>
-    </a>
+        <a href="#" data-toggle="modal" data-target="#loginModal">
+            <div class="menu-item">
+                    <i class="glyphicon glyphicon glyphicon-credit-card"></i><br>My Contacts
+            </div>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#loginModal">
+            <div class="menu-item">
+                    <i class="glyphicon glyphicon glyphicon-gift"></i><br> Offers
+            </div>
+        </a>
+        <a href="#" data-toggle="modal" data-target="#loginModal">
+            <div class="menu-item">
+                    <i class="glyphicon glyphicon glyphicon-user"></i><br>LOGIN
+            </div>
+        </a>
     @else
-    <a href="{{ route('contacts') }}">
-        <div class="menu-item">
-                <i class="glyphicon glyphicon glyphicon-credit-card"></i><br>My Contacts
-        </div>
-    </a>
-    <a href="{{ route('contacts') }}">
-        <div class="menu-item">
-                <i class="glyphicon glyphicon glyphicon-gift"></i><br> Offers
-        </div>
-    </a>
-    <a href="{{ route('settings') }}">
-        <div class="menu-item">
-                <i class="glyphicon glyphicon glyphicon-user"></i><br>My Profile
-        </div>
-    </a>
-
+        @php $islogined = "loggedIn" @endphp
+        <a href="{{ route('contacts') }}">
+            <div class="menu-item {{  $mnuMyContact }}">
+                    <i class="glyphicon glyphicon glyphicon-credit-card"></i><br>My Contacts
+            </div>
+        </a>
+        <a href="{{ route('contacts') }}">
+            <div class="menu-item {{  $mnuOffer }}">
+                    <i class="glyphicon glyphicon glyphicon-gift"></i><br> Offers
+            </div>
+        </a>
+        <a href="#" data-toggle="slide-collapse" data-target="#bs-example-navbar-collapse-1">
+            <div class="menu-item ">
+                    <i class="glyphicon glyphicon-align-justify"></i><br> Menu
+            </div>
+        </a>
     @endguest
 </div>
 
-<div id="footer-bottom">
+<div id="footer-bottom" class="{{ $islogined }}">
     <div class="container">
         <footer >
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-xs-8">
 
                     <div class="links">
                         <a href="{{ route('about-us') }}" class="link">About</a>

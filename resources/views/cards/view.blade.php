@@ -200,7 +200,7 @@ crossorigin=""></script>
 
     <!-- Other Cards -->
     <div class="otherbusiness">
-        <h3 class="section-title">Explorer More Business</h3>
+        <h3 class="section-title">People Also Viewed</h3>
 
         <div class="container clear-mob-pd">
                 @foreach ($otherCards as $card)

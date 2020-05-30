@@ -10,8 +10,12 @@
         </div>
 
         <div class="col-lg-9">
-        	<div class="outer-notify">
-			        @if(!empty($notifications[0]))
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+                    <span class="glyphicon glyphicon-bell"></span> Notifications
+                </div>
+			        <div class="panel-body">
+			        	@if(!empty($notifications[0]))
 			    
 				@foreach ($notifications as $notification)
 				<div class="row notification-section @if (!$notification->is_read) unread @endif" onclick="notificationRead({{$notification->id}})" id="notification_{{$notification->id}}">
@@ -70,6 +74,7 @@
 			                    <h3> {{ __('messages.notification_empty') }} </h3>
 			                </div>
 			        @endif
+			        </div>
 			</div>
         </div>
     </div>

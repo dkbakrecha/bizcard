@@ -10,9 +10,9 @@
         </div>
 
         <div class="col-lg-9">
-            <div class="panel">
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    Change Password
+                    <span class="glyphicon glyphicon-asterisk"></span> Change Password
                 </div>
     <form action="{{ route('change_password.store') }}" method="post" class="form-horizontal">
         {{ csrf_field() }}

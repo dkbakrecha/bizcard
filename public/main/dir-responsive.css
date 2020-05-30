@@ -18,6 +18,7 @@
 
 
 @media (max-width: 768px) {
+
   button.navbar-toggle {
       display: none;
   }
@@ -28,13 +29,23 @@
       padding: 12px 0;
       margin: 15px auto !important;
       display: block;
-      width: 170px;
+      width: 172px;
       float: initial;
   }
 
   .search-row > div.col-md-6 .item-card-img{
     display: none;
   }
+
+  #roomContent .row {
+      margin-left: 0;
+      margin-right: 0;
+  }
+
+  .user-sidebar{
+    display: none;
+  }
+
 
   #bs-example-navbar-collapse-1 {
     position: fixed;
@@ -228,7 +239,9 @@
     height: 50px;
 }
 
-#bottomNav .menu-item:hover,#bottomNav .menu-item:active {
+#bottomNav .menu-item:hover,
+#bottomNav .menu-item:active,
+#bottomNav .menu-item.active {
     background: #2ecc71;
     font-size: 12px;
 }

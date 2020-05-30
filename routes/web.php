@@ -31,6 +31,9 @@ Route::get('/tcbot', 'HomeController@tcbot')->name('tcbot');
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('config:cache');
+
     return "Cache is cleared";
 });
 

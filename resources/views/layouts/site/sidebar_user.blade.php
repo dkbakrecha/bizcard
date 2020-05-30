@@ -1,4 +1,4 @@
-<div class="list-group">
+<div class="list-group user-sidebar">
     <a href="{{ route('home') }}" class="list-group-item active">
         <span class="glyphicon glyphicon-home"></span> 
         Dashboard

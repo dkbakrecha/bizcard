@@ -20,8 +20,8 @@
         <link href="{{ asset('js/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('js/changethewords/animate.changethewords.css') }}">
 
-        <link href="{{ asset('main/dirfront.css?var=20202802') }}" rel="stylesheet">
-        <link href="{{ asset('main/dir-responsive.css?var=20202802') }}" rel="stylesheet">
+        <link href="{{ asset('main/dirfront.css?var=20202803') }}" rel="stylesheet">
+        <link href="{{ asset('main/dir-responsive.css?var=20202803') }}" rel="stylesheet">
         <link href="{{ asset('main/colors.css') }}" rel="stylesheet">
         <link href="{{ asset('main/fonts.css') }}" rel="stylesheet">
 

@@ -117,10 +117,6 @@ body{
     line-height: 28px;
 }
 
-#roomContent .panel-default{
-    min-height: 450px;
-}
-
 #roomContent .dashboard-content{
     margin-top: 20px;
     min-height: 300px;
@@ -192,7 +188,7 @@ a.list-group-item{
   top: -2px;
   right: 0;
   padding: 0 20px;
-  background: rgb(255, 96, 66);
+  background: #18ab9b;
   cursor: pointer;
   pointer-events: none;
   -webkit-transition: .25s all ease;
@@ -202,7 +198,7 @@ a.list-group-item{
 }
 /* Transition */
 .filter-select:hover::after {
-  background: rgb(255, 150, 70);
+  background: #1dcdba;
 }
 
 
@@ -377,12 +373,6 @@ section.category {
 
 .panel-heading .btn-top-panel:last-child {
     margin-right: -15px;
-}
-
-.panel-heading {
-    color: rgb(255, 96, 66);
-    font-weight: 600;
-    border-bottom: 1px solid;
 }
 
 .form-control {
@@ -606,6 +596,12 @@ label.error {
 
 .box-inner {
     background: #fff;
+}
+
+.panel-default>.panel-heading {
+    background-color: #18ab9b;
+    border-color: #18ab9b;
+    color: #FFF;
 }
 
 .room-filter .panel-group .panel{
@@ -1674,7 +1670,7 @@ form.biz-form{
 
 .btn-biz, .biz-form button{
     color: rgb(255, 255, 255);
-    background-color: rgb(255, 96, 66);
+    background-color: #18ab9b;
     padding: 10px 20px;
     text-align: center;
     font-size: 16px;    
@@ -1682,7 +1678,7 @@ form.biz-form{
 
 .btn-biz:hover, .biz-form button:hover{
     color: rgb(255, 255, 255);
-    background-color: rgb(255, 150, 70);
+    background-color: #1dcdba;
 }
 
 .home-search input.search-text {
@@ -1873,7 +1869,7 @@ span.add-to-contact {
 }
 
 span.add-to-contact:hover {
-    color: rgb(255, 96, 66);
+    color: #18ab9b;
     cursor: pointer;
 }
 
@@ -1882,7 +1878,7 @@ span.add-to-contact:hover {
 }
 
 .add-to-contact .fa-heart{
-    color: rgb(255, 96, 66);
+    color: #18ab9b;
 }
 
 .search-row > div.col-md-6 .card-wrap{

@@ -161,6 +161,13 @@ a.list-group-item{
     padding-bottom: 5px;
 }
 
+h3.sub-heading {
+    border: none;
+    color: #18ab9b;
+    margin-top: 5px;
+    font-size: 20px;
+}
+
 
 /* Custom Select */
 .filter-select {
@@ -771,6 +778,14 @@ label.error {
     width: 100%;
 }
 
+.panel-footer.fixed {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+
 .social-sharing > .print, .social-sharing > .email {
     border-color: #e8e8e8;
     border-style: solid;
@@ -1363,6 +1378,7 @@ div.carousel .fill {
     display: block;
     height: 50px;
     width: 270px;
+    margin: 50px auto;
 }
 
 .btn-submitproperties #subup {

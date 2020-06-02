@@ -16,6 +16,8 @@
  */
 Route::get('/', 'HomeController@front')->name('front');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@updateinfo')->name('updateinfo');
+
 Route::get('/about-us', 'HomeController@aboutus')->name('about-us');
 Route::get('/features', 'HomeController@features')->name('features');
 Route::get('/privacy-terms', 'HomeController@terms')->name('privacy-terms');

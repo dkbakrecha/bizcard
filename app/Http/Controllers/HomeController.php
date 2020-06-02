@@ -85,6 +85,25 @@ class HomeController extends Controller {
         return view('home');
     }
 
+    public function updateinfo(Request $request) {
+        $currentUser = Auth::guard('web')->user();
+        $userInfo = User::where('id', '=', $currentUser->id)->first();
+
+        
+        $_fieldtype = $request->get('fieldtype');
+        if($_fieldtype == "name"){
+            $userInfo->name = $request->get('name');       
+        }elseif($_fieldtype == "area"){
+            $userInfo->area_id = $request->get('area_id');       
+            $userInfo->city_id = 1;       
+        }
+
+        
+        $userInfo->save();
+
+        return redirect()->route('home')->with('success', __('messages.setting_update_success'));
+    }
+
     public function aboutus() {
         
         return view('site/aboutus');

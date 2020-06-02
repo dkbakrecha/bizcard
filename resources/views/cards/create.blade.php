@@ -171,8 +171,9 @@
                   
                 @endif
           
-
-          <button type="submit" class="btn btn-primary">Update Card Info</button>
+<div class="panel-footer fixed">
+                        <button type="submit" class="btn btn-biz">Update Card Info</button>
+                    </div> 
       </form>
   </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
 use App\User;
 use App\Service;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:admin')->except(['cs_login']);
     }
 
     /**
@@ -31,6 +32,16 @@ class UsersController extends Controller {
                 ->get();
 
         return view('admin.users.index', compact('users'));
+    }
+
+    /** Function to login admin into service provider account */
+    public function cs_login(Request $request) {
+        //$userData = User::findOrFail($request->user_id);
+        //Auth::login($userData);
+        //return redirect()->intended('home');
+
+        Auth::loginUsingId($request->user_id);
+        return redirect()->intended('home');
     }
 
     /**

@@ -80,6 +80,22 @@
                                   <label for="address">Address :</label>
                                   <input type="text" class="form-control" name="address" value="{{ (!empty($cardData->address))?$cardData->address:"" }}"/>
                               </div>
+
+                               <div class="form-group">
+                                <label for="business_area">Area :</label>
+                                <select name="area_id" id="area_id" class="form-control">
+                                  <option value="" {{ $_chk }}>Select Area</option>
+                                  @foreach ($bizArea as $area)
+
+                                  {{ $_chk = "" }}
+                                  @if(!empty($cardData->area_id) && $area->id == $cardData->area_id)
+                                  @php ($_chk = "selected")
+                                  @endif
+                                  <option value="{{ $area->id }}" {{ $_chk }}>{{ $area->area_name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+
                               <div class="form-group">
                                   <label for="email_address">Email :</label>
                                   <input type="text" class="form-control" name="email_address" value="{{ (!empty($cardData->email_address))?$cardData->email_address:"" }}"/>

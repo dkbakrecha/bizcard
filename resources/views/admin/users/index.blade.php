@@ -48,6 +48,16 @@
                 <button class="btn btn-action" data-id="{{ $user->id }}" data-toggle="modal" data-target="#viewCustomerModal">
                     <i class="fa fa-eye"></i>
                 </button>
+
+                @if($user->status == 1)
+                <form action="{{ route('users.cs_login') }}" method="POST" target="_blank">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                    <button type="submit"  class="btn btn-action" >
+                        <i class="fa fa-lock text-green" title="{{ __('messages.login_as_service_provider') }}"></i>
+                    </button>
+                </form>
+                @endif
             </td>
         </tr>
         @endforeach

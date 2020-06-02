@@ -224,6 +224,9 @@ Route::prefix('admin')->group(function () {
     Route::post('sp_activate', 'Admin\ProviderController@sp_activate')->name('provider.activate');
     Route::post('sp_login', 'Admin\ProviderController@sp_login')->name('provider.sp_login');
 
+    Route::post('cs_login', 'Admin\UsersController@cs_login')->name('users.cs_login');
+    
+
     Route::get('feedbacks', 'Admin\FeedbacksController@index')->name('admin.feedbacks');
     Route::get('feedbacks/create', 'Admin\FeedbacksController@create')->name('admin.feedback.create');
     Route::post('feedbacks/create', 'Admin\FeedbacksController@create')->name('admin.feedback.create');

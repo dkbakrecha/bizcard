@@ -159,8 +159,6 @@
                           <label for="review-submit">Submit card for review</label>
                           <input type="checkbox" class="form-control" name="review-submit" value="yes" />
                       </div>
-
-
                     </div>
 
                     

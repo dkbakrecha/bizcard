@@ -6,7 +6,6 @@
 
 <div class="hr-line"></div>
 <?php
-
 $userData = Auth::guard('web')->user();
 ?>
 <div class="container" id="roomContent">
@@ -22,40 +21,35 @@ $userData = Auth::guard('web')->user();
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="fa fa-address-card"></span> My Contacts
+                    <span class="fa fa-address-card"></span> My Business Contacts
                 </div>
                 <div class="panel-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>
-                                Contact
-                            </th>
-                            <th colspan="2" class="center">
-                                Action
-                            </th>
-                        </tr>
-                    @foreach($contacts as $contact)
-                        <tr>
-                            <td>
-                                {{ $contact['card']['business_name'] }}
-                                ( {{ $contact['card']['business_person'] }} )
-                            </td>
+                    <div class="alert alert-info ">
+                        You can add business contacts here by clicking on "Add to My Contacts" button on card search/detail page. You can notify by mail if any of your contact business having any offers.
+                    </div>
 
-                            <td class="center">
-                                <a href="{{ url('card/' . $contact['card']['slug']) }}" title="{{ $contact['card']['business_name'] }}" rel="bookmark" class="btn btn-info btn-sm">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                            </td>
-                            <td class="center">
-                                <a href="tel:{{ $contact['card']['contact_primary'] }}" class="btn btn-info btn-sm">
-                                    <i class="fa fa-phone"></i>
-                                </a>
-                            </td>
-                        </tr>
+                    <ul class="list-group margin-top-20">
+                    @foreach($contacts as $contact)
+                        <li class="list-group-item">
+                                
+
+                                <span class="pull-right">
+                                    <a href="{{ url('card/' . $contact['card']['slug']) }}" title="{{ $contact['card']['business_name'] }}" rel="bookmark" class="btn btn-info btn-sm">
+                                        <i class="fa fa-eye"></i> View
+                                    </a>
+
+                                    <a href="tel:{{ $contact['card']['contact_primary'] }}" class="btn btn-info btn-sm">
+                                        <i class="fa fa-phone"></i> Call
+                                    </a>
+                                </span>
+
+                                <strong>{{ $contact['card']['business_name'] }}</strong><br>
+                                {{ $contact['card']['contact_primary'] }}
+                        </li>
                     @endforeach
-                    </table>
+                    </ul>
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer hide">
                     <button type="button" class="btn btn-biz">Add Contact</button>
                 </div>    
             </div>

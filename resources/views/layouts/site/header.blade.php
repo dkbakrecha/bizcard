@@ -8,6 +8,7 @@
             <div class="col-xs-3 color-patch turquoise"></div>
         </div>
     </div>
+    @php $currentUser = Auth::guard('web')->user(); @endphp
 
     @guest
     <?php /*
@@ -58,32 +59,48 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                @if (!request()->is('/') && !request()->is('list'))
+                <li class="nav-item mtb-15 search-wrap">
+                    <form action="{{ route('list') }}" method="get" class="navbar-form navbar-left form biz-form home-search">
+                        <div class="input-append">
+                          <input class="search-text" type="text" placeholder="What near about service/business your want to know?" name="q"  value="{{ (!empty($searchTerm)?$searchTerm:'') }}" required>
+                          <button class="btn btn-biz" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+                    </form>
+                </li>
+                @endif
+
+                
+                @if (!empty($currentUser))
+                <li class="nav-item mtb-15">
+                    <a href="{{ route('home') }}" class="nav-link pointer">
+                        <span class="glyphicon glyphicon-home"></span> Dashboard
+                    </a>
+                </li>
+                @endif
+            </ul>
+
             <ul class="nav navbar-nav pull-right menu-prifile">
                 @guest
-                <li class="nav-item">
+                <li class="nav-item mtb-15">
                     <a class="nav-link pointer" data-toggle="modal" data-target="#loginModal">{{ __('Log In') }}</a>
                 </li>
 
                 @if (Route::has('register'))
-                <li class="nav-item">
+                <li class="nav-item mtb-15">
                     <a class="nav-link btn btn-primary green" href="{{ route('register') }}">{{ __('Sign Up') }}</a>
                 </li>
                 @endif
                 @else
-                <li>
-                    <a href="{{ route('home') }}">
-                        <i class="glyphicon glyphicon-home"></i> Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('card.create') }}">
-                        <i class="glyphicon glyphicon-briefcase"></i> Card Profile
-                    </a>
-                </li>
+                
                 
 
                 <li>
-                    <a href="{{ route('notifications') }}">
+                    <a href="{{ route('notifications') }}" class="mtb-15">
                         <i class="fa fa-bell"></i>
                         @php
                         $currentUserID = Auth::guard('web')->id();
@@ -104,12 +121,12 @@
                 
 
                 <!-- User Account Menu -->
-                <li class="dropdown user user-menu">
+                <li class="dropdown user mtb-15 user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
 
-                        @php $currentUser = Auth::guard('web')->user(); @endphp
+                        
                         @if(!empty($currentUser->profile_image))
                         <img src="{{ asset("/images/profile/" . $currentUser->profile_image) }}" class="user-image" alt="User Image"> {{ Auth::user()->name }}
                         @else

@@ -14,17 +14,7 @@
     </div>
 </div>
 
-<div class="form-group">
-    <label for="services" class="col-sm-3 control-label">{{ __('messages.services') }}</label>
-    <div class="col-sm-9">
 
-        <select multiple="multiple" name="services[]" id="services" class="form-control select2"  style="width: 100%;">
-            @foreach($shop_services as $key => $service)
-            <option value="{{ $service->service_id }}">{{ $service->name }}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
 
 <div class="form-group" >
     <label for="offer_image" class="col-sm-3 control-label">{{ __('messages.photo_upload') }}</label>

@@ -1,65 +1,83 @@
-@extends('layouts.app')
+@extends('layouts.site.app')
 
 
 @section('sectionTitle', __('messages.offers'))
 
-@section('sectionButtons')
-<span class="label label-primary">{{ __('messages.create') }}</span>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#offerAddModal">
-    {{ __('messages.offer') }}
-</button>
-@endsection
-
 @section('content')
-@include('elements.general_top')
 @include('elements.messages')
 
-<table id="datatable" class="table table-bordered flair-datatable offers">
-    <thead>
-        <tr class="table-heading">
-            <th width="110px">{{ __('messages.offer_id') }}</th>
-            <th>{{ __('messages.description') }}</th>
-            <th>{{ __('messages.title') }}</th>
-            <th width="120px">{{ __('messages.offer_days') }}</th>
-            <th width="180px">{{ __('messages.details') }}</th>
-        </tr>
-    </thead>
-    @foreach ($offers as $offer)
-    <tr>
-        <td>{{ $offer->unique_id }}</td>
-        <td>{{ $offer->description }}</td>
-        <td><a href="#" data-id="{{ $offer->id }}" data-toggle="modal" data-target="#viewOfferModal">{{ $offer->title }}</a></td>
-        <td align="center">{{ $offer->days }}</td>
-        <td align="center" class="user-buttons admin-offers">
-            @if($offer->status == 3)
-            <div style="display:inline-block;">
-                <button class="btn btn-action pull-left" data-id="{{ $offer->id }}" data-toggle="modal" data-target="#editOfferModal">
-                    <i class="fa fa-pencil"></i>
-                </button>
+<div class="container" id="roomContent">
+
+
+    <div class="row">
+        <div class="col-lg-3">
+            @include('layouts.site.sidebar_user')
+        </div>
+
+        <div class="col-lg-9">
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="fa fa-address-card"></span> My Contacts
+                </div>
+                <div class="panel-body">
+                    <table id="datatable" class="table table-bordered flair-datatable offers">
+                        <thead>
+                            <tr class="table-heading">
+                                <th width="110px">{{ __('messages.offer_id') }}</th>
+                                <th>{{ __('messages.description') }}</th>
+                                <th>{{ __('messages.title') }}</th>
+                                <th width="120px">{{ __('messages.offer_days') }}</th>
+                                <th width="180px">{{ __('messages.details') }}</th>
+                            </tr>
+                        </thead>
+                        @foreach ($offers as $offer)
+                        <tr>
+                            <td>{{ $offer->unique_id }}</td>
+                            <td>{{ $offer->description }}</td>
+                            <td><a href="#" data-id="{{ $offer->id }}" data-toggle="modal" data-target="#viewOfferModal">{{ $offer->title }}</a></td>
+                            <td align="center">{{ $offer->days }}</td>
+                            <td align="center" class="user-buttons admin-offers">
+                                @if($offer->status == 3)
+                                <div style="display:inline-block;">
+                                    <button class="btn btn-action pull-left" data-id="{{ $offer->id }}" data-toggle="modal" data-target="#editOfferModal">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </div>
+                                <form action="{{ route('offer.destroy') }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" id="offer_id" name="offer_id" value="{{ $offer->id }}">
+                                    <button type="submit"  class="btn btn-action" onclick="return confirm('Are you sure you want to delete selected offer?')">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                                @else
+
+                                @if($offer->status == 1)
+                                <span class="text-green activate detail-label">{{ __('messages.activated') }}</span>
+                                @else
+                                <span class="text-red detail-label">{{ __('messages.rejected') }}</span>
+                                @endif
+
+                                @endif
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-biz" data-toggle="modal" data-target="#offerAddModal">
+                        Add Offer
+                    </button>
+                </div>    
             </div>
-            <form action="{{ route('offer.destroy') }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input type="hidden" id="offer_id" name="offer_id" value="{{ $offer->id }}">
-                <button type="submit"  class="btn btn-action" onclick="return confirm('Are you sure you want to delete selected offer?')">
-                    <i class="fa fa-times"></i>
-                </button>
-            </form>
-            @else
+        </div>
+    </div>
+</div>
 
-            @if($offer->status == 1)
-            <span class="text-green activate detail-label">{{ __('messages.activated') }}</span>
-            @else
-            <span class="text-red detail-label">{{ __('messages.rejected') }}</span>
-            @endif
 
-            @endif
-        </td>
-    </tr>
-    @endforeach
-</table>
-
-{!! $offers->links() !!}
 
 <!-- Offer ADD Modal -->
 <div class="modal fade" id="offerAddModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

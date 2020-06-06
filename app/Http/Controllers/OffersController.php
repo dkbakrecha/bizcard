@@ -13,7 +13,7 @@ class OffersController extends Controller {
     }
 
     public function index() {
-        $offers = ShopOffer::latest('shop_offers.created_at')
+        /* $offers = ShopOffer::latest('shop_offers.created_at')
                 ->where('shop_id', '=', $this->_shop_id())
                 ->where(function ($query) {
                     $query->where('status', '=', 1) //Active
@@ -21,8 +21,10 @@ class OffersController extends Controller {
                     ->orWhere('status', '=', 2) //Inactive
                     ->orWhere('status', '=', 0); //Rejected
                 })
-                ->paginate(20);
+                ->paginate(20); */
         //prd($services);
+        $offers = array();
+                
         return view('offers.index', compact('offers'))
                         ->with('i', (request()->input('page', 1) - 1) * 5);
     }

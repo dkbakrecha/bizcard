@@ -1,32 +1,51 @@
 <div class="list-group user-sidebar">
-    <a href="{{ route('home') }}" class="list-group-item active">
+    {{ $smMyContact = $smOffer = $smUser = $smHome = ""  }}
+
+    @php
+    $currentUserID = Auth::guard('web')->id();
+
+    $contactCount = DB::table('contacts')
+                    ->where('user_id', $currentUserID)
+                    ->where('status', 1)
+                    ->get()
+                    ->count();
+    @endphp
+
+    @if (request()->is('list*'))
+    @php $mnuList = "active" @endphp
+    @elseif (request()->is('home*'))
+    @php $smHome = "active" @endphp
+    @elseif (request()->is('contacts*'))
+    @php $smMyContact = "active" @endphp
+    @elseif (request()->is('offer*'))
+    @php $smOffer = "active" @endphp
+    @elseif (request()->is('update*'))
+    @php $smUser = "active" @endphp
+    @endif
+
+    <a href="{{ route('home') }}" class="list-group-item <?php echo $smHome; ?>">
         <span class="glyphicon glyphicon-home"></span> 
         Dashboard
     </a>
-
 
     <a href="" class="list-group-item hide">
         <span class="glyphicon glyphicon-comment"></span> 
         Enquiries <span class="badge">0</span>
     </a>
 
-    <a href="{{ route('contacts') }}" class="list-group-item">
+    <a href="{{ route('contacts') }}" class="list-group-item <?php echo $smMyContact; ?>">
         <span class="fa fa-address-card"></span> 
         My Contacts 
         <span class="badge">
-            <?php
-            echo (!empty($favCount) ? $favCount : '0');
-            ?>
+            <?php echo (!empty($contactCount) ? $contactCount : '0'); ?>
         </span>
     </a>
 
-    <a href="/" class="list-group-item">
+    <a href="{{ route('offers') }}" class="list-group-item <?php echo $smOffer; ?>">
         <span class="fa fa-bell-o"></span> 
         Offers
         <span class="badge">
-            <?php
-            echo (!empty($favCount) ? $favCount : '0');
-            ?>
+            <?php echo (!empty($favCount) ? $favCount : '0'); ?>
         </span>
     </a>
 
@@ -35,8 +54,11 @@
         Chat Support
     </a>
      
-
-    <a href="{{ route('settings') }}" class="list-group-item">
+    <a href="{{ route('card.create') }}"  class="list-group-item">
+        <i class="glyphicon glyphicon-briefcase"></i> My Business vCard
+    </a>
+    
+    <a href="{{ route('settings') }}" class="list-group-item <?php echo $smUser; ?>">
         <span class="glyphicon glyphicon-user"></span>
         My Profile 
     </a>

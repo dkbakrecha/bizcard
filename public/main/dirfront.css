@@ -23,6 +23,10 @@ body{
     margin-top: 20px;
 }
 
+.mtb-15{
+    margin: 15px 0;
+}
+
 .padd-top-50{
     margin-top: 50px;
 }
@@ -46,10 +50,7 @@ body{
     background: #ffffff;
 }
 
-.homepage-header .nav {
-    padding: 15px 0;
 
-}
 .homepage-header .navbar-brand {
     padding: 15px;
 }
@@ -266,7 +267,7 @@ h3.sub-heading {
 }
 
 .room .room-metas .feature-info img {
-    height: 24px;
+     height: 24px;
     width: 24px;
     margin-right: 5px;
 }
@@ -364,6 +365,18 @@ span.room-rate {
     width: 450px;
 }
 
+.nav-item .home-search input.search-text{
+    height: auto;
+    width: 405px;
+    border-radius: 4px;
+    margin: 3px 0;
+}
+
+.nav-item .btn.btn-biz {
+    padding: 8px 20px;
+    margin: 3px 0;
+}
+
 section.category {
     background: #EDEDED;
     padding: 40px 0;
@@ -390,6 +403,10 @@ section.category {
 
 .navbar{
     margin-bottom: 0px;
+}
+
+.nav-item.search-wrap .biz-form.home-search {
+    margin: 0;
 }
 
 /*change breadcrumb separator to raquo symbol*/

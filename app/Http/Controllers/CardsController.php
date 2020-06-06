@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Card;
+use App\Search;
 use Illuminate\Http\Request;
 
 class CardsController extends Controller {
@@ -227,5 +228,25 @@ class CardsController extends Controller {
         ShopOffer::find($request->offer_id)->delete();
         return redirect('offers')->with('success', __('messages.offer_success_delete'));
     }
+
+
+    public function searchsugg(Request $request){
+
+      $search = $request->search;
+
+      if($search == ''){
+         $searches = Search::orderby('search_text','asc')->select('id','search_text')->limit(5)->get();
+      }else{
+         $searches = Search::orderby('search_text','asc')->select('id','search_text')->where('search_text', 'like', '%' .$search . '%')->limit(5)->get();
+      }
+
+      $response = array();
+      foreach($searches as $s){
+         $response[] = array("value"=>$s->id,"label"=>$s->search_text);
+      }
+
+      echo json_encode($response);
+      exit;
+   }
 
 }

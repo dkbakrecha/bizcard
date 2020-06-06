@@ -6,7 +6,7 @@
     <div class="container">
          <form action="{{ route('list') }}" method="get" class="form biz-form home-search" id="filter-form">
             <div class="input-append">
-              <input class="search-text" type="text" placeholder="Type your keyword" name="q" value="{{ __($searchTerm) }}">
+              <input class="search-text bizsearch" type="text" placeholder="Type your keyword" name="q" value="{{ __($searchTerm) }}">
 
                 <div class="filter-select">
 

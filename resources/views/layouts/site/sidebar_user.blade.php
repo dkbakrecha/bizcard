@@ -1,5 +1,5 @@
 <div class="list-group user-sidebar">
-    {{ $smMyContact = $smOffer = $smUser = $smHome = ""  }}
+    {{ $smMyContact = $smOffer = $smUser = $smHome = $smBCard = ""  }}
 
     @php
     $currentUserID = Auth::guard('web')->id();
@@ -21,9 +21,11 @@
     @php $smOffer = "active" @endphp
     @elseif (request()->is('update*'))
     @php $smUser = "active" @endphp
+    @elseif (request()->is('cards/create*'))
+    @php $smBCard = "active" @endphp
     @endif
 
-    <a href="{{ route('home') }}" class="list-group-item <?php echo $smHome; ?>">
+    <a href="{{ route('home') }}" class="list-group-item {{ $smHome }}">
         <span class="glyphicon glyphicon-home"></span> 
         Dashboard
     </a>
@@ -33,7 +35,7 @@
         Enquiries <span class="badge">0</span>
     </a>
 
-    <a href="{{ route('contacts') }}" class="list-group-item <?php echo $smMyContact; ?>">
+    <a href="{{ route('contacts') }}" class="list-group-item {{ $smMyContact }}">
         <span class="fa fa-address-card"></span> 
         My Contacts 
         <span class="badge">
@@ -41,7 +43,7 @@
         </span>
     </a>
 
-    <a href="{{ route('offers') }}" class="list-group-item <?php echo $smOffer; ?>">
+    <a href="{{ route('offers') }}" class="list-group-item {{ $smOffer }}">
         <span class="fa fa-bell-o"></span> 
         Offers
         <span class="badge">
@@ -54,11 +56,11 @@
         Chat Support
     </a>
      
-    <a href="{{ route('card.create') }}"  class="list-group-item">
+    <a href="{{ route('card.create') }}"  class="list-group-item {{ $smBCard }}">
         <i class="glyphicon glyphicon-briefcase"></i> My Business vCard
     </a>
     
-    <a href="{{ route('settings') }}" class="list-group-item <?php echo $smUser; ?>">
+    <a href="{{ route('settings') }}" class="list-group-item {{ $smUser }}">
         <span class="glyphicon glyphicon-user"></span>
         My Profile 
     </a>

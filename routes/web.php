@@ -27,6 +27,7 @@ Route::get('/list', 'HomeController@search')->name('list');
 Route::get('/marketplace', 'HomeController@marketplace')->name('marketplace');
 Route::get('/product/{product}', 'HomeController@productshow')->name('product.show');
 Route::get('/cardnew/{cardslug}', 'CardsController@viewnew')->where('cardslug', '[a-z-]+');
+Route::post('/getSuggestion', 'CardsController@searchsugg')->name('getSuggestion');
 
 
 Route::get('/tcbot', 'HomeController@tcbot')->name('tcbot');

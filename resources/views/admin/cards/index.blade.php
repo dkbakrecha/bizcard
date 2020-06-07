@@ -42,12 +42,14 @@
             </td>
 
             <td align="right">
+
+
                 <form action="{{ route('admin.cards.destroy',$booking->id) }}" method="POST">
-                    @if($booking->status == 1)
+                @if($booking->status == 1)
                         <span class="btn btn-success btn-sm update_status" data-status="<?php echo $booking->status; ?>" data-id="<?php echo $booking->id; ?>"><i class="fa fa-circle greeen" title="{{ __('Card') }}"></i></span>
                     @else
                         <span class="btn btn-info btn-sm update_status" data-status="<?php echo $booking->status; ?>" data-id="<?php echo $booking->id; ?>"><i class="fa fa-circle greeen" title="{{ __('Card') }}"></i></span>
-                    @endif
+                    @endif                    
 
 
                     @if(!empty($booking->slug))
@@ -105,7 +107,8 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.content-wrapper').find(".update_status").click(function (e) {
+        //$('.table').find(".update_status").click(function (e) {
+        $('.table').on('click','.update_status', function (e) {
             e.preventDefault();
             var customer_id = $(this).data('id');
             var status = $(this).data('status');

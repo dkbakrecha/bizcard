@@ -75,13 +75,7 @@
                 @endif
 
                 
-                @if (!empty($currentUser))
-                <li class="nav-item mtb-15">
-                    <a href="{{ route('home') }}" class="nav-link pointer">
-                        <span class="glyphicon glyphicon-home"></span> Dashboard
-                    </a>
-                </li>
-                @endif
+                
             </ul>
 
             <ul class="nav navbar-nav pull-right menu-prifile">
@@ -98,7 +92,13 @@
                 @else
                 
                 
-
+                @if (!empty($currentUser))
+                <li class="nav-item mtb-15">
+                    <a href="{{ route('home') }}" class="nav-link pointer">
+                        <span class="glyphicon glyphicon-home"></span> Dashboard
+                    </a>
+                </li>
+                @endif
                 <li>
                     <a href="{{ route('notifications') }}" class="mtb-15">
                         <i class="fa fa-bell"></i>

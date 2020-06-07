@@ -1,6 +1,9 @@
 @extends('layouts.site.app')
 
 @section('title', $card->business_name . ' | ')
+@section('m-description', $card->description)
+@section('m-keywords', $card->keywords)
+@section('m-url', url('card/' . $card->slug) )
 
 @section('content')
 

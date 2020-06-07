@@ -18,32 +18,38 @@
         </h2>
         <div class="address">
             {{ $card['address'] }}
-
-            @guest
-                <a href="{{ route('login') }}" class="">
-                <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
-            @else
-                <a href="tel:{{ $card['contact_primary'] }}" class="">
-                <i class="fa fa-phone"></i> {{ $card['contact_primary'] }}
-            @endguest
-            </a>
+            <div>
+                
+            </div>
         </div>
     </div>
     <div class="panel-footer">
-            <div class="btn-group" role="group">
+        <a href="tel:{{ $card['contact_primary'] }}" class="pull-right">
+        @guest
+            <i class="fa fa-phone"></i> {{  str_repeat("*", 6) . substr($card['contact_primary'], 4) }}
+        @else
+            <i class="fa fa-phone"></i> {{ $card['contact_primary'] }}
+        @endguest
+        </a>
+
                 @guest
-                    <span data-toggle="modal" data-target="#loginModal" class="">
+                    <span data-toggle="modal" data-target="#loginModal" class="btn  btn-primary add-to-contact">
                 @else
-                    <span class="add-to-contact" data-id="{{ $card['id'] }}">
+                    <span class="btn btn-primary add-to-contact" data-id="{{ $card['id'] }}">
                 @endguest
 
                     @if(count($card['contact']) > 0)
-                        <i class="fa fa-heart"></i> Unlink My Contacts
+                        <i class="fa fa-heart"></i> Saved
                     @else
-                        <i class="fa fa-heart-o"></i> Add to My Contacts
+                        <i class="fa fa-heart-o"></i> Save
                     @endif
+
+
                 </span>
-            </div>
+
+                <a href="{{ url('card/' . $card['slug']) }}" title="{{ $card['business_name'] }}" class="btn btn-primary">
+                    View
+                </a>
         
         <?php
         /*

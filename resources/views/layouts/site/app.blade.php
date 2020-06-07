@@ -10,6 +10,30 @@
 
         <title>@yield('title') {{ config('app.name') }} | B2C Marketplace</title>
 
+        <meta name="description" content="Business Directory | @yield('m-description')"> 
+        <meta name="keywords" content="@yield('m-keywords')">
+        <meta name="robots" content="index, follow"> 
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> 
+        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> 
+        
+        <link rel="canonical" href="@yield('m-url')"> 
+        
+        <meta property="og:locale" content="en_US"> 
+        <meta property="og:type" content="article"> 
+        <meta property="og:title" content="@yield('title') {{ config('app.name') }} | B2C Marketplace"> 
+        <meta property="og:description" content="Business Directory"> 
+        <meta property="og:url" content="@yield('m-url')"> 
+        <meta property="og:site_name" content="CardBiz.in"> 
+        <meta property="article:publisher" content="https://www.facebook.com/cardbiz.in/"> 
+        <meta property="og:image" content="{{ asset('/images/logoicon.svg') }}"> 
+        <meta property="og:image:width" content="372"> 
+        <meta property="og:image:height" content="240"> 
+        
+        <meta name="twitter:card" content="summary_large_image"> 
+        <meta name="twitter:creator" content="@CardbizIn"> 
+        <meta name="twitter:site" content="@CardbizIn ">  
+        
+
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -21,8 +45,8 @@
         <link href="{{ asset('js/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('js/changethewords/animate.changethewords.css') }}">
 
-        <link href="{{ asset('main/dirfront.css?var=20202602') }}" rel="stylesheet">
-        <link href="{{ asset('main/dir-responsive.css?var=20202602') }}" rel="stylesheet">
+        <link href="{{ asset('main/dirfront.css?var=20202603') }}" rel="stylesheet">
+        <link href="{{ asset('main/dir-responsive.css?var=20202603') }}" rel="stylesheet">
         <link href="{{ asset('main/colors.css') }}" rel="stylesheet">
         <link href="{{ asset('main/fonts.css') }}" rel="stylesheet">
 

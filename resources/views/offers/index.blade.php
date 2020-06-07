@@ -22,7 +22,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="alert alert-info ">
-                        You can notify by mail if any of your contact business having any offers.
+                        You can notify by mail if any of your contact business card having any offers.
                     </div>
 
                     @if(!empty($offers))

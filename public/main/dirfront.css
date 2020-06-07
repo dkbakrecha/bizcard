@@ -1900,27 +1900,21 @@ ul.list-unstyled li .fa {
 
 
 
-span.add-to-contact {
-    color: #444;
-    cursor: pointer;
-}
-
-span.add-to-contact:hover {
-    color: #18ab9b;
-    cursor: pointer;
-}
-
 .add-to-contact .fa-heart, .add-to-contact .fa-heart-o {
     font-size: 14px;
 }
 
 .add-to-contact .fa-heart{
-    color: #18ab9b;
+    color: #a3ddd7;
 }
 
 .search-row > div.col-md-6 .card-wrap{
     display: flex;
     overflow: hidden;
+}
+
+.card-wrap:hover {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.27);
 }
 
 .item-card-img {
@@ -2093,7 +2087,7 @@ h3.section-title {
 }
 
 .card.business h2.business-name a {
-    color: #2a2c36;
+    color: #18ab9b;
     text-decoration: none;
 }
 
@@ -2104,12 +2098,6 @@ h3.section-title {
 
 .card.business .panel-footer .btn-group {
     width: 100%;
-}
-
-.card.business .panel-footer .btn-group .btn {
-    padding: 12px;
-    font-size: 16px;
-    width: 50%;
 }
 
 /* Style all font awesome icons */

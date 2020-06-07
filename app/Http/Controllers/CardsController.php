@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CardsController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth:web')->except(['view','viewnew']);
+        $this->middleware('auth:web')->except(['view','viewnew','searchsugg']);
     }
 
     public function index() {

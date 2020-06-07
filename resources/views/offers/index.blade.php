@@ -18,9 +18,15 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="fa fa-address-card"></span> My Contacts
+                    <span class="fa fa-bell-o"></span> Offers
                 </div>
                 <div class="panel-body">
+                    <div class="alert alert-info ">
+                        You can notify by mail if any of your contact business having any offers.
+                    </div>
+
+                    @if(!empty($offers))
+
                     <table id="datatable" class="table table-bordered flair-datatable offers">
                         <thead>
                             <tr class="table-heading">
@@ -65,9 +71,9 @@
                         </tr>
                         @endforeach
                     </table>
-                    
+                    @endif
                 </div>
-                <div class="panel-footer">
+                <div class="panel-footer hide">
                     <button type="button" class="btn btn-biz" data-toggle="modal" data-target="#offerAddModal">
                         Add Offer
                     </button>

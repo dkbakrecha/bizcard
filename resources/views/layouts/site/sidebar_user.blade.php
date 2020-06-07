@@ -37,7 +37,15 @@
 
     <a href="{{ route('contacts') }}" class="list-group-item {{ $smMyContact }}">
         <span class="fa fa-address-card"></span> 
-        My Contacts 
+        Business Cards 
+        <span class="badge">
+            <?php echo (!empty($contactCount) ? $contactCount : '0'); ?>
+        </span>
+    </a>
+
+    <a href="{{ route('contacts') }}" class="list-group-item {{ $smMyContact }} hide">
+        <span class="glyphicon glyphicon-book"></span> 
+        Personal Cards 
         <span class="badge">
             <?php echo (!empty($contactCount) ? $contactCount : '0'); ?>
         </span>
@@ -57,7 +65,7 @@
     </a>
      
     <a href="{{ route('card.create') }}"  class="list-group-item {{ $smBCard }}">
-        <i class="glyphicon glyphicon-briefcase"></i> My Business vCard
+        <i class="glyphicon glyphicon-briefcase"></i> Your Business vCard
     </a>
     
     <a href="{{ route('settings') }}" class="list-group-item {{ $smUser }}">
@@ -65,8 +73,11 @@
         My Profile 
     </a>
 
-    <a href="/" class="list-group-item hide">
+    <a href="{{ route('logout') }}"  class="list-group-item"
+        onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
         <span class="glyphicon glyphicon-off"></span>
-        Logout
+        {{ __('messages.logout') }}
     </a>
+
 </div>

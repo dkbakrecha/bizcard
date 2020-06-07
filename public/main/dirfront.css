@@ -377,8 +377,12 @@ span.room-rate {
     margin: 3px 0;
 }
 
-section.category {
+section.biz-resentbiz{
     background: #EDEDED;
+}
+
+section.category {
+    background: #a3ddd7;
     padding: 40px 0;
 }
 

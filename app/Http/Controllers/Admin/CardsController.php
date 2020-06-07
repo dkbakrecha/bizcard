@@ -117,7 +117,6 @@ class CardsController extends Controller {
         $cardData->user_id = $request->get('user_id');  
         $cardData->area_id = $request->get('area_id');  
         $cardData->city_id = 1;  
-        $cardData->status = $request->get('status');
         $cardData->save();
 
         /*$userData->save();

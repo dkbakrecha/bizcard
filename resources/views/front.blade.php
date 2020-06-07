@@ -61,7 +61,7 @@
                @if(!empty($resentCards))
 
                @foreach ($resentCards as $card)
-                <div class="col-md-6">
+                <div class="col-md-4">
                     @include('elements.cardbox')
                 </div>
                 @endforeach 

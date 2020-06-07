@@ -105,7 +105,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".update_status").click(function (e) {
+        $('.content-wrapper').find(".update_status").click(function (e) {
             e.preventDefault();
             var customer_id = $(this).data('id');
             var status = $(this).data('status');

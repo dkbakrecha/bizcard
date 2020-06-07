@@ -54,16 +54,6 @@
             </div>
 
             
-
-            <div class="form-group middle">
-              <label for="status">Status</label>
-              <select name="status" id="status" class="form-control">
-                    <option value="">Select status</option>
-                <option value="1">Active</option>
-                <option value="3">Pending</option>  
-              </select>
-            </div>
-
             <div class="form-group">
               <label for="business_name">Business Name:</label>
               <input type="text" class="form-control" name="business_name" value="{{ (!empty($cardData->business_name)?$cardData->business_name:"") }}"/>

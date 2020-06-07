@@ -263,32 +263,32 @@ crossorigin=""></script>
                                                 </tbody>
                                             </table> 
                                         </div> 
-                                        
+
                                         <div class="pt-4 pb-4 pl-5 pr-5 border border-bottom-0 bg-white">
-                                        <div class="list-id">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <a class="mb-0">Business ID : #8256358</a> </div>
-                                                <div class="col col-auto"> Posted By 
-                                                    <a class="mb-0 font-weight-bold">Individual</a> / 21st Dec 2019 
-                                                </div> 
+                                            <div class="list-id">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <a class="mb-0">Business ID : #8256358</a> </div>
+                                                    <div class="col col-auto"> Posted By 
+                                                        <a class="mb-0 font-weight-bold">Individual</a> / 21st Dec 2019 
+                                                    </div> 
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                        <div class="card-footer border bg-white"> 
+                                            <div class="icons"> 
+                                                <a href="#" class="btn btn-info icons">
+                                                    <i class="icon icon-share mr-1"></i> Share Ad</a> 
+                                                <a href="#" class="btn btn-pink icons"><i class="icon icon-heart  mr-1">
+
+                                                    </i> 678</a> 
+                                                <a href="#" class="btn btn-primary icons">
+                                                    <i class="icon icon-printer  mr-1"></i> Print</a>
+                                                <a href="#" class="btn btn-danger icons mb-1 mt-1" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>
                                             </div>
                                         </div> 
                                     </div> 
-                                    <div class="card-footer border bg-white"> 
-                                        <div class="icons"> 
-                                            <a href="#" class="btn btn-info icons">
-                                                <i class="icon icon-share mr-1"></i> Share Ad</a> 
-                                            <a href="#" class="btn btn-pink icons"><i class="icon icon-heart  mr-1">
 
-                                                </i> 678</a> 
-                                            <a href="#" class="btn btn-primary icons">
-                                                <i class="icon icon-printer  mr-1"></i> Print</a>
-                                            <a href="#" class="btn btn-danger icons mb-1 mt-1" data-toggle="modal" data-target="#report"><i class="icon icon-exclamation mr-1"></i> Report Abuse</a>
-                                        </div>
-                                    </div> 
-                                    </div> 
-                                    
                                 </div> 
                             </div>
 
@@ -301,6 +301,51 @@ crossorigin=""></script>
         <hr>
         <!--  Detail card By Jay ends  -->
 
+        <div class="profile-column">
+            <div class="profile small profile_view-scope-1Shwh has-nav" max-width-640="false">
+                <style>body {background-color: #F76B1D;background: -webkit-linear-gradient(315deg, #F76B1D 0%, #F76B1D 30%, #ffb631 100%) fixed;background: linear-gradient(135deg, #F76B1D 0%, #F76B1D 30%, #ffb631 100%) fixed;}</style>
+                <div class="profile-content">
+                    <div class="head">
+                        <div class="image" style="width:120px;height:120px;background-image:url(https://aboutme.imgix.net/background/users/j/a/y/jaysonii_1591476971_606.jpg?q=40&amp;dpr=2&amp;auto=format&amp;fit=max&amp;w=120&amp;h=120&amp;rect=0,0,960,960);background-size:cover;border-radius:50%;background-repeat:no-repeat;background-position:center center">
+                        </div>
+                        <div class="name-headline">
+                            <section>
+                                <h1 class="name">{{ $card->business_person }}</h1>
+                            </section>
+                            <section>
+                                <h2 class="headline">
+                                    <span class="roles"> 
+                                        <span class="role">{{ $card->description }}</span>,
+                                        <!-- <span class="role">Designer</span>, --> 
+                                        <!--  <span class="role">Writer</span> --> <!-- and  -->
+                                       
+                                    </span> 
+                                    <span class="location">in <span class="location">Jodhpur, Rajasthan, India</span>
+                                    </span>
+                                </h2>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="body-content">
+                            <section class="spotlight inset">
+                                <a href="http://abc.com" target="_blank" rel="nofollow noopener noreferrer" class="button xlarge dark primary fa fa-music" style="background-color:#F76B1D;border-color:#F76B1D">
+                                    <span class="text ellipsis">Listen to my music</span>
+                                </a>
+                            </section>
+                            <section class="bio inset">
+                                <div>
+                                    <p>I am a web developer, designer, and writer currently living in Jodhpur, Rajasthan, India. My interests range from technology to cooking. I am also interested in programming, entrepreneurship, and movies.</p>
+                                    <p>You can click the button above to listen to my music.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <iframe src="javascript:window.emitcontent" style="position:absolute; top:-50000px; left:0px; width:100%;"></iframe>
+                <iframe src="javascript:window.emitcontent" style="position:absolute; top:0; left:-50000px; height:100%;"></iframe>
+            </div>
+        </div>
 
 
         <!-- Other Cards -->

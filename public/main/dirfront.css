@@ -2228,6 +2228,12 @@ h3.section-title {
 }
 
 
+.social-share a.btn:hover {
+    opacity: 0.8;
+    color: #FDFDFD;
+}
+
+
 .pagination-wrapper {
     text-align: center;
 }

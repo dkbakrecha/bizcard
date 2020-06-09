@@ -99,8 +99,8 @@ crossorigin=""></script>
 <div class="profile-header">
     <div class="container">
         <div class="row">
-
-            <div class="col-md-12 box-card-detail">
+            <div class="panel panel-default ">
+                <div class="panel-body box-card-detail">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="row">
@@ -141,7 +141,7 @@ crossorigin=""></script>
                         
 
 
-                        <div class="row">
+                        <div class="row hide">
                             <div class="col-md-3">
                                 <h4>Share</h4>
                             </div>
@@ -194,7 +194,36 @@ crossorigin=""></script>
                 
 
                 
+                </div>
+                <div class="panel-footer">
+                    
+                    @php 
+                    // Get current page URL 
+                    $cardURL = url('card/' . $card->slug);
+                    $cardTitle = htmlspecialchars(urlencode(html_entity_decode($card->business_name, ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8');
+                    $cardThumbnail = asset('/images/logoicon.svg');
+ 
+                    $twitterURL = 'https://twitter.com/intent/tweet?text='.$cardTitle.'&amp;url='.$cardURL.'&amp;via=CardBiz';
+                    $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$cardURL;
+                    $googleURL = 'https://plus.google.com/share?url='.$cardURL;
+                    $bufferURL = 'https://bufferapp.com/add?url='.$cardURL.'&amp;text='.$cardTitle;
+                    $linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url='.$cardURL.'&amp;title='.$cardTitle;
+             
+                    // Based on popular demand added Pinterest too
+                    $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$cardURL.'&amp;media='.$cardThumbnail.'&amp;description='.$cardTitle;
+
+                    @endphp
+                    <div class="social-share">
+                        <span>Share IT</span>
+                        <a class="btn twitter" href="{{ $twitterURL }}" target="_blank"><i class="fa fa-twitter"></i> <span>Twitter</span></a>
+                        <a class="btn facebook" href="{{ $facebookURL }}" target="_blank"><i class="fa fa-facebook"></i> <span>Facebook</span></a>
+                        <a class="btn linkedin" href="{{ $linkedInURL }}" target="_blank"><i class="fa fa-linkedin"></i> <span>LinkedIn</span></a>
+                        <a class="btn pintrest" href="{{ $pinterestURL }}" data-pin-custom="true" target="_blank"><i class="fa fa-pinterest"></i> <span>Pin It</span></a>
+                    </div>
+                </div>
             </div>
+
+            
 
 
             

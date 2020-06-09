@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Card;
 use App\Search;
+use App\CardViews;
 use Illuminate\Http\Request;
 
 class CardsController extends Controller {
@@ -122,6 +123,8 @@ class CardsController extends Controller {
         }])
             ->where('status', 1)->take(3)->get()->toArray();
 
+
+        CardViews::createViewLog($card);
 
 
         if(empty($card)){

@@ -127,9 +127,9 @@
                         success: function (result) {
                             //console.log(result);
                             if(result == 0){
-                                _this.html('<i class="fa fa-heart-o"></i> Add to My Contacts');
+                                _this.html('<i class="fa fa-heart-o"></i> Save');
                             }else{
-                                _this.html('<i class="fa fa-heart"></i> Unlink My Contacts');
+                                _this.html('<i class="fa fa-heart"></i> Saved');
                             }
                         }
                     });

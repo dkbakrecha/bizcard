@@ -33,6 +33,10 @@
       float: initial;
   }
 
+  .social-share a.btn span {
+      display: none;
+  }
+
   .search-row > div.col-md-6 .item-card-img{
     display: none;
   }

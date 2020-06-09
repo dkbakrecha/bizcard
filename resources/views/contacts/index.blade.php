@@ -25,7 +25,7 @@ $userData = Auth::guard('web')->user();
                 </div>
                 <div class="panel-body">
                     <div class="alert alert-info ">
-                        You can add business contacts here by clicking on "Add to My Contacts" button on card search/detail page. You can notify by mail if any of your contact business having any offers.
+                        You can add business contacts here by clicking on "Save" button on card search/detail page. You can notify by mail if any of your contact business having any offers.
                     </div>
 
                     <ul class="list-group margin-top-20">

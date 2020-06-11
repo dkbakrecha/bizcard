@@ -1,9 +1,7 @@
 @extends('layouts.site.app')
 
-@section('title', $card->business_name . ' | ')
-@section('m-description', $card->description)
-@section('m-keywords', $card->keywords)
-@section('m-url', url('card/' . $card->slug) )
+@section('title', $card->business_name . '|')
+
 
 @section('content')
 
@@ -23,14 +21,13 @@ crossorigin=""></script>
     <section class="card-top ">
         <div class="container">
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-8 col-md-offset-2">
 
                     <div class="card-name">
                         <span class="label label-primary">{{ $card['category']['name'] }}</span>                        
 
                         <h2 class="">{{ $card->business_name }}</h2>
-                        <p class="keywords">{{ $card->keywords }}</p>
-                        <p ><i class="fa fa-map-o"></i> {{ $card->address }}</p>
+                        
                         <div class="card-contact">
                             @guest
                             <a href="{{ route('login') }}" class="btn btn-detail contact-phone">
@@ -75,34 +72,17 @@ crossorigin=""></script>
         </div>
     </section>
 
-    <?php
-/*
-<section class="card-menu ">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-xl-5 order-xl-1 order-2 text-xl-right text-center">
-                <ul class="nav nav-pills flex-column flex-sm-row lis-font-poppins" id="myTab" role="tablist">
-                    <li class="nav-item ml-0"> <a class="nav-link lis-light py-4 lis-relative mr-3 active" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-expanded="true"> About</a> </li>
-                    <li class="nav-item ml-0"> <a class="nav-link lis-light py-4 lis-relative mr-3" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"> Product</a> </li>
-                    <li class="nav-item ml-0"> <a class="nav-link lis-light py-4 lis-relative mr-3" data-toggle="tab" href="#events" role="tab" aria-controls="events">Review</a> </li>
-                    <li class="nav-item ml-0"> <a class="nav-link lis-light py-4 lis-relative" data-toggle="tab" href="#booking" role="tab" aria-controls="booking"> Gallery</a> </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-*/
-?>
 
 
 <div class="profile-header">
     <div class="container">
         <div class="row">
-            <div class="panel panel-default ">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default ">
                 <div class="panel-body box-card-detail">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
+                        @if(!empty($card->description))                     
                         <div class="row">
                             <div class="col-md-3">
                                 <h4>Overview</h4>
@@ -113,7 +93,32 @@ crossorigin=""></script>
                                 </div>        
                             </div>
                         </div>
+                        @endif
 
+                        <h3>Contact Info</h3>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td><i class="fa fa-user-o"></i> Business Person</td>
+                                <td>{{ $card->business_person }}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-phone"></i> Contact</td>
+                                <td>{{ $card->contact_primary }}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-envelope"></i> Email Address</td>
+                                <td>{{ $card->email_address }}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-map-o"></i> Address</td>
+                                <td>{{ $card->address }}</td>
+                            </tr>
+                        </table>
+
+                        <p >{{ $card->keywords }}</p>
+                        
+
+                        @if (!empty($card->facebook) || !empty($card->linkedin) || !empty($card->twitter) || !empty($card->instagram))
                         <div class="row">
                             <div class="col-md-3">
                                 <h4>Social Profiles</h4>
@@ -122,22 +127,22 @@ crossorigin=""></script>
                                 <div>        
                                     <div class="card-social">
                                         @if (!empty($card->facebook))
-                                        <a href="#" class="fa fa-facebook"></a>
+                                        <a href="{{ $card->facebook }}" class="fa fa-facebook"></a>
                                         @endif
                                         @if (!empty($card->linkedin))
-                                        <a href="#" class="fa fa-linkedin"></a>
+                                        <a href="{{ $card->linkedin }}" class="fa fa-linkedin"></a>
                                         @endif
                                         @if (!empty($card->twitter))
-                                        <a href="#" class="fa fa-twitter"></a>
+                                        <a href="{{ $card->twitter }}" class="fa fa-twitter"></a>
                                         @endif
                                         @if (!empty($card->instagram))
-                                        <a href="#" class="fa fa-instagram"></a>
+                                        <a href="{{ $card->instagram }}" class="fa fa-instagram"></a>
                                         @endif
                                     </div>
                                 </div>        
                             </div>
                         </div>
-
+                        @endif
                         
 
 
@@ -176,15 +181,6 @@ crossorigin=""></script>
                         
                         
                     </div>
-                    <div class="col-md-4">
-                        <h3>Contact Info</h3>
-                        <div>
-                            <i class="fa fa-user-o"></i> {{ $card->business_person }}
-                        </div>
-                        <div>
-                            <i class="fa fa-map-o"></i> {{ $card->address }}
-                        </div>
-                    </div>
                 </div>
                 
 
@@ -203,11 +199,11 @@ crossorigin=""></script>
                     $cardTitle = htmlspecialchars(urlencode(html_entity_decode($card->business_name, ENT_COMPAT, 'UTF-8')), ENT_COMPAT, 'UTF-8');
                     $cardThumbnail = asset('/images/logoicon.svg');
  
-                    $twitterURL = 'https://twitter.com/intent/tweet?text='.$cardTitle.'&amp;url='.$cardURL.'&amp;via=CardBiz';
-                    $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$cardURL;
-                    $googleURL = 'https://plus.google.com/share?url='.$cardURL;
-                    $bufferURL = 'https://bufferapp.com/add?url='.$cardURL.'&amp;text='.$cardTitle;
-                    $linkedInURL = 'https://www.linkedin.com/shareArticle?mini=true&url='.$cardURL.'&amp;title='.$cardTitle;
+                    $twitterURL = 'https://twitter.com/share?text='.$cardTitle.'&amp;url='.$cardURL.'&amp;via=CardBiz';
+                    $facebookURL = 'https://www.facebook.com/sharer.php?u='.$cardURL;
+                    //$googleURL = 'https://plus.google.com/share?url='.$cardURL;
+                    //$bufferURL = 'https://bufferapp.com/add?url='.$cardURL.'&amp;text='.$cardTitle;
+                    $linkedInURL = 'http://www.linkedin.com/shareArticle?mini=true&url='.$cardURL.'&amp;title='.$cardTitle;
              
                     // Based on popular demand added Pinterest too
                     $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$cardURL.'&amp;media='.$cardThumbnail.'&amp;description='.$cardTitle;
@@ -221,7 +217,9 @@ crossorigin=""></script>
                         <a class="btn pintrest" href="{{ $pinterestURL }}" data-pin-custom="true" target="_blank"><i class="fa fa-pinterest"></i> <span>Pin It</span></a>
                     </div>
                 </div>
+            </div>    
             </div>
+            
 
             
 

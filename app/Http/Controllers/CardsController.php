@@ -123,6 +123,7 @@ class CardsController extends Controller {
         }])
             ->where('status', 1)->take(3)->get()->toArray();
 
+        $cardMeta = $card;
 
         CardViews::createViewLog($card);
 
@@ -130,7 +131,7 @@ class CardsController extends Controller {
         if(empty($card)){
             return redirect()->action('HomeController@index');
         }else{
-            return view('cards.view', compact('card', 'otherCards'));
+            return view('cards.view', compact('card', 'otherCards', 'cardMeta'));
         }
     }
 

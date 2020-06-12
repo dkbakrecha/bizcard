@@ -54,7 +54,7 @@
                 <i class="glyphicon glyphicon-align-justify"></i>
             </button>
             <a class="navbar-brand text" href="{{ url('/') }}">
-                <img src="{{ asset('/images/logoicon.svg') }}" class="logoicon"> CardBiz.in<span>BETA</span>
+                <img src="{{ asset('/images/logoicon.svg') }}" alt="CardBiz.in Logo" class="logoicon"> CardBiz.in<span>BETA</span>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->

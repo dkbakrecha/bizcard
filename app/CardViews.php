@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class CardViews extends \Eloquent {
@@ -14,7 +15,7 @@ class CardViews extends \Eloquent {
             $postsViews->titleslug = $card->slug;
             $postsViews->url = \Request::url();
             $postsViews->session_id = \Request::getSession()->getId();
-            $postsViews->user_id = \Auth::user()->id;
+            $postsViews->user_id = (!empty(Auth::user()->id)?Auth::user()->id:0);
             $postsViews->ip = \Request::getClientIp();
             $postsViews->agent = \Request::header('User-Agent');
             $postsViews->save();

@@ -431,27 +431,7 @@ jQuery(document).ready(function () {
         increaseArea: '20%' /* optional */
     });
 
-    var table = $('.flair-datatable').DataTable({
-        'paging': true,
-        'lengthChange': false,
-        'searching': true,
-        'ordering': true,
-        'info': false,
-        'autoWidth': false,
-        'aaSorting': [],
-        'sDom': '<lf<"user-table"t>ip>',
-        'columnDefs': [
-            {orderable: false, targets: -1}
-        ],
-        "language": {
-            "paginate": {
-                "previous": "<",
-                "next": ">",
-            },
-            "emptyTable": "{{ 'No records found' }}",
-            "zeroRecords":"{{ 'No matching records found' }}",
-        },
-    });
+    var table = $('.flair-datatable').DataTable();
 
     var _msg = getCookie("success");
     if (_msg != "") {

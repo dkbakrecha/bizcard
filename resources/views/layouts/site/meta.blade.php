@@ -1,9 +1,9 @@
 <meta name="robots" content="index, follow"> 
 <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> 
 <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"> 
+<meta property="fb:app_id" content="282532576067197" />
 
 @if(!empty($cardMeta))
-
         <meta name="description" content="{{ $cardMeta['description'] }}"> 
         <meta name="keywords" content="{{ $cardMeta['keywords'] }}">
         <link rel="canonical" href="{{ url('card/' . $cardMeta['slug']) }}"> 
@@ -20,6 +20,7 @@
         <meta property="og:image:width" content="370"> 
         <meta property="og:image:height" content="370"> 
 
+        
         <meta name="twitter:card" content="summary_large_image"> 
         <meta name="twitter:creator" content="@CardbizIn"> 
         <meta name="twitter:site" content="@CardbizIn">
@@ -44,3 +45,5 @@
         <meta name="twitter:creator" content="@CardbizIn"> 
         <meta name="twitter:site" content="@CardbizIn">
 @endif
+
+

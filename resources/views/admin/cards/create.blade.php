@@ -119,6 +119,11 @@
                     <label for="twitter">Twitter :</label>
                     <input type="text" class="form-control" name="twitter" value="{{ (!empty($cardData->twitter))?$cardData->twitter:"" }}"/>
                   </div>
+
+                  <div class="form-group">
+                    <label for="website">website :</label>
+                    <input type="text" class="form-control" name="website" value="{{ (!empty($cardData->website))?$cardData->website:"" }}"/>
+                  </div>
                 </div>
               </div>
             </div>

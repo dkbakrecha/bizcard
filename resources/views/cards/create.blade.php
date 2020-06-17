@@ -78,7 +78,7 @@
 
                                 <div class="form-group">
                                   <label for="address">Address :</label>
-                                  <input type="text" class="form-control" name="address" value="{{ (!empty($cardData->address))?$cardData->address:"" }}"/>
+                                  <input type="textarea" class="form-control" name="address" value="{{ (!empty($cardData->address))?$cardData->address:"" }}"/>
                               </div>
 
                                <div class="form-group">
@@ -107,11 +107,16 @@
                               <div class="form-group">
                                   <label for="contact_secondary">Contact Secondary :</label>
                                   <input type="text" class="form-control" name="contact_secondary" value="{{ (!empty($cardData->contact_secondary))?$cardData->contact_secondary:"" }}"/>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="website">Website :</label>
+                                  <input type="text" class="form-control" name="website" value="{{ (!empty($cardData->website))?$cardData->website:"" }}"/>
                               </div>      
 
 <div class="form-group">
                               <label for="description">Description :</label>
-                              <input type="text" class="form-control" name="description" value="{{ (!empty($cardData->description))?$cardData->description:"" }}"/>
+                              <input type="textarea" class="form-control" name="description" value="{{ (!empty($cardData->description))?$cardData->description:"" }}"/>
                           </div>
                           <div class="form-group">
                               <label for="keywords">Keywords :</label>

@@ -96,7 +96,7 @@ crossorigin=""></script>
                         @endif
 
                         <h3>Contact Info</h3>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-striped table-responsive">
                             <tr>
                                 <td><i class="fa fa-user-o"></i> Business Person</td>
                                 <td>{{ $card->business_person }}</td>
@@ -113,6 +113,12 @@ crossorigin=""></script>
                                 <td><i class="fa fa-map-o"></i> Address</td>
                                 <td>{{ $card->address }}</td>
                             </tr>
+                            @if(!empty($card->website))
+                            <tr>
+                                <td><i class="fa fa-globe"></i> Website</td>
+                                <td>{{ $card->website }}</td>
+                            </tr>
+                            @endif
                         </table>
 
                         <p >{{ $card->keywords }}</p>

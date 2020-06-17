@@ -53,6 +53,7 @@ class CardsController extends Controller {
         $cardData->instagram = $request->get('instagram');
         $cardData->linkedin = $request->get('linkedin');
         $cardData->twitter = $request->get('twitter');
+        $cardData->website = $request->get('website');
 
         $cardData->area_id = $request->get('area_id');  
         $cardData->city_id = 1;  
@@ -113,6 +114,7 @@ class CardsController extends Controller {
         $cardData->instagram = $request->get('instagram');
         $cardData->linkedin = $request->get('linkedin');
         $cardData->twitter = $request->get('twitter');
+        $cardData->website = $request->get('website');
 
         $cardData->user_id = $request->get('user_id');  
         $cardData->area_id = $request->get('area_id');  

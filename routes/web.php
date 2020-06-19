@@ -40,6 +40,11 @@ Route::get('/clear-cache', function() {
     return "Cache is cleared";
 });
 
+Route::get('/run-migrate', function() {
+    $exitCode = Artisan::call('migrate');
+    return "Migration run";
+});
+
 Auth::routes();
 
 

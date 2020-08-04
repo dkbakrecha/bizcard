@@ -70,8 +70,19 @@ Route::get('contacts', 'ContactsController@index')->name('contacts');
 //Route::post('getOfferPrice', 'OffersController@getOfferPrice');
 //Route::delete('offer_delete', 'OffersController@offer_delete')->name('offer.destroy');
 
+Route::get('contact-us', 'ContactController@getContact')->name('contact-us');
+Route::post('contact-us', 'ContactController@saveContact');
 
 
+Route::group(['prefix' => 'items'], function () {
+
+   Route::get('/', 'ItemsController@index')->name('items.index');
+   Route::get('/create', 'ItemsController@create')->name('items.create');
+   Route::post('/store', 'ItemsController@store')->name('items.store');
+   Route::get('/edit/{id}', 'ItemsController@edit')->name('items.edit');
+   Route::post('/update', 'ItemsController@update')->name('items.update');
+
+});
 
 
 

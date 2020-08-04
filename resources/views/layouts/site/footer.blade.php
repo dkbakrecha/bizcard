@@ -64,6 +64,7 @@
                         <a href="{{ route('about-us') }}" class="link">About</a>
                         <a href="{{ route('features') }}" class="link">Features</a>
                         <a href="{{ route('privacy-terms') }}" class="link">Privacy &amp; Terms</a>
+                        <a href="{{ route('contact-us') }}" class="link">Contact Us</a>
                         
 
                     </div>

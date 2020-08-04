@@ -204,15 +204,13 @@ use RegistersUsers;
                   'string',
                   'min:6',             // must be at least 10 characters in length
                   'regex:/[a-z]/',      // must contain at least one lowercase letter
-                  'regex:/[A-Z]/',      // must contain at least one uppercase letter
                   'regex:/[0-9]/',      // must contain at least one digit
-                  'regex:/[@$!%*#?&]/', // must contain a special character
               ],
             'phone' => 'required|digits:10',
             'otp' => 'required|digits:4|in:'.$rUser->token,
                 ], [
             'otp' => 'Please enter valid OTP.',
-            'password.regex' => 'Password must have at least, 6 characters with 1 upper case, 1 number, and 1 special character'
+            'password.regex' => 'Password must have at least, 6 characters with 1 number'
           ]);
 
           if ($validator->fails())
@@ -229,6 +227,19 @@ use RegistersUsers;
 
           session(['registerUser' => ""]);
           $this->guard()->login($userData);
+          // Save new service provider registration as a web notification
+        // Fetch Admin user's user id
+        $admin_user_id = $this->_admin_id();
+
+        WebNotification::create([
+            'notification_for' => $admin_user_id, // Admin
+            'user_id' => $userData->id, // User who triggered the notification
+            'event_type' => 0,
+            'event' => 'New user ' . $userData->name . ' Registered into system',
+        ]);
+
+          Mail::to('dkb4biz@gmail.com')->send(new ServiceProviderRegister($userData->id));
+          
           return redirect()->to('home')->with('success', __('Your account has been successfully registered.'));
         }else{
           if(!empty($rUser) || $rUser->status == 3){

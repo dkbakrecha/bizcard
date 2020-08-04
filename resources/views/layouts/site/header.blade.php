@@ -65,7 +65,7 @@
                 <li class="nav-item mtb-15 search-wrap">
                     <form action="{{ route('list') }}" method="get" class="navbar-form navbar-left form biz-form home-search">
                         <div class="input-append">
-                          <input class="search-text bizsearch" type="text" placeholder="What near about service/business your want to know?" name="q"  value="{{ (!empty($searchTerm)?$searchTerm:'') }}" required>
+                          <input class="search-text bizsearch" type="text" placeholder="What are you looking for?" name="q"  value="{{ (!empty($searchTerm)?$searchTerm:'') }}" required>
                           <button class="btn btn-biz" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
                           </button>

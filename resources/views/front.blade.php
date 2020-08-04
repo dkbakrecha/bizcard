@@ -31,7 +31,7 @@
               <p> All the best businesses, professionals, and service providers are waiting for your call</p>
               <form action="{{ route('list') }}" method="get" class="form biz-form home-search">
                 <div class="input-append">
-                  <input class="search-text bizsearch" type="text" placeholder="What near about service/business your want to know?" name="q" required>
+                  <input class="search-text bizsearch" type="text" placeholder="What are you looking for?" name="q" required>
                   <button class="btn btn-biz" type="submit">
                     <i class="glyphicon glyphicon-search"></i>
                   </button>
